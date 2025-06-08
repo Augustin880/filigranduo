@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>filigranduo &ndash; Violin & Piano Duo</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ----- CSS RESET (simplified) ----- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; background: #0b0b0e; color: #e8e8e8; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: #e8e8e8; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ----- GLOBAL VARS ----- */
+    :root {
+      --clr-bg: #0b0b0e;
+      --clr-bg-alt: #1a1a1d;
+      --clr-primary: #e8e8e8;
+      --clr-accent: #b18aff;
+    }
+
+    /* ----- LAYOUT UTILITIES ----- */
+    .container { width: min(90%, 1200px); margin-inline: auto; }
+    .section { padding: 4rem 0; }
+    .text-center { text-align: center; }
+
+    /* ----- HEADER & HERO ----- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(11, 11, 14, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.75rem; letter-spacing: 0.05em; }
+    .nav ul { display: flex; gap: 2rem; }
+    .nav a:hover { color: var(--clr-accent); }
+
+    .hero {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      background: linear-gradient(rgba(11, 11, 14, 0.6), rgba(11, 11, 14, 0.6)), url('./img/main.jpg') center/cover no-repeat;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1rem; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.5rem); max-width: 45ch; margin-inline: auto; margin-bottom: 2rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 2px solid var(--clr-primary);
+      border-radius: 50px;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn:hover { background: var(--clr-primary); color: var(--clr-bg); }
+
+    /* ----- ABOUT SECTION ----- */
+    .about {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+    }
+    .about-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+    .about-text p { margin-bottom: 1rem; }
+    .about-img { border-radius: 0.5rem; overflow: hidden; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); }
+
+    /* ----- PERFORMANCES ----- */
+    .performances {
+      background: var(--clr-bg-alt);
+    }
+
+    .performance-list { display: grid; gap: 1.5rem; }
+    .performance-item { padding: 1.5rem; border-left: 4px solid var(--clr-accent); background: rgba(255,255,255,0.03); border-radius: 0.25rem; }
+    .performance-item h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+    .performance-item span { opacity: 0.75; font-size: 0.9rem; }
+
+    /* ----- MEDIA SECTION ----- */
+    .media-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .media-item { position: relative; overflow: hidden; }
+    .media-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(11,11,14,0.4);
+      transition: opacity 0.3s;
+    }
+    .media-item:hover::after { opacity: 0; }
+
+    /* ----- CONTACT SECTION ----- */
+    .contact form { max-width: 600px; margin-inline: auto; display: grid; gap: 1rem; }
+    .contact input, .contact textarea { width: 100%; padding: 0.75rem 1rem; background: #15151a; border: 1px solid #333; border-radius: 0.25rem; color: var(--clr-primary); }
+    .contact textarea { resize: vertical; min-height: 150px; }
+    .contact button { cursor: pointer; }
+
+    /* ----- FOOTER ----- */
+    footer { text-align: center; padding: 2rem 0 1rem; font-size: 0.875rem; opacity: 0.75; }
+
+    /* ----- RESPONSIVE NAV TOGGLE (OPTIONAL) ----- */
+    @media (max-width: 700px) {
+      .nav ul { display: none; }
+      .nav input[type="checkbox"] { display: none; }
+      .nav-label { display: block; cursor: pointer; }
+      .nav-label span { display: block; width: 28px; height: 2px; background: var(--clr-primary); margin: 6px 0; }
+      .nav input[type="checkbox"]:checked + ul { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: var(--clr-bg); }
+      .nav ul li { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container nav">
+      <div class="logo">filigranduo</div>
+      <!-- Mobile nav toggle -->
+      <label for="nav-toggle" class="nav-label" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </label>
+      <input type="checkbox" id="nav-toggle" />
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#performances">Performances</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <div>
+      <h1>filigranduo</h1>
+      <p>Violin &amp; Piano Duo &ndash; Maastricht Conservatoire</p>
+      <a href="#about" class="btn">Discover Our Music</a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about" class="section container about">
+    <div class="about-img">
+      <img src="img/duo-about.jpg" alt="filigranduo portrait">
+    </div>
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>filigranduo brings together the expressive artistry of <strong>violin</strong> and <strong>piano</strong> in a dynamic partnership nurtured at the Maastricht Conservatoire. United by a shared passion for both classical masterpieces and contemporary gems, the duo crafts finely‑woven performances that explore colour, texture and narrative.</p>
+      <p>From intimate recitals to large concert stages, filigranduo curates programmes that invite audiences on a journey through time and style &mdash; shimmering baroque sonatas, fervent romantic showpieces, and vibrant new works from living composers.</p>
+    </div>
+  </section>
+
+  <!-- ===== PERFORMANCES ===== -->
+  <section id="performances" class="performances section">
+    <div class="container text-center">
+      <h2 class="" style="font-family:'Playfair Display', serif; margin-bottom:2rem;">Upcoming Performances</h2>
+      <div class="performance-list">
+        <div class="performance-item">
+          <h3>Toneelhuis Concert Hall, Antwerp</h3>
+          <span>15&nbsp;November&nbsp;2025</span>
+        </div>
+        <div class="performance-item">
+          <h3>Conservatorium Maastricht &ndash; Auditorium</h3>
+          <span>03&nbsp;December&nbsp;2025</span>
+        </div>
+        <div class="performance-item">
+          <h3>Chamber Music Series, Bonn</h3>
+          <span>22&nbsp;January&nbsp;2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MEDIA SECTION ===== -->
+  <section id="media" class="section container text-center">
+    <h2 style="font-family:'Playfair Display', serif; margin-bottom:2rem;">Media</h2>
+    <p style="max-width:50ch; margin:0 auto 2rem;">Explore performance highlights and behind‑the‑scenes moments.</p>
+    <div class="media-grid">
+      <div class="media-item"><img src="img/media1.jpg" alt="Live performance"></div>
+      <div class="media-item"><img src="img/media2.jpg" alt="Rehearsal"></div>
+      <div class="media-item"><img src="img/media3.jpg" alt="Close‑up of violin"></div>
+      <div class="media-item"><img src="img/media4.jpg" alt="Piano detail"></div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact" class="contact section container">
+    <h2 class="text-center" style="font-family:'Playfair Display', serif; margin-bottom:2rem;">Contact & Booking</h2>
+    <form action="https://formspree.io/f/your‑form‑id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Tell us about your event" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    &copy; 2025 filigranduo. All rights reserved.
+  </footer>
+</body>
+</html>
