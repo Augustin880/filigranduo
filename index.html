@@ -41,10 +41,13 @@
       backdrop-filter: blur(6px);
       z-index: 100;
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; position: relative; }
     .logo { font-family: 'Playfair Display', serif; font-size: 1.75rem; letter-spacing: 0.05em; }
-    .nav ul { display: flex; gap: 2rem; }
+    .nav-menu { display: flex; gap: 2rem; }
     .nav a:hover { color: var(--clr-accent); }
+
+    .nav-label { display: none; cursor: pointer; }
+    .nav-label span { display: block; width: 28px; height: 2px; background: var(--clr-primary); margin: 6px 0; }
 
     .hero {
       display: grid;
@@ -78,10 +81,7 @@
     .about-img { border-radius: 0.5rem; overflow: hidden; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); }
 
     /* ----- PERFORMANCES ----- */
-    .performances {
-      background: var(--clr-bg-alt);
-    }
-
+    .performances { background: var(--clr-bg-alt); }
     .performance-list { display: grid; gap: 1.5rem; }
     .performance-item { padding: 1.5rem; border-left: 4px solid var(--clr-accent); background: rgba(255,255,255,0.03); border-radius: 0.25rem; }
     .performance-item h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
@@ -108,14 +108,23 @@
     /* ----- FOOTER ----- */
     footer { text-align: center; padding: 2rem 0 1rem; font-size: 0.875rem; opacity: 0.75; }
 
-    /* ----- RESPONSIVE NAV TOGGLE (OPTIONAL) ----- */
+    /* ----- RESPONSIVE NAV TOGGLE ----- */
+    #nav-toggle { display: none; }
     @media (max-width: 700px) {
-      .nav ul { display: none; }
-      .nav input[type="checkbox"] { display: none; }
-      .nav-label { display: block; cursor: pointer; }
-      .nav-label span { display: block; width: 28px; height: 2px; background: var(--clr-primary); margin: 6px 0; }
-      .nav input[type="checkbox"]:checked + ul { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: var(--clr-bg); }
-      .nav ul li { padding: 1rem; }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: var(--clr-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+      }
+      #nav-toggle:checked + .nav-label + .nav-menu {
+        display: flex;
+      }
+      .nav-label { display: block; }
+      .nav-menu li { padding: 1rem; }
     }
   </style>
 </head>
@@ -124,11 +133,11 @@
   <header>
     <div class="container nav">
       <div class="logo">filigranduo</div>
-      <!-- Mobile nav toggle -->
+      <input type="checkbox" id="nav-toggle" hidden>
       <label for="nav-toggle" class="nav-label" aria-label="Open navigation menu">
         <span></span><span></span><span></span>
       </label>
-      <ul>
+      <ul class="nav-menu">
         <li><a href="#about">About</a></li>
         <li><a href="#performances">Performances</a></li>
         <li><a href="#media">Media</a></li>
