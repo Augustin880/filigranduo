@@ -215,5 +215,14 @@
   <footer>
     &copy; 2025 filigranduo. All rights reserved.
   </footer>
+
+  <script>
+    // Collapse menu after clicking a nav link (mobile)
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('nav-toggle').checked = false;
+      });
+    });
+  </script>
 </body>
 </html>
