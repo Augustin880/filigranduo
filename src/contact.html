@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – Filigran Duo</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="logo">Filigran Duo</div>
+      <input type="checkbox" id="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-label" aria-label="Open navigation menu"><span></span><span></span><span></span></label>
+      <ul class="nav-menu">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#performances">Performances</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="../index.html#social">Social</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN CONTACT SECTION -->
+  <main class="section container">
+    <h1 class="text-center" style="font-family:'Playfair Display',serif;margin-bottom:2rem">Contact Us</h1>
+    <p class="text-center" style="max-width:50ch;margin:0 auto 3rem">
+      Fill out the form below to get in touch with us for performances, questions, or collaborations.
+    </p>
+
+    <div class="contact-form-container" style="max-width:600px;margin:0 auto;">
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>&copy; 2025 filigranduo. All rights reserved.</footer>
+
+</body>
+</html>

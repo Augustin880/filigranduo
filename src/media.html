@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media – Filigran Duo</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="logo">filigranduo</div>
+      <input type="checkbox" id="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-label" aria-label="Open navigation menu"><span></span><span></span><span></span></label>
+      <ul class="nav-menu">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#performances">Performances</a></li>
+        <li><a href="media.html" class="active">Media</a></li>
+        <li><a href="../index.html#social">Social</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="section container">
+    <h1 class="text-center" style="font-family:'Playfair Display',serif;margin-bottom:2rem">Media</h1>
+    <p class="text-center" style="max-width:50ch;margin:0 auto 3rem">Browse our collection of photos, videos, and categories highlighting our journey.</p>
+
+    <!-- CATEGORY NAV -->
+    <nav class="media-categories text-center" style="margin-bottom:3rem">
+      <ul style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap">
+        <li><a href="#photos" class="btn">Photos</a></li>
+        <li><a href="#videos" class="btn">Videos</a></li>
+        <li><a href="#behind" class="btn">Behind the Scenes</a></li>
+      </ul>
+    </nav>
+
+    <!-- PHOTOS -->
+    <section id="photos" class="section">
+      <h2 style="font-family:'Playfair Display',serif;margin-bottom:1.5rem">Photo Gallery</h2>
+      <div class="media-grid">
+        <div class="media-item"><img src="../img/duo-about.jpg" alt="Concert photo"></div>
+        <div class="media-item"><img src="../img/duo-about.jpg" alt="Rehearsal"></div>
+        <div class="media-item"><img src="../img/duo-about.jpg" alt="Violin detail"></div>
+        <div class="media-item"><img src="../img/duo-about.jpg" alt="Piano detail"></div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos" class="section">
+      <h2 style="font-family:'Playfair Display',serif;margin-bottom:1.5rem">Videos</h2>
+      <div class="media-grid">
+        <div class="media-item">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="media-item">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/another-video-id" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEHIND THE SCENES -->
+    <section id="behind" class="section">
+      <h2 style="font-family:'Playfair Display',serif;margin-bottom:1.5rem">Behind the Scenes</h2>
+      <p>Stories, rehearsal clips, or casual snapshots can go here.</p>
+      <div class="media-grid">
+        <div class="media-item"><img src="img/behind1.jpg" alt="Behind the scenes"></div>
+        <div class="media-item"><img src="img/behind2.jpg" alt="Practice room"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; 2025 filigranduo. All rights reserved.</footer>
+</body>
+</html>
