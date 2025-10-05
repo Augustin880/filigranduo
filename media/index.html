@@ -47,22 +47,30 @@
     <section id="photos" class="section">
       <h2 style="font-family:'Playfair Display',serif;margin-bottom:1.5rem">Photo Gallery</h2>
       <div class="media-grid">
-        <div class="media-item"><img src="../img/media1.png" alt="Concert photo"></div>
-        <div class="media-item"><img src="../img/media2.jpeg" alt="Rehearsal"></div>
-        <div class="media-item"><img src="../img/duo-about.jpg" alt="Violin detail"></div>
-        <div class="media-item"><img src="../img/duo-about.jpg" alt="Piano detail"></div>
+        <div class="media-item"><img src="../img/media1.png" class="clickable"></div>
+        <div class="media-item"><img src="../img/media2.jpeg" class="clickable"></div>
+        <div class="media-item"><img src="../img/duo-about.jpg" class="clickable"></div>
+        <div class="media-item"><img src="../img/duo-about.jpg" class="clickable"></div>
       </div>
     </section>
+
+    <!-- Lightbox container -->
+    <div id="lightbox" class="lightbox">
+      <span class="close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img">
+      <div id="lightbox-caption"></div>
+    </div>
+
 
     <!-- VIDEOS -->
     <section id="videos" class="section">
       <h2 style="font-family:'Playfair Display',serif;margin-bottom:1.5rem">Videos</h2>
       <div class="media-grid">
         <div class="media-item">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/Qut5e3OfCvg?start=1526" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="media-item">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/another-video-id" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/Qut5e3OfCvg?start=2033" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
     </section>
@@ -79,5 +87,32 @@
   </main>
 
   <footer>&copy; 2025 Filigran Duo. All rights reserved.</footer>
+
+  <script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
+  const closeBtn = document.querySelector('.lightbox .close');
+
+  document.querySelectorAll('.media-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+      caption.textContent = img.alt;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  // also close when clicking outside the image
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+    }
+  });
+  </script>
+
 </body>
 </html>

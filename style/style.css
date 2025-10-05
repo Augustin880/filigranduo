@@ -39,6 +39,46 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(11,11,14,.85);b
 .about-text h2{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:1rem}
 .about-img{border-radius:.5rem;overflow:hidden;box-shadow:0 6px 15px rgba(0,0,0,.5)}
 
+/* --- PHOTO EXPAND --- */
+/* Lightbox overlay */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Lightbox image */
+.lightbox-content {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Caption */
+#lightbox-caption {
+  margin-top: 1rem;
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* Close button */
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
 /* --- PERFORMANCES --- */
 .performance-item {
   border-left: 4px solid var(--clr-accent);
