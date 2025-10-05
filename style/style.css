@@ -28,7 +28,7 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(11,11,14,.85);b
 .nav-label span{display:block;width:28px;height:2px;background:var(--clr-primary);margin:6px 0}
 
 /* --- HERO --- */
-.hero{display:grid;place-items:center;min-height:100vh;background:linear-gradient(rgba(11,11,14,.6),rgba(11,11,14,.6)),url('../img/main.jpg')center/cover no-repeat;text-align:center;padding:0 1rem}
+.hero{display:grid;place-items:center;min-height:100vh;background:linear-gradient(rgba(11,11,14,.6),rgba(11,11,14,.6)),url('../img/main.jpeg')center/cover no-repeat;text-align:center;padding:0 1rem}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:1rem}
 .hero p{font-size:clamp(1rem,2.5vw,1.5rem);max-width:45ch;margin-inline:auto;margin-bottom:2rem}
 .btn{display:inline-block;padding:.75rem 2rem;border:2px solid var(--clr-primary);border-radius:50px;font-weight:500;transition:background .3s,color .3s}
@@ -40,9 +40,34 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(11,11,14,.85);b
 .about-img{border-radius:.5rem;overflow:hidden;box-shadow:0 6px 15px rgba(0,0,0,.5)}
 
 /* --- PERFORMANCES --- */
-.performances{background:var(--clr-bg-alt)}
-.performance-list{display:grid;gap:1.5rem}
-.performance-item{padding:1.5rem;border-left:4px solid var(--clr-accent);background:rgba(255,255,255,.03);border-radius:.25rem}
+.performance-item {
+  border-left: 4px solid var(--clr-accent);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  background: rgba(255,255,255,0.03); /* move background to div itself */
+}
+
+/* Hover effect on the entire div */
+.performance-item:hover {
+  background: rgba(177,138,255,0.15);
+  transform: scale(1.03);             
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Ensure the <a> fills the div without interfering with hover */
+.performance-item a {
+  display: block;
+  color: var(--clr-primary);
+  text-decoration: none;
+  padding: 1.5rem; /* spacing inside the item */
+}
+
+.performance-item:hover a {
+  color: var(--clr-accent); /* text color changes on hover */
+}
+
 
 /* --- MEDIA --- */
 .media-grid {

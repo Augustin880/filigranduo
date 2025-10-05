@@ -4,8 +4,13 @@ fetch('data/performances.json')
     const container = document.getElementById('performance-list');
     data.forEach(performance => {
       const div = document.createElement('div');
-      div.className = 'performance-item';
-      div.innerHTML = `<h3>${performance.title}</h3><p>${performance.date}</p>`;
+      div.className = "performance-item";
+      div.innerHTML = `
+        <a href="${performance.link}" target="_blank">
+          <h3>${performance.title}</h3>
+          <p>${performance.date}</p>
+        </a>
+      `;
       container.appendChild(div);
     });
   })
