@@ -142,9 +142,24 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(11,11,14,.85);b
 }
 
 /* --- SOCIAL --- */
-.social-links{display:flex;justify-content:center;gap:2rem}
-.social-links a img{width:40px;height:40px;filter:invert(90%);transition:transform .3s}
-.social-links a:hover img{transform:scale(1.1)}
+.header-socials {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Social icons sizing */
+.header-socials a img {
+  width: 32px;   /* slightly bigger than before */
+  height: 32px;  /* keep square */
+  transition: transform 0.3s;
+}
+
+/* Hover effect */
+.header-socials a:hover img {
+  transform: scale(1.2);
+}
+
 
 /* --- CONTACT PAGE --- */
 .contact-form-container {
