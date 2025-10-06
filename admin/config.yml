@@ -7,13 +7,15 @@ backend:
 
 media_folder: "img"
 public_folder: "img"
+
 collections:
   - name: "performances"
     label: "Performances"
-    folder: "data"
-    create: true
-    slug: "{{title}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "string" }
-      - { label: "Link", name: "link", widget: "string" }
+    files:
+      - file: "data/performances.json"
+        label: "Performances JSON"
+        name: "performances"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Date", name: "date", widget: "string" }
+          - { label: "Link", name: "link", widget: "string" }
