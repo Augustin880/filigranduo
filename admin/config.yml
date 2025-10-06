@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Augustin880/filigranduo
   branch: main
+  auth_type: implicit
+  app_id: Ov23liI4j6gtxlQt4Hfg
 
 media_folder: "img"
 public_folder: "/img"
@@ -21,4 +24,3 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Date", name: "date", widget: "string" }
               - { label: "Link", name: "link", widget: "string" }
-
