@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: Augustin880/filigranduo
   branch: main
   auth_type: implicit
