@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: your-username/your-repo
+  branch: main
+
+media_folder: "img"       # folder where images are stored
+public_folder: "img"      # path used in your site
+
+collections:
+  - name: "performances"
+    label: "Performances"
+    folder: "data"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "string" }
+      - { label: "Link", name: "link", widget: "string" }
+
+backend:
+  name: github
+  repo: Augustin880/filigranduo
+  branch: main
+  auth_type: implicit
+  app_id: Ov23liI4j6gtxlQt4Hfg
