@@ -1,60 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <title>Filigran Duo CMS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Optional: Basic styling -->
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #0b0b0e;
-      color: #e8e8e8;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    h1 {
-      text-align: center;
-      margin: 2rem 0;
-      font-weight: 400;
-    }
-    .cms-container {
-      max-width: 900px;
-      margin: auto;
-      padding: 1rem;
-    }
-  </style>
 </head>
 <body>
-  <h1>Filigran Duo CMS</h1>
-  <div class="cms-container">
-    <!-- CMS will load here -->
-  </div>
-
-  <!-- Netlify Identity Widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    // Initialize Identity
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.init();
-
-      // Auto redirect to CMS if logged in
-      window.netlifyIdentity.on("login", user => {
-        document.location.href = "/admin/#/";
-      });
-
-      // Auto redirect on logout
-      window.netlifyIdentity.on("logout", () => {
-        document.location.href = "/admin/#/";
-      });
-    }
-  </script>
-
-  <!-- Netlify CMS -->
-  <script src="https://unpkg.com/decap-cms-app@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
