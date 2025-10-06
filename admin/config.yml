@@ -13,9 +13,15 @@ collections:
     label: "Performances"
     files:
       - file: "data/performances.json"
-        label: "Performances JSON"
+        label: "Performances List"
         name: "performances"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Date", name: "date", widget: "string" }
-          - { label: "Link", name: "link", widget: "string" }
+          - label: "Performances"
+            name: "performances"
+            widget: "list"
+            summary: "{{title}} - {{date}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+

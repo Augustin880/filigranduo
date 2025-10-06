@@ -2,7 +2,7 @@ fetch('data/performances.json')
   .then(response => response.json())
   .then(data => {
     const container = document.getElementById('performance-list');
-    data.forEach(performance => {
+    data.performances.forEach(performance => {
       const div = document.createElement('div');
       div.className = "performance-item";
       div.innerHTML = `
