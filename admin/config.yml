@@ -5,7 +5,7 @@ backend:
   auth_type: implicit
   app_id: Ov23liI4j6gtxlQt4Hfg
   base_url: https://filigranduo.netlify.app
-  site_id: filigranduo-netlify-app-id
+  site_id: 117f169f-fb40-4611-9e7a-706339b2c8b7
 
 media_folder: "img"
 public_folder: "/img"
