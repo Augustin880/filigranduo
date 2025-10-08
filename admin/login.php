@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/home/quartitb/domains/filigranduo.com/private/config.php';
+require_once __DIR__ . '/../../private/config.php';
 
 // only accept POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

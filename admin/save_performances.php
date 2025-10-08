@@ -2,7 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 
-require_once __DIR__ . '/home/quartitb/domains/filigranduo.com/private/config.php';
+require_once __DIR__ . '/../../private/config.php';
 
 if (empty($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   http_response_code(401);
