@@ -26,7 +26,7 @@
     const pass = document.getElementById('password').value;
 
     try {
-        const res = await fetch('api/secrets.php?key=internal123');
+        const res = await fetch('/api/secrets.php?key=internal123');
         if (!res.ok) throw new Error("Cannot fetch secrets");
 
         const secrets = await res.json();
