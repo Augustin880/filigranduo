@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Filigran Duo CMS</title>
+  <meta charset="UTF-8">
+  <title>Filigran Duo Admin Login</title>
+  <style>
+    body { font-family: 'Roboto', sans-serif; background:#0b0b0e; color:#e8e8e8; display:flex; justify-content:center; align-items:center; height:100vh; }
+    .login { background:#1a1a1d; padding:2rem; border-radius:8px; width:300px; }
+    input { display:block; width:100%; margin-bottom:1rem; padding:.5rem; border-radius:4px; border:none; }
+    button { padding:.5rem 1rem; background:#b18aff; border:none; color:#0b0b0e; font-weight:bold; cursor:pointer; border-radius:4px; width:100%; }
+    .error { color:#ff6b6b; margin-bottom:1rem; }
+  </style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <div class="login">
+    <h2>Admin Login</h2>
+    <div class="error" id="error"></div>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button id="login-btn">Login</button>
+  </div>
+
+  <script>
+    document.getElementById('login-btn').addEventListener('click', async () => {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    try {
+        const res = await fetch('api/secrets.php?key=internal123');
+        if (!res.ok) throw new Error("Cannot fetch secrets");
+
+        const secrets = await res.json();
+
+        if (user === secrets.user && pass === secrets.password) {
+            window.location.href = 'editor.html';
+        } else {
+            document.getElementById('error').textContent = 'Invalid credentials';
+        }
+    } catch (err) {
+        console.error(err);
+        document.getElementById('error').textContent = 'Login failed. Try again later.';
+    }
+    });
+  </script>
+
 </body>
 </html>
