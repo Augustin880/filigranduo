@@ -22,7 +22,7 @@ $localPath = __DIR__ . '/../data/performances.json';
 file_put_contents($localPath, json_encode(['performances' => $performances], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
 $repo = REPO;
-$path = "/data/performances.json";
+$path = "data/performances.json";
 $branch = "main";
 $token = GHP;
 
