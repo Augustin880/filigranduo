@@ -7,8 +7,8 @@ fetch('data/performances.json')
       div.className = "performance-item";
       div.innerHTML = `
         <a href="${performance.link}" target="_blank">
+          <h2>${performance.date}</h2>
           <h3>${performance.title}</h3>
-          <p>${performance.date}</p>
         </a>
       `;
       container.appendChild(div);
