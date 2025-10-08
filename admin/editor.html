@@ -34,34 +34,66 @@
 <button id="add-btn">Add Performance</button>
 <button id="update-btn">Update GitHub</button>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Filigran Duo - Edit Performances</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0b0b0e;
+      color: #e8e8e8;
+      padding: 2rem;
+    }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    .performance { 
+      border: 1px solid #b18aff; 
+      border-radius: 8px; 
+      padding: 1rem; 
+      margin-bottom: 1rem; 
+      display: flex; 
+      gap: 1rem; 
+      align-items: center;
+    }
+    .performance input { flex: 1; padding: 0.5rem; border-radius: 4px; border: none; }
+    .performance button { background: #b18aff; color: #0b0b0e; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 4px; }
+    #add-btn, #update-btn { margin-top: 1rem; padding: 0.75rem 1.5rem; background: #b18aff; color: #0b0b0e; border: none; cursor: pointer; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+<h1>Edit Performances</h1>
+
+<div id="performances-container"></div>
+
+<button id="add-btn">Add Performance</button>
+<button id="update-btn">Save Changes</button>
+
 <script>
-  // Simple check: redirect to login.html if not coming from login
-  if (document.referrer.indexOf("login.html") === -1) {
-    alert("Please log in first");
-    window.location.href = "login.html";
+  // ----- SECURITY: redirect if not logged in -----
+  async function checkSession() {
+    const res = await fetch('check_session.php', { credentials: 'same-origin' });
+    const data = await res.json();
+    if(!data.logged_in) {
+      alert('Please log in first');
+      window.location.href = 'login.html';
+    }
   }
-
-  // ----- CONFIG -----
-  const res = await fetch('/api/secrets.php?key=internal123');
-  if (!res.ok) throw new Error("Cannot fetch secrets");
-  const secrets = await res.json();
-
-  const GITHUB_TOKEN = secrets.github_token;
-  const REPO = secrets.repo;
-  const BRANCH = "main";
-  const FILE_PATH = "data/performances.json";
 
   let performances = [];
 
-  // ----- LOAD JSON -----
+  // ----- LOAD JSON FROM SERVER -----
   async function loadPerformances() {
     try {
-      const res = await fetch('../data/performances.json');
+      const res = await fetch('get_performances.php', { credentials: 'same-origin' });
+      if (!res.ok) throw new Error('Failed to load performances');
       const data = await res.json();
       performances = data.performances;
       renderPerformances();
     } catch (err) {
-      console.error("Failed to load performances:", err);
+      console.error(err);
+      alert('Failed to load performances');
     }
   }
 
@@ -78,69 +110,55 @@
         <input type="text" value="${p.link}" placeholder="Link">
         <button class="delete-btn">✖</button>
       `;
-      // handle input changes
       const inputs = div.querySelectorAll('input');
       inputs[0].addEventListener('input', e => performances[index].title = e.target.value);
       inputs[1].addEventListener('input', e => performances[index].date = e.target.value);
       inputs[2].addEventListener('input', e => performances[index].link = e.target.value);
-      // delete button
+
       div.querySelector('.delete-btn').addEventListener('click', () => {
         performances.splice(index, 1);
         renderPerformances();
       });
+
       container.appendChild(div);
     });
   }
 
   // ----- ADD NEW -----
   document.getElementById('add-btn').addEventListener('click', () => {
-    performances.push({title:"", date:"", link:""});
+    performances.push({title: "", date: "", link: ""});
     renderPerformances();
   });
 
-  // ----- UPDATE TO GITHUB -----
-  async function updateGitHubJSON() {
+  // ----- SAVE TO SERVER -----
+  async function savePerformances() {
     try {
-      // 1️ Get current file SHA
-      const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
-        headers: {
-          Authorization: `token ${GITHUB_TOKEN}`,
-          Accept: "application/vnd.github+json"
-        }
+      const res = await fetch('save_performances.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ performances })
       });
       const data = await res.json();
-      const sha = data.sha;
-
-      // 2️ Prepare updated content
-      const updatedContent = btoa(JSON.stringify({ performances }, null, 2));
-
-      // 3️ Push update
-      const putRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `token ${GITHUB_TOKEN}`,
-          Accept: "application/vnd.github+json"
-        },
-        body: JSON.stringify({
-          message: "Update performances.json via admin editor",
-          content: updatedContent,
-          sha,
-          branch: BRANCH
-        })
-      });
-
-      const result = await putRes.json();
-      console.log(result);
-      alert("Performances updated on GitHub!");
-    } catch (err) {
+      if(res.ok && data.ok) {
+        alert('Performances saved successfully!');
+      } else {
+        console.error(data);
+        alert('Failed to save performances. Check console.');
+      }
+    } catch(err) {
       console.error(err);
-      alert("Failed to update GitHub file. Check console.");
+      alert('Failed to save performances');
     }
   }
 
-  document.getElementById('update-btn').addEventListener('click', updateGitHubJSON);
+  document.getElementById('update-btn').addEventListener('click', savePerformances);
 
-  loadPerformances();
+  // ----- INIT -----
+  (async function init() {
+    await checkSession();
+    await loadPerformances();
+  })();
 </script>
 
 </body>

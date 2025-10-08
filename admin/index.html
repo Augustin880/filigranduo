@@ -21,26 +21,23 @@
   </div>
 
   <script>
-    document.getElementById('login-btn').addEventListener('click', async () => {
-    const user = document.getElementById('username').value;
-    const pass = document.getElementById('password').value;
-
-    try {
-        const res = await fetch('/api/secrets.php?key=internal123');
-        if (!res.ok) throw new Error("Cannot fetch secrets");
-
-        const secrets = await res.json();
-
-        if (user === secrets.user && pass === secrets.password) {
-            window.location.href = 'editor.html';
-        } else {
-            document.getElementById('error').textContent = 'Invalid credentials';
-        }
-    } catch (err) {
-        console.error(err);
-        document.getElementById('error').textContent = 'Login failed. Try again later.';
-    }
+    async function doLogin() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    const res = await fetch('/admin/login.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+        credentials: 'same-origin'
     });
+    const json = await res.json();
+    if (res.ok && json.ok) {
+        window.location.href = '/admin/editor.html';
+    } else {
+        document.getElementById('error').textContent = json.error || 'Login failed';
+    }
+    }
+    document.getElementById('login-btn').addEventListener('click', doLogin);
   </script>
 
 </body>
