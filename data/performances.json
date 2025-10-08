@@ -1,29 +1,29 @@
 {
-  "performances": [
-    {
-      "title": "Landgoed Kasteel Limbricht",
-      "date": "Monday 12 October 2025",
-      "link": "https://kasteel-limbricht.nl/activiteit/vierjaargetijden-concerten/"
-    },
-    {
-      "title": "Waalse Kerk Breda",
-      "date": "Friday 28 November 2025",
-      "link": "https://www.waalsekerkbreda.nl/"
-    },
-    {
-      "title": "ECI Cultuur Fabriek Roermond",
-      "date": "Sunday 30 November 2025",
-      "link": "https://ecicultuurfabriek.nl/voorstelling/filigran-duo/"
-    },
-    {
-      "title": "Klassieke Zomer Parkstad",
-      "date": "Sunday 26 April 2026",
-      "link": "https://klassiekezomer.nl"
-    },
-    {
-      "title": "Salle Philharmonique Liège",
-      "date": "Wednesday 13 May 2026",
-      "link": "https://www.oprl.be/fr/concerts/laureat-classic-academy-0"
-    }
-  ]
+    "performances": [
+        {
+            "title": "Landgoed Kasteel Limbricht",
+            "date": "Monday 12 October 2025",
+            "link": "https:\/\/kasteel-limbricht.nl\/activiteit\/vierjaargetijden-concerten\/"
+        },
+        {
+            "title": "Waalse Kerk Breda",
+            "date": "Friday 28 November 2025",
+            "link": "https:\/\/www.waalsekerkbreda.nl\/"
+        },
+        {
+            "title": "ECI Cultuur Fabriek Roermond",
+            "date": "Sunday 30 November 2025",
+            "link": "https:\/\/ecicultuurfabriek.nl\/voorstelling\/filigran-duo\/"
+        },
+        {
+            "title": "Klassieke Zomer Parkstad",
+            "date": "Sunday 26 April 2026",
+            "link": "https:\/\/klassiekezomer.nl"
+        },
+        {
+            "title": "Salle Philharmonique Liège",
+            "date": "Wednesday 13 May 2026",
+            "link": "https:\/\/www.oprl.be\/fr\/concerts\/laureat-classic-academy-0"
+        }
+    ]
 }
