@@ -70,14 +70,18 @@
       div.className = 'performance';
       div.innerHTML = `
         <input type="text" value="${p.title}" placeholder="Title">
+        <input type="text" value="${p.description}" placeholder="Description">
         <input type="text" value="${p.date}" placeholder="Date">
         <input type="text" value="${p.link}" placeholder="Link">
+        <input type="text" value="${p.image}" placeholder="Image">
         <button class="delete-btn">✖</button>
       `;
       const inputs = div.querySelectorAll('input');
       inputs[0].addEventListener('input', e => performances[index].title = e.target.value);
-      inputs[1].addEventListener('input', e => performances[index].date = e.target.value);
-      inputs[2].addEventListener('input', e => performances[index].link = e.target.value);
+      inputs[1].addEventListener('input', e => performances[index].description = e.target.value);
+      inputs[2].addEventListener('input', e => performances[index].date = e.target.value);
+      inputs[3].addEventListener('input', e => performances[index].link = e.target.value);
+      inputs[4].addEventListener('input', e => performances[index].image = e.target.value);
 
       div.querySelector('.delete-btn').addEventListener('click', () => {
         performances.splice(index, 1);
@@ -90,7 +94,7 @@
 
   // ----- ADD NEW -----
   document.getElementById('add-btn').addEventListener('click', () => {
-    performances.push({title: "", date: "", link: ""});
+    performances.push({title: "", date: "", link: "", image: "", description: ""});
     renderPerformances();
   });
 
