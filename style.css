@@ -721,28 +721,6 @@
   letter-spacing: var(--letter-spacing-normal);
 }
  
-.hero-title {
-  color: var(--color-on-surface);
-  margin: 0 0 var(--spacing-xs) 0;
-  font-size: var(--font-size-4xl);
-  transform: translateZ(0);
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.02;
-  text-shadow: 0 8px 32px rgba(139, 92, 246, 0.12);
-  letter-spacing: var(--letter-spacing-tight);
-}
- 
-.hero-subtitle {
-  color: var(--color-on-surface);
-  margin: 0 0 var(--spacing-md) 0;
-  font-size: var(--font-size-xl);
-  max-width: calc(var(--content-max-width) - 8rem);
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--letter-spacing-wide);
-}
- 
 .btn:focus-visible {
   outline: 3px solid var(--color-outline);
   box-shadow: 0 0 0 4px
@@ -1862,10 +1840,42 @@
 }
  
 .hero-section {
-  padding: clamp(var(--spacing-2xl), 5vw, var(--spacing-4xl))
-      var(--spacing-lg);
-  overflow: hidden;
   position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('/img/main.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin: 0;
+  font-weight: bold;
+  color: var(--color-on-surface);
+  background: linear-gradient(
+      135deg,
+      var(--color-on-surface) 0%,
+      color-mix(in srgb, var(--color-accent) 80%, var(--color-on-surface)) 100%
+    );
+  white-space: nowrap;
+  letter-spacing: var(--letter-spacing-tight);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  font-family: var(--font-family-body);
 }
  
 .hero-container {
@@ -2160,12 +2170,7 @@
 .collage-image-1 {
   animation: morphMask 8s var(--animation-curve-primary) infinite alternate;
   clip-path: ellipse(48% 50% at 50% 50%);
-  aspect-ratio: 3 / 4;
-}
- 
-.collage-image-2 {
-  margin-top: calc(var(--spacing-lg) * -1);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 3.4;
 }
  
 .image-overlay {
