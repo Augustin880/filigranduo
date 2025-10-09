@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Filigran Duo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}pre {  white-space: normal;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker {  display: none;}[data-thq="accordion"] [data-thq="accordion-content"] {  max-height: 0;  overflow: hidden;  transition: max-height 0.3s ease-in-out;  padding: 0;}[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] {  max-height: 1000vh;}details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {  transform: rotate(180deg);}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Montserrat;
+        font-size: 1rem;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: undefined;
+        text-transform: undefined;
+        letter-spacing: normal;
+        line-height: 1.55;
+        color: var(--color-on-surface);
+        background: var(--color-surface);
+
+        fill: var(--color-on-surface);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="/import/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="/import/style.css"
+    />
+  </head>
+  <body>
+    <link rel="stylesheet" href="../style.css" />
+    <div>
+      <link href="./navigation.css" rel="stylesheet" />
+      <div class="navigation-container1">
+        <div class="navigation-container2">
+          <div class="navigation-container3">
+            <style>
+                      @keyframes navigation-pulse {0%,100% {transform: scale(1);}
+              50% {transform: scale(1.05);}}@keyframes navigation-wave-expand {0%,100% {transform: scaleX(0.8);
+              opacity: 0.6;}
+              50% {transform: scaleX(1);
+              opacity: 1;}}
+            </style>
+          </div>
+        </div>
+        <div class="navigation-container4">
+          <div class="navigation-container5">
+            <style>
+              @media (prefers-reduced-motion: reduce) {
+              .navigation-container, .navigation-menu-link, .navigation-link-text, .navigation-link-underline, .navigation-link-glow, .navigation-toggle-icon, .navigation-mobile-overlay, .navigation-mobile-content, .navigation-mobile-item, .navigation-mobile-link::before {
+                transition: none;
+              }
+              .navigation-logo-icon, .navigation-logo-wave {
+                animation: none;
+              }
+              }
+            </style>
+          </div>
+        </div>
+        <div class="navigation-container6">
+          <div class="navigation-container7">
+            <script defer="" data-name="navigation">
+              (function(){
+                const navigationToggle = document.getElementById('navigation-toggle-btn')
+                const navigationMobileMenu = document.getElementById('navigation-mobile-menu')
+                const navigationMobileLinks = navigationMobileMenu.querySelectorAll(
+                  '.navigation-mobile-link'
+                )
+                const navigationMobileBackdrop = navigationMobileMenu.querySelector(
+                  '.navigation-mobile-backdrop'
+                )
+
+                function openMobileMenu() {
+                  navigationMobileMenu.classList.add('navigation-active')
+                  navigationToggle.setAttribute('aria-expanded', 'true')
+                  document.body.style.overflow = 'hidden'
+                }
+
+                function closeMobileMenu() {
+                  navigationMobileMenu.classList.remove('navigation-active')
+                  navigationToggle.setAttribute('aria-expanded', 'false')
+                  document.body.style.overflow = ''
+                }
+
+                navigationToggle.addEventListener('click', () => {
+                  const isExpanded = navigationToggle.getAttribute('aria-expanded') === 'true'
+                  if (isExpanded) {
+                    closeMobileMenu()
+                  } else {
+                    openMobileMenu()
+                  }
+                })
+
+                navigationMobileBackdrop.addEventListener('click', closeMobileMenu)
+
+                navigationMobileLinks.forEach((link) => {
+                  link.addEventListener('click', () => {
+                    closeMobileMenu()
+                  })
+                })
+
+                document.addEventListener('keydown', (e) => {
+                  if (
+                    e.key === 'Escape' &&
+                    navigationToggle.getAttribute('aria-expanded') === 'true'
+                  ) {
+                    closeMobileMenu()
+                  }
+                })
+              })()
+            </script>
+          </div>
+        </div>
+        <nav id="navigation-main" class="navigation-container">
+          <div class="navigation-wrapper">
+            <a href="index.html">
+              <div aria-label="DuoMelody Home" class="navigation-logo-link">
+                <div class="navigation-logo-container">
+                  <div class="navigation-logo-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      >
+                        <path d="M9 18V5l12-2v13"></path>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <circle cx="18" cy="16" r="3"></circle>
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="navigation-logo-text">Filigran Duo</span>
+                  <div class="navigation-logo-wave"></div>
+                </div>
+              </div>
+            </a>
+            <ul role="list" class="navigation-menu">
+              <li class="navigation-menu-item">
+                <a href="#upcoming">
+                  <div class="navigation-menu-link">
+                    <span class="navigation-link-text">Performances</span>
+                    <span class="navigation-link-underline"></span>
+                  </div>
+                </a>
+              </li>
+              <li class="navigation-menu-item">
+                <a href="#gallery">
+                  <div class="navigation-menu-link">
+                    <span class="navigation-link-text">Gallery</span>
+                    <span class="navigation-link-underline"></span>
+                  </div>
+                </a>
+              </li>
+              <li class="navigation-menu-item">
+                <a href="#about">
+                  <div class="navigation-menu-link">
+                    <span class="navigation-link-text">About Us</span>
+                    <span class="navigation-link-underline"></span>
+                  </div>
+                </a>
+              </li>
+              <li class="navigation-menu-item">
+                <a href="#contact">
+                  <div class="navigation-menu-link navigation-menu-link-accent">
+                    <span class="navigation-link-text">Contact</span>
+                    <span class="navigation-link-glow"></span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <button
+              id="navigation-toggle-btn"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="navigation-mobile-menu"
+              class="navigation-toggle"
+            >
+              <span
+                class="navigation-navigation-toggle-icon1 navigation-toggle-open"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 5h16M4 12h16M4 19h16"
+                  ></path>
+                </svg>
+              </span>
+              <span class="navigation-navigation-toggle-icon2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.5 9.5l-5 5m0-5l5 5"
+                  ></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div id="navigation-mobile-menu" class="navigation-mobile-overlay">
+            <div class="navigation-mobile-backdrop"></div>
+            <div class="navigation-mobile-content">
+              <ul role="list" class="navigation-mobile-list">
+                <li
+                  class="navigation-navigation-mobile-item1 navigation-mobile-item"
+                >
+                  <a href="#performances">
+                    <div class="navigation-mobile-link">
+                      <span class="navigation-mobile-number">01</span>
+                      <span class="navigation-mobile-text">Performances</span>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  class="navigation-navigation-mobile-item2 navigation-mobile-item"
+                >
+                  <a href="#gallery">
+                    <div class="navigation-mobile-link">
+                      <span class="navigation-mobile-number">02</span>
+                      <span class="navigation-mobile-text">Gallery</span>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  class="navigation-navigation-mobile-item3 navigation-mobile-item"
+                >
+                  <a href="#about">
+                    <div class="navigation-mobile-link">
+                      <span class="navigation-mobile-number">03</span>
+                      <span class="navigation-mobile-text">About Us</span>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  class="navigation-navigation-mobile-item4 navigation-mobile-item"
+                >
+                  <a href="#contact">
+                    <div
+                      class="navigation-mobile-link navigation-mobile-link-accent"
+                    >
+                      <span class="navigation-mobile-number">04</span>
+                      <span class="navigation-mobile-text">Contact</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <div class="navigation-mobile-decoration"></div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>

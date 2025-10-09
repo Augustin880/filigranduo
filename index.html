@@ -1,71 +1,1245 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Filigran Duo – Violin & Piano Duo</title>
+  <head>
+    <title>Filigran Duo - Violin & Piano</title>
+    <meta property="og:title" content="Trustworthy Frozen Anteater" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}pre {  white-space: normal;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker {  display: none;}[data-thq="accordion"] [data-thq="accordion-content"] {  max-height: 0;  overflow: hidden;  transition: max-height 0.3s ease-in-out;  padding: 0;}[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] {  max-height: 1000vh;}details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {  transform: rotate(180deg);}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Montserrat;
+        font-size: 1rem;
+      }
 
-  <link rel="stylesheet" href="../style/style.css">
-</head>
-<body>
-  <!-- HEADER -->
-  <header>
-    <div class="container nav">
-      <div class="logo"><a href="/">Filigran Duo</a></div>
-      <input type="checkbox" id="nav-toggle" hidden>
-      <label for="nav-toggle" class="nav-label" aria-label="Open navigation menu"><span></span><span></span><span></span></label>
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: undefined;
+        text-transform: undefined;
+        letter-spacing: normal;
+        line-height: 1.55;
+        color: var(--color-on-surface);
+        background: var(--color-surface);
 
-      <ul class="nav-menu">
-        <li><a href="#about">About</a></li>
-        <li><a href="#performances">Performances</a></li>
-        <li><a href="/media">Media</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-
-      <div class="header-socials">
-        <a href="https://www.instagram.com/filigranduo_/" target="_blank" aria-label="Instagram"><img src="/img/instagram.svg" alt="Instagram icon" class="social-icon"></a>
-        <a href="https://youtube.com/@filigranduo" target="_blank" aria-label="YouTube"><img src="/img/youtube.svg" alt="YouTube icon" class="social-icon"></a>
-        <a href="mailto:filigranduo@gmail.com" target="_blank" aria-label="Email"><img src="/img/email.svg" alt="Email icon" class="social-icon"></a>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
+        fill: var(--color-on-surface);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="/import/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="/import/style.css"
+    />
+  </head>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
     <div>
-      <h1>Filigran Duo</h1>
-      <p>Violin & Piano Duo – Maastricht Conservatorium</p>
-      <!-- <a href="#about" class="btn">Discover Our Music</a> -->
-    </div>
-  </section>
+      <link href="./index.css" rel="stylesheet" />
 
-  <!-- PERFORMANCES -->
-  <section id="performances" class="performances section" style="background: rgb(20, 20, 20)">
-    <div class="container text-center">
-      <h1 style="font-family:'Playfair Display',serif;margin-bottom:2rem">Upcoming Performances</h1>
-      <div class="performance-list" id="performance-list">
-        <!-- Content will be populated by JS -->
+      <div class="home-container10">
+        <div id="navigation-placeholder"></div>
+        <div class="home-container11">
+          <div class="home-container12">
+            <style>
+                      @keyframes revealMedia {to {opacity: 1;
+              transform: translate(0, 0) rotate(0deg) scale(1);}}@keyframes floatGlyph {0%,100% {transform: translateY(0) rotate(0deg);}
+              50% {transform: translateY(-20px) rotate(5deg);}}@keyframes revealCard {to {opacity: 1;
+              transform: translateY(0);}}@keyframes rotateBadge {from {transform: rotate(0deg);}
+              to {transform: rotate(360deg);}}@keyframes morphMask {0%,100% {clip-path: ellipse(48% 50% at 50% 50%);}
+              50% {clip-path: ellipse(50% 48% at 50% 50%);}}@keyframes revealGalleryItem {to {opacity: 1;
+              transform: scale(1);}}@keyframes pulsePlay {0%,100% {transform: translate(-50%, -50%) scale(1);}
+              50% {transform: translate(-50%, -50%) scale(1.05);}}
+            </style>
+          </div>
+        </div>
+        <div class="home-container13">
+          <div class="home-container14">
+            <style>
+              @media (prefers-reduced-motion: reduce) {
+              *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+              }
+              .media-card-1, .media-card-2, .media-card-3 {
+                transform: none;
+              }
+              .decorative-glyph {
+                animation: none;
+              }
+              .play-button {
+                animation: none;
+              }
+              }
+              *:focus-visible {
+                outline: 3px solid var(--color-outline);
+                outline-offset: 2px;
+                border-radius: var(--border-radius-sm);
+              }
+            </style>
+          </div>
+        </div>
+        <div class="home-container15">
+          <div class="home-container16">
+            <script defer="" data-name="duomelody-homepage">
+              (function(){
+                // Parallax effect for hero media on scroll
+                const heroSection = document.getElementById('hero-section')
+                const mediaCards = document.querySelectorAll('.media-card')
+
+                if (heroSection && mediaCards.length > 0) {
+                  window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset
+                    const heroRect = heroSection.getBoundingClientRect()
+
+                    if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
+                      mediaCards.forEach((card, index) => {
+                        const speed = 0.3 + index * 0.1
+                        const yPos = scrolled * speed
+                        card.style.transform = `translateY(${yPos}px)`
+                      })
+                    }
+                  })
+                }
+
+                // Featured video play functionality
+                const playButton = document.querySelector('.play-button')
+                const featuredVideo = document.getElementById('featured-video')
+
+                if (playButton && featuredVideo) {
+                  playButton.addEventListener('click', () => {
+                    if (featuredVideo.paused) {
+                      featuredVideo.play()
+                      playButton.style.opacity = '0'
+                      playButton.style.pointerEvents = 'none'
+                    }
+                  })
+
+                  featuredVideo.addEventListener('pause', () => {
+                    playButton.style.opacity = '1'
+                    playButton.style.pointerEvents = 'auto'
+                  })
+
+                  featuredVideo.addEventListener('ended', () => {
+                    playButton.style.opacity = '1'
+                    playButton.style.pointerEvents = 'auto'
+                  })
+                }
+
+                // Intersection Observer for staggered animations
+                const observerOptions = {
+                  threshold: 0.1,
+                  rootMargin: '0px 0px -100px 0px',
+                }
+
+                const fadeInObserver = new IntersectionObserver((entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      entry.target.style.animationPlayState = 'running'
+                      fadeInObserver.unobserve(entry.target)
+                    }
+                  })
+                }, observerOptions)
+
+                // Observe all elements with reveal animations
+                const revealElements = document.querySelectorAll(
+                  '.play-card, .gallery-item, .bio-card-primary'
+                )
+                revealElements.forEach((el) => {
+                  el.style.animationPlayState = 'paused'
+                  fadeInObserver.observe(el)
+                })
+
+                // Parallax effect for detail cards on pointer move
+                const bookingDetails = document.querySelector('.booking-details')
+                const detailCards = document.querySelectorAll('.detail-card')
+
+                if (bookingDetails && detailCards.length > 0) {
+                  bookingDetails.addEventListener('mousemove', (e) => {
+                    const rect = bookingDetails.getBoundingClientRect()
+                    const x = e.clientX - rect.left
+                    const y = e.clientY - rect.top
+
+                    const moveX = (x / rect.width - 0.5) * 20
+                    const moveY = (y / rect.height - 0.5) * 20
+
+                    detailCards.forEach((card, index) => {
+                      const multiplier = (index + 1) * 0.5
+                      card.style.transform = `translate(${moveX * multiplier}px, ${
+                        moveY * multiplier
+                      }px)`
+                    })
+                  })
+
+                  bookingDetails.addEventListener('mouseleave', () => {
+                    detailCards.forEach((card, index) => {
+                      if (index === 0) {
+                        card.style.transform = 'translateY(0)'
+                      } else {
+                        card.style.transform = 'translateY(var(--spacing-lg))'
+                      }
+                    })
+                  })
+                }
+
+                // Smooth gallery item reveal on scroll
+                const galleryItems = document.querySelectorAll('.gallery-item')
+                const galleryObserver = new IntersectionObserver((entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      entry.target.style.animationPlayState = 'running'
+                      galleryObserver.unobserve(entry.target)
+                    }
+                  })
+                }, observerOptions)
+
+                galleryItems.forEach((item) => {
+                  item.style.animationPlayState = 'paused'
+                  galleryObserver.observe(item)
+                })
+              })()
+            </script>
+          </div>
+        </div>
+        <section id="hero-section" class="hero-section">
+          <div class="hero-container">
+            <div class="hero-media">
+              <div class="media-montage">
+                <div class="media-card media-card-1">
+                  <img
+                    src="/img/duo-about.jpg"
+                    alt="Professional violinist performing"
+                  />
+                  <div class="media-overlay"></div>
+                </div>
+                <div class="media-card media-card-2">
+                  <img
+                    src="/img/media1.png"
+                    alt="Piano and violin duo performance"
+                  />
+                  <div class="media-overlay"></div>
+                </div>
+                <div class="media-card media-card-3">
+                  <img
+                    src="/img/main.jpeg"
+                    alt="Hands on piano keys"
+                  />
+                  <div class="media-overlay"></div>
+                </div>
+              </div>
+              <div aria-hidden="true" class="decorative-glyph glyph-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  >
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="hero-content">
+              <div class="content-card">
+                <h1 class="hero-title">Filigran Duo</h1>
+                <p class="hero-subtitle">Violin &amp; Piano</p>
+                <div class="divider-dashed"></div>
+                <p class="hero-bio">
+                  Evocative chamber performances that transform spaces into
+                  stories. A pianist and violinist united by daring
+                  arrangements, cinematic nuance, and handcrafted
+                  interpretations — music for galleries, commissions, and
+                  concert stages.
+                </p>
+                <p class="hero-meta">Listen • Watch • Book</p>
+                <div class="cta-row">
+                  <a href="#upcoming"><button class="btn btn-primary">Upcoming Performances</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="about" class="bio-snapshot">
+          <div class="bio-container">
+            <div class="bio-card-primary">
+              <div class="bio-content-left">
+                <div aria-hidden="true" class="award-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.12 2.12 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.12 2.12 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.12 2.12 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.12 2.12 0 0 0 1.597-1.16z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="section-title">Filigran Duo</h2>
+                <h3 class="bio-subhead">Violin and piano</h3>
+                <div class="divider-dashed"></div>
+                <!-- can use class bio-lead or bio-body for paragraphs  -->
+                <p class="bio-body">
+                  Theodore Kim and Seulbi Cho are two students from the Conservatorium of Maastricht who formed a violin and piano duo in May 2024. The duo takes its name from the German word ‘Filigran’, which means very delicate. A term that reflects their musical pursuit.
+                </p>
+                <p class="bio-body">
+                  They enjoy performing diverse styles of music, with a particular love for classical traditions. Their performances aim to create an emotional connection with audiences through sincere and expressive interpretations. As emerging musicians, Theodore and Seulbi are committed to growing both individually and as a duo, sharing their passion for music with every performance.
+                </p>
+                <div class="bio-credits">
+                  <span class="credit-label">violin</span>
+                  <span>Theodore Kim</span>
+                  <span class="credit-separator">•</span>
+                  <span class="credit-label">piano</span>
+                  <span>Seulbi Cho</span>
+                </div>
+              </div>
+              <div class="bio-content-right">
+                <div class="bio-collage">
+                  <div class="collage-image collage-image-1">
+                    <img
+                      src="/img/duo-about.jpg"
+                    />
+                    <div class="image-overlay"></div>
+                  </div>
+                  <div class="collage-image collage-image-2">
+                    <img
+                      src="/img//media3.png"
+                    />
+                    <div class="image-overlay"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div aria-hidden="true" class="bio-backplate"></div>
+          </div>
+        </section>
+        <section id="upcoming" class="upcoming-performances">
+          <div class="upcoming-container">
+            <h2 class="section-title">Upcoming Performances</h2>
+            <p class="section-subtitle">
+              Experience Filigran Duo live — intimate programs where piano and violin
+              converse like old friends.
+            </p>
+            <div class="performances-grid" id="performances-grid"> <!-- JS populated --> </div>
+            <!-- can use paragraph here with class performance-note for a note below performances -->
+          </div>
+        </section>
+        <section id="gallery" class="gallery-section">
+          <div class="gallery-container">
+            <div class="gallery-header">
+              <h2 class="section-title">Gallery &amp; Videos</h2>
+              <p class="section-subtitle">
+                Moments where sound and light shape a story — intimate rehearsal
+                stills, concert portraits, and performance films.
+              </p>
+            </div>
+            <div class="gallery-layout">
+              <div class="gallery-masonry">
+                <div class="gallery-item gallery-item-1">
+                  <img
+                    src="https://images.pexels.com/photos/7095515/pexels-photo-7095515.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=650&amp;w=940"
+                    alt="Passionate violin performance"
+                  />
+                  <div class="item-overlay">
+                    <p class="item-caption">Concert Portrait</p>
+                  </div>
+                </div>
+                <div class="gallery-item gallery-item-2">
+                  <img
+                    src="https://images.pexels.com/photos/306175/pexels-photo-306175.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=650&amp;w=940"
+                    alt="Vintage violin detail"
+                  />
+                  <div class="item-overlay">
+                    <p class="item-caption">Instrument Detail</p>
+                  </div>
+                </div>
+                <div class="gallery-item gallery-item-3">
+                  <img
+                    src="https://images.pexels.com/photos/12319210/pexels-photo-12319210.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=650&amp;w=940"
+                    alt="Orchestra performance"
+                  />
+                  <div class="item-overlay">
+                    <p class="item-caption">Live Performance</p>
+                  </div>
+                </div>
+                <div class="gallery-item gallery-item-4">
+                  <img
+                    src="https://images.pexels.com/photos/5070054/pexels-photo-5070054.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=650&amp;w=940"
+                    alt="Piano performance on stage"
+                  />
+                  <div class="item-overlay">
+                    <p class="item-caption">Backstage Moments</p>
+                  </div>
+                </div>
+                <div class="gallery-item gallery-item-5">
+                  <img
+                    src="https://images.pexels.com/photos/14630441/pexels-photo-14630441.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=650&amp;w=940"
+                    alt="Artistic violin portrait"
+                  />
+                  <div class="item-overlay">
+                    <p class="item-caption">Artistic Portrait</p>
+                  </div>
+                </div>
+                <div class="gallery-item gallery-item-6">
+                  <img
+                    src="https://images.pexels.com/photos/165973/pexels-photo-165973.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=650&amp;w=940"
+                    alt="Violin scroll detail"
+                  />
+                  <div class="item-overlay">
+                    <p class="item-caption">Musical Craftsmanship</p>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-featured">
+                <div class="featured-video">
+                  <div class="video-wrapper">
+                    <video
+                      id="featured-video"
+                      poster="https://images.pexels.com/videos/7095758/pictures/preview-0.jpg"
+                      src="https://videos.pexels.com/video-files/7095758/7095758-hd_2048_1080_25fps.mp4"
+                    ></video>
+                    <button
+                      aria-label="Play featured video"
+                      class="play-button"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="64"
+                        height="64"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <div class="video-overlay"></div>
+                  </div>
+                  <div class="video-info">
+                    <h3 class="video-title">Nightfall Sonata</h3>
+                    <p class="video-description">
+                      3-minute cinematic excerpt highlighting improvisational
+                      interplay and cinematic scoring.
+                    </p>
+                  </div>
+                </div>
+                <div class="featured-photos">
+                  <div class="photo-card photo-card-1">
+                    <img
+                      src="https://images.pexels.com/photos/8929549/pexels-photo-8929549.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=650&amp;w=940"
+                      alt="Close-up violin performance"
+                    />
+                    <div class="photo-overlay"></div>
+                  </div>
+                  <div class="photo-card photo-card-2">
+                    <img
+                      src="https://images.pexels.com/photos/8272858/pexels-photo-8272858.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=650&amp;w=940"
+                      alt="Overhead piano view"
+                    />
+                    <div class="photo-overlay"></div>
+                  </div>
+                </div>
+                <div class="media-toolbar">
+                  <button class="btn btn-outline btn-sm">
+                    Request High-Res
+                  </button>
+                  <button class="btn btn-sm btn-link">View Playlists</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="contact" class="booking-section">
+          <div class="booking-container">
+            <div class="booking-card-primary">
+              <div class="cta-band">
+                <div class="cta-content">
+                  <h2 class="section-title">Bring Your Event to Life</h2>
+                  <p class="cta-lead">
+                    Exquisite piano and violin performances crafted for
+                    weddings, recitals, galleries, and bespoke cultural
+                    programs.
+                  </p>
+                </div>
+              </div>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    </g>
+                  </svg>
+                  <a href="mailto:filigranduo@gmail.com?subject=">
+                    <div><span>filigranduo@gmail.com</span></div>
+                  </a>
+                </div>
+                <div class="contact-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1 2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"
+                    ></path>
+                  </svg>
+                  <a href="tel:+15551234567">
+                    <div><span>+1 (555) 123-4567</span></div>
+                  </a>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-lg">
+                Book a Consultation
+              </button>
+              <p class="booking-note">
+                We respond within 48 hours to discuss repertoire, logistics, and
+                fees.
+              </p>
+            </div>
+            <div class="booking-details">
+              <div class="detail-card detail-card-a">
+                <h3 class="card-title">Availability &amp; Booking</h3>
+                <div class="divider-dashed"></div>
+                <p class="card-body">
+                  Flexible scheduling for festivals, private events, and
+                  institutional collaborations. Tell us your date, venue, and
+                  artistic vision — we'll design a program that fits the moment.
+                </p>
+                <p class="card-body">
+                  Reach out with a brief project note and preferred contact
+                  method.
+                </p>
+              </div>
+              <div class="detail-card detail-card-b">
+                <h3 class="card-title">Custom Programs &amp; Arrangements</h3>
+                <div class="divider-dashed"></div>
+                <p class="card-body">
+                  From intimate chamber sets to dramatic crossover arrangements,
+                  we tailor repertoire, pacing, and instrumentation to match
+                  your aesthetic and audience.
+                </p>
+                <p class="card-body">
+                  Secure a planning call and hear sample arrangements for your
+                  event.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer-wrapper class="footer-wrapper">
+          <!--Footer component-->
+          <div class="footer-container1">
+            <div class="footer-container2">
+              <div class="footer-container3">
+                <style>
+                          @keyframes footer-wave-drift {0%,100% {transform: translateX(0) scaleY(1);}
+                  50% {transform: translateX(-20px) scaleY(1.05);}}@keyframes footer-divider-pulse {0%,100% {opacity: 1;
+                  transform: translate(-50%, -50%) scaleX(1);}
+                  50% {opacity: 0.7;
+                  transform: translate(-50%, -50%) scaleX(1.2);}}@keyframes footer-heart-beat {0%,100% {transform: scale(1);}
+                  25% {transform: scale(1.15);}
+                  50% {transform: scale(1);}}@keyframes footer-note-float {0%,100% {transform: translateY(0) translateX(0) scale(1);
+                  opacity: 0.1;}
+                  25% {transform: translateY(-30px) translateX(20px) scale(1.3);
+                  opacity: 0.2;}
+                  50% {transform: translateY(-15px) translateX(-15px) scale(1);
+                  opacity: 0.15;}
+                  75% {transform: translateY(-40px) translateX(10px) scale(1.2);
+                  opacity: 0.18;}}
+                </style>
+              </div>
+            </div>
+            <div class="footer-container4">
+              <div class="footer-container5">
+                <style>
+                  @media (prefers-reduced-motion: reduce) {
+                  .footer-wave-overlay, .footer-wave-secondary, .footer-decorative-notes, .footer-divider-accent, .footer-credit-icon, .footer-note {
+                    animation: none;
+                  }
+                  .footer-social-link:hover, .footer-link:hover, .footer-contact-item:hover {
+                    transform: none;
+                  }
+                  .footer-logo-icon:hover {
+                    transform: rotate(-5deg);
+                  }
+                  }
+                </style>
+              </div>
+            </div>
+            <div class="footer-container6">
+              <div class="footer-container7">
+                <script defer="" data-name="footer-duomelody">
+                  (function(){
+                    // Newsletter Form Submission Handler
+                    const newsletterForm = document.querySelector('.footer-newsletter-form')
+                    const newsletterInput = document.querySelector('.footer-newsletter-input')
+
+                    if (newsletterForm && newsletterInput) {
+                      newsletterForm.addEventListener('submit', function (e) {
+                        e.preventDefault()
+
+                        const email = newsletterInput.value.trim()
+
+                        if (email && validateEmail(email)) {
+                          // Show success feedback
+                          const button = newsletterForm.querySelector('.footer-newsletter-button')
+                          const originalText = button.textContent
+
+                          button.textContent = 'Subscribed!'
+                          button.style.background =
+                            'linear-gradient(135deg, var(--color-accent), var(--color-primary))'
+
+                          // Reset after animation
+                          setTimeout(() => {
+                            button.textContent = originalText
+                            newsletterInput.value = ''
+                            button.style.background = ''
+                          }, 3000)
+
+                          // Here you would typically send the email to your backend
+                          console.log('Newsletter subscription:', email)
+                        } else {
+                          // Show error feedback
+                          newsletterInput.style.borderColor = 'var(--color-accent)'
+                          newsletterInput.focus()
+
+                          setTimeout(() => {
+                            newsletterInput.style.borderColor = ''
+                          }, 2000)
+                        }
+                      })
+                    }
+
+                    // Email validation helper
+                    function validateEmail(email) {
+                      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                      return re.test(email)
+                    }
+
+                    // Smooth scroll for anchor links
+                    const footerLinks = document.querySelectorAll(
+                      ".footer-link[href^='#'], .footer-legal-link[href^='#']"
+                    )
+
+                    footerLinks.forEach((link) => {
+                      link.addEventListener('click', function (e) {
+                        const href = this.getAttribute('href')
+
+                        // Only handle internal anchor links
+                        if (href && href.startsWith('#') && href.length > 1) {
+                          const target = document.querySelector(href)
+
+                          if (target) {
+                            e.preventDefault()
+                            target.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'start',
+                            })
+                          }
+                        }
+                      })
+                    })
+
+                    // Parallax effect for decorative notes on scroll (subtle enhancement)
+                    const decorativeNotes = document.querySelectorAll('.footer-note')
+
+                    if (
+                      decorativeNotes.length > 0 &&
+                      window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+                    ) {
+                      let ticking = false
+
+                      function updateParallax() {
+                        const footer = document.getElementById('footer-duomelody')
+                        if (!footer) return
+
+                        const rect = footer.getBoundingClientRect()
+                        const scrollPercent = Math.max(
+                          0,
+                          Math.min(1, (window.innerHeight - rect.top) / window.innerHeight)
+                        )
+
+                        decorativeNotes.forEach((note, index) => {
+                          const speed = 0.3 + index * 0.1
+                          const translateY = scrollPercent * 30 * speed
+                          note.style.transform = `translateY(${translateY}px)`
+                        })
+
+                        ticking = false
+                      }
+
+                      window.addEventListener(
+                        'scroll',
+                        function () {
+                          if (!ticking) {
+                            window.requestAnimationFrame(updateParallax)
+                            ticking = true
+                          }
+                        },
+                        { passive: true }
+                      )
+
+                      // Initial update
+                      updateParallax()
+                    }
+
+                    // Social link analytics tracking (placeholder)
+                    const socialLinks = document.querySelectorAll('.footer-social-link')
+
+                    socialLinks.forEach((link) => {
+                      link.addEventListener('click', function () {
+                        const platform = this.getAttribute('aria-label')
+                        console.log('Social link clicked:', platform)
+                        // Here you would typically send analytics data
+                      })
+                    })
+                  })()
+                </script>
+              </div>
+            </div>
+            <footer id="footer-duomelody" class="footer-container">
+              <div aria-hidden="true" class="footer-wave-overlay"></div>
+              <div aria-hidden="true" class="footer-wave-secondary"></div>
+              <div class="footer-content-wrapper">
+                <div class="footer-main-grid">
+                  <div class="footer-brand-section">
+                    <div class="footer-logo-wrapper">
+                      <div aria-hidden="true" class="footer-logo-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <g
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                          >
+                            <path d="M9 18V5l12-2v13"></path>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <circle cx="18" cy="16" r="3"></circle>
+                          </g>
+                        </svg>
+                      </div>
+                      <h2 class="footer-brand-name">Filigran Duo</h2>
+                    </div>
+                    <p class="footer-tagline">
+                      Where piano meets violin in perfect harmony
+                    </p>
+                    <p class="footer-description">
+                      Experience the enchanting blend of classical artistry and
+                      contemporary expression through our musical performances.
+                    </p>
+                    <div class="footer-social-wrapper">
+                      <span class="footer-social-label">
+                        Follow Our Journey
+                      </span>
+                      <div class="footer-social-links">
+                        <a
+                          href="https://facebook.com"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <div
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Follow us on Facebook"
+                            class="footer-social-link"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                              ></path>
+                            </svg>
+                          </div>
+                        </a>
+                        <a
+                          href="https://www.instagram.com/filigranduo_/"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <div
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Follow us on Instagram"
+                            class="footer-social-link"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                            >
+                              <g
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                              >
+                                <rect
+                                  width="20"
+                                  height="20"
+                                  x="2"
+                                  y="2"
+                                  rx="5"
+                                  ry="5"
+                                ></rect>
+                                <path
+                                  d="M16 11.37A4 4 0 1 1 12.63 8A4 4 0 0 1 16 11.37m1.5-4.87h.01"
+                                ></path>
+                              </g>
+                            </svg>
+                          </div>
+                        </a>
+                        <a
+                          href="https://youtube.com/@filigranduo"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <div
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Watch us on YouTube"
+                            class="footer-social-link"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                            >
+                              <g
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                              >
+                                <path
+                                  d="M2.5 17a24.1 24.1 0 0 1 0-10a2 2 0 0 1 1.4-1.4a49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10a2 2 0 0 1-1.4 1.4a49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"
+                                ></path>
+                                <path d="m10 15l5-3l-5-3z"></path>
+                              </g>
+                            </svg>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-links-section">
+                    <h3 class="footer-section-title">Explore</h3>
+                    <nav aria-label="Footer navigation">
+                      <ul class="footer-links-list">
+                        <li class="footer-link-item">
+                          <a href="#upcoming">
+                            <div class="footer-link">
+                              <span aria-hidden="true" class="footer-link-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <g
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                  >
+                                    <path d="M8 2v4m8-4v4"></path>
+                                    <rect
+                                      width="18"
+                                      height="18"
+                                      x="3"
+                                      y="4"
+                                      rx="2"
+                                    ></rect>
+                                    <path d="M3 10h18"></path>
+                                  </g>
+                                </svg>
+                              </span>
+                              <span class="footer-link-text">
+                                Upcoming Performances
+                              </span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="footer-link-item">
+                          <a href="#gallery">
+                            <div class="footer-link">
+                              <span aria-hidden="true" class="footer-link-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <g
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                  >
+                                    <path d="M9 18V5l12-2v13"></path>
+                                    <circle cx="6" cy="18" r="3"></circle>
+                                    <circle cx="18" cy="16" r="3"></circle>
+                                  </g>
+                                </svg>
+                              </span>
+                              <span class="footer-link-text">
+                                Gallery &amp; Videos
+                              </span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="footer-link-item">
+                          <a href="#about">
+                            <div class="footer-link">
+                              <span aria-hidden="true" class="footer-link-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676a.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+                                  ></path>
+                                </svg>
+                              </span>
+                              <span class="footer-link-text">About Us</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="footer-link-item">
+                          <a href="#contact">
+                            <div class="footer-link">
+                              <span aria-hidden="true" class="footer-link-icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <g
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                  >
+                                    <path
+                                      d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
+                                    ></path>
+                                    <rect
+                                      width="20"
+                                      height="16"
+                                      x="2"
+                                      y="4"
+                                      rx="2"
+                                    ></rect>
+                                  </g>
+                                </svg>
+                              </span>
+                              <span class="footer-link-text">Contact</span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="footer-contact-section">
+                    <h3 class="footer-section-title">Get In Touch</h3>
+                    <div class="footer-contact-list">
+                      <div class="footer-contact-item">
+                        <div aria-hidden="true" class="footer-contact-icon">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                          >
+                            <g
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                            >
+                              <path
+                                d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
+                              ></path>
+                              <rect
+                                width="20"
+                                height="16"
+                                x="2"
+                                y="4"
+                                rx="2"
+                              ></rect>
+                            </g>
+                          </svg>
+                        </div>
+                        <div class="footer-contact-content">
+                          <span class="footer-contact-label">Email Us</span>
+                          <a href="mailto:filigranduo@gmail.com?subject=">
+                            <div class="footer-contact-link">
+                              <span>filigranduo@gmail.com</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="footer-contact-item">
+                        <div aria-hidden="true" class="footer-contact-icon">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233a14 14 0 0 0 6.392 6.384"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div class="footer-contact-content">
+                          <span class="footer-contact-label">Call Us</span>
+                          <a href="tel:+15551234567">
+                            <div class="footer-contact-link">
+                              <span>+1 (555) 123-4567</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="footer-newsletter">
+                      <p class="footer-newsletter-text">
+                        Subscribe to our concert updates
+                      </p>
+                      <form
+                        aria-label="Newsletter signup"
+                        class="footer-newsletter-form"
+                      >
+                        <input
+                          type="email"
+                          placeholder="Your email address"
+                          aria-label="Email address"
+                          required="true"
+                          class="footer-newsletter-input"
+                        />
+                        <button
+                          type="submit"
+                          class="footer-newsletter-button btn btn-accent"
+                        >
+                          Subscribe
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div aria-hidden="true" class="footer-divider">
+                  <div class="footer-divider-line"></div>
+                  <div class="footer-divider-accent"></div>
+                </div>
+                <div class="footer-bottom">
+                  <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                      © 2025 Filigran Duo. All rights reserved.
+                    </p>
+                    <div class="footer-legal-links">
+                      <a href="#privacy">
+                        <div class="footer-legal-link">
+                          <span>Privacy Policy</span>
+                        </div>
+                      </a>
+                      <span aria-hidden="true" class="footer-legal-separator">
+                        •
+                      </span>
+                      <a href="#terms">
+                        <div class="footer-legal-link">
+                          <span>Terms of Service</span>
+                        </div>
+                      </a>
+                    </div>
+                    <p class="footer-credit">
+                      <span>Crafted with</span>
+                      <span
+                        aria-hidden="true"
+                        class="footer-footer-credit-icon"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676a.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+                          ></path>
+                        </svg>
+                      </span>
+                      <span>for musical excellence</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div aria-hidden="true" class="footer-decorative-notes">
+                <div class="footer-note footer-note-1"></div>
+                <div class="footer-note footer-note-2"></div>
+                <div class="footer-note footer-note-3"></div>
+                <div class="footer-note footer-note-4"></div>
+              </div>
+            </footer>
+          </div>
       </div>
     </div>
-  </section>
+    <script>
+      fetch("components/navigation.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navigation-placeholder").innerHTML = data;
+      })
+      .catch(err => console.error("Navigation load error:", err));
 
-  <!-- ABOUT -->
-  <section id="about" class="section container about">
-    <div class="about-img"><img src="img/duo-about.jpg" alt="filigranduo portrait"></div>
-    <div class="about-text">
-      <h2>About Us</h2>
-      <p>Theodore Kim and Seulbi Cho are two students from the Conservatorium of Maastricht who formed a violin and piano duo in May 2024. The duo takes its name from the German word ‘Filigran’, which means very delicate. A term that reflects their musical pursuit.</p>
-      <p>They enjoy performing diverse styles of music, with a particular love for classical traditions. Their performances aim to create an emotional connection with audiences through sincere and expressive interpretations. As emerging musicians, Theodore and Seulbi are committed to growing both individually and as a duo, sharing their passion for music with every performance.</p>
-    </div>
-  </section>
+      fetch('/data/performances.json')
+      .then(response => response.json())
+      .then(data => {
+        const grid = document.getElementById('performances-grid');
 
-  <footer>&copy; 2025 Filigran Duo. All rights reserved.</footer>
+        data.performances.forEach(perf => {
+          const card = document.createElement('article');
+          card.classList.add('play-card');
 
-  <script src="script/script.js"></script>
-</body>
+          card.innerHTML = `
+            <div class="play-media">
+              <img src="${perf.image}" alt="${perf.title} performance">
+              <div class="media-overlay"></div>
+            </div>
+            <div class="play-content">
+              <div class="date-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M8 2v4m8-4v4"></path>
+                    <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                    <path d="M3 10h18"></path>
+                  </g>
+                </svg>
+                <span>${perf.date}</span>
+              </div>
+              <h3 class="event-title">${perf.title}</h3>
+              <p class="event-program">${perf.description}</p>
+              <a href="${perf.link}" target="_blank" class="ticket-cta btn btn-accent">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Zm11-4v2m0 10v2m0-8v2"></path>
+                </svg>
+                <span>Get Tickets</span>
+              </a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      })
+      .catch(err => console.error("Error loading performances:", err));
+    </script>
+  </body>
 </html>
