@@ -107,10 +107,40 @@
     flex: 1;
     text-align: center;
   }
-  
+
   .performance .select-image-btn {
     min-width: 120px;
     text-align: center;
+  }
+
+  #upload-area {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  #add-image-btn {
+    background: #b18aff;
+    color: #0b0b0e;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+  }
+
+  #drop-zone {
+    border: 2px dashed #b18aff55;
+    border-radius: 10px;
+    padding: 1rem;
+    color: #aaa;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+
+  #drop-zone.dragover {
+    border-color: #b18aff;
+    background: #1f1a29;
+    color: #e8e8e8;
   }
 </style>
 </head>
@@ -136,6 +166,14 @@
 <div id="image-modal">
   <div id="image-modal-content">
     <h2>Select an Image</h2>
+
+    <!-- Upload area -->
+    <div id="upload-area">
+      <input type="file" id="image-upload" accept="image/*" hidden>
+      <button id="add-image-btn">➕ Add New Image</button>
+      <div id="drop-zone">Drop an image here or click “Add New Image”</div>
+    </div>
+
     <div class="image-grid" id="image-grid"></div>
     <button id="close-modal">Cancel</button>
   </div>
@@ -292,10 +330,68 @@
 
   document.getElementById('update-btn').addEventListener('click', savePerformances);
 
+  // ----- IMAGE UPLOAD -----
+  function setupUploadArea() {
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('image-upload');
+    const addBtn = document.getElementById('add-image-btn');
+
+    addBtn.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', e => {
+      if (e.target.files.length > 0) uploadImage(e.target.files[0]);
+    });
+
+    dropZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer.files.length > 0) uploadImage(e.dataTransfer.files[0]);
+    });
+  }
+
+  async function uploadImage(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      alert('Please upload a valid image file.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const res = await fetch('upload_image.php', {
+        method: 'POST',
+        body: formData,
+        credentials: 'same-origin'
+      });
+      const data = await res.json();
+
+      if (res.ok && data.ok) {
+        alert('Image uploaded successfully!');
+        await loadImages();
+        openImageModal(currentSelectIndex); // refresh modal with new images
+      } else {
+        console.error(data);
+        alert('Failed to upload image.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Upload failed.');
+    }
+  }
+
   // ----- INIT -----
   (async function init() {
     await checkSession();
     await loadImages();
+    setupUploadArea();
     await loadPerformances();
   })();
 </script>
