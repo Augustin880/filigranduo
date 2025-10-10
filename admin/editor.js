@@ -147,16 +147,65 @@ function openImageModal(index) {
 
     // Populate thumbnails
     imageOptions.forEach(img => {
+        // wrapper to hold thumbnail and delete control
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'inline-block';
+        wrapper.style.position = 'relative';
+
         const thumb = document.createElement('img');
         thumb.src = `/img/${img}`;
         thumb.alt = img;
+        thumb.style.display = 'block';
         if (performances[index].image === `/img/${img}`) thumb.classList.add('selected');
         thumb.addEventListener('click', () => {
         performances[currentSelectIndex].image = `/img/${img}`;
         closeImageModal();
         renderPerformances();
         });
-        grid.appendChild(thumb);
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '🗑';
+        delBtn.title = 'Delete image';
+        // style small overlay
+        delBtn.style.position = 'absolute';
+        delBtn.style.top = '4px';
+        delBtn.style.right = '4px';
+        delBtn.style.background = 'rgba(0,0,0,0.6)';
+        delBtn.style.color = '#fff';
+        delBtn.style.border = 'none';
+        delBtn.style.borderRadius = '4px';
+        delBtn.style.padding = '2px 6px';
+        delBtn.style.cursor = 'pointer';
+
+        delBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        if (!confirm(`Delete image "${img}"? This cannot be undone.`)) return;
+        try {
+            const res = await fetch('delete_image.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({ filename: img })
+            });
+            const data = await res.json();
+            if (res.ok && data.ok) {
+            alert('Image deleted');
+            await loadImages();
+            // rebuild modal contents
+            openImageModal(currentSelectIndex);
+            } else {
+            console.error(data);
+            alert('Failed to delete image');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Failed to delete image');
+        }
+        });
+
+        wrapper.appendChild(thumb);
+        wrapper.appendChild(delBtn);
+        grid.appendChild(wrapper);
     });
 
     modal.style.display = 'flex';
