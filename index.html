@@ -239,6 +239,16 @@
             <p class="hero-desc">Violin & Piano</p>
           </div>
         </section>
+        <section id="upcoming" class="upcoming-performances">
+          <div class="upcoming-container">
+            <h2 class="section-title">Upcoming Performances</h2>
+            <p class="section-subtitle">
+              Checkout our upcoming performances and come share the stage with us through sound, stories, and soul.
+            </p>
+            <div class="performances-grid" id="performances-grid"> <!-- JS populated --> </div>
+            <!-- can use paragraph here with class performance-note for a note below performances -->
+          </div>
+        </section>
         <section id="about" class="bio-snapshot">
           <div class="bio-container">
             <div class="bio-card-primary">
@@ -292,187 +302,14 @@
             <div aria-hidden="true" class="bio-backplate"></div>
           </div>
         </section>
-        <section id="upcoming" class="upcoming-performances">
-          <div class="upcoming-container">
-            <h2 class="section-title">Upcoming Performances</h2>
-            <p class="section-subtitle">
-              Checkout our upcoming performances and come share the stage with us through sound, stories, and soul.
-            </p>
-            <div class="performances-grid" id="performances-grid"> <!-- JS populated --> </div>
-            <!-- can use paragraph here with class performance-note for a note below performances -->
-          </div>
-        </section>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+        <section id="contact"></section>
         <footer-wrapper class="footer-wrapper">
-          <!--Footer component-->
-          <div class="footer-container1">
-            <div class="footer-container2">
-              <div class="footer-container3">
-                <style>
-                          @keyframes footer-wave-drift {0%,100% {transform: translateX(0) scaleY(1);}
-                  50% {transform: translateX(-20px) scaleY(1.05);}}@keyframes footer-divider-pulse {0%,100% {opacity: 1;
-                  transform: translate(-50%, -50%) scaleX(1);}
-                  50% {opacity: 0.7;
-                  transform: translate(-50%, -50%) scaleX(1.2);}}@keyframes footer-heart-beat {0%,100% {transform: scale(1);}
-                  25% {transform: scale(1.15);}
-                  50% {transform: scale(1);}}@keyframes footer-note-float {0%,100% {transform: translateY(0) translateX(0) scale(1);
-                  opacity: 0.1;}
-                  25% {transform: translateY(-30px) translateX(20px) scale(1.3);
-                  opacity: 0.2;}
-                  50% {transform: translateY(-15px) translateX(-15px) scale(1);
-                  opacity: 0.15;}
-                  75% {transform: translateY(-40px) translateX(10px) scale(1.2);
-                  opacity: 0.18;}}
-                </style>
-              </div>
-            </div>
-            <div class="footer-container4">
-              <div class="footer-container5">
-                <style>
-                  @media (prefers-reduced-motion: reduce) {
-                  .footer-wave-overlay, .footer-wave-secondary, .footer-decorative-notes, .footer-divider-accent, .footer-credit-icon, .footer-note {
-                    animation: none;
-                  }
-                  .footer-social-link:hover, .footer-link:hover, .footer-contact-item:hover {
-                    transform: none;
-                  }
-                  .footer-logo-icon:hover {
-                    transform: rotate(-5deg);
-                  }
-                  }
-                </style>
-              </div>
-            </div>
-            <div class="footer-container6">
-              <div class="footer-container7">
-                <script defer="" data-name="footer-duomelody">
-                  (function(){
-                    // Newsletter Form Submission Handler
-                    const newsletterForm = document.querySelector('.footer-newsletter-form')
-                    const newsletterInput = document.querySelector('.footer-newsletter-input')
-
-                    if (newsletterForm && newsletterInput) {
-                      newsletterForm.addEventListener('submit', function (e) {
-                        e.preventDefault()
-
-                        const email = newsletterInput.value.trim()
-
-                        if (email && validateEmail(email)) {
-                          // Show success feedback
-                          const button = newsletterForm.querySelector('.footer-newsletter-button')
-                          const originalText = button.textContent
-
-                          button.textContent = 'Subscribed!'
-                          button.style.background =
-                            'linear-gradient(135deg, var(--color-accent), var(--color-primary))'
-
-                          // Reset after animation
-                          setTimeout(() => {
-                            button.textContent = originalText
-                            newsletterInput.value = ''
-                            button.style.background = ''
-                          }, 3000)
-
-                          // Here you would typically send the email to your backend
-                          console.log('Newsletter subscription:', email)
-                        } else {
-                          // Show error feedback
-                          newsletterInput.style.borderColor = 'var(--color-accent)'
-                          newsletterInput.focus()
-
-                          setTimeout(() => {
-                            newsletterInput.style.borderColor = ''
-                          }, 2000)
-                        }
-                      })
-                    }
-
-                    // Email validation helper
-                    function validateEmail(email) {
-                      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                      return re.test(email)
-                    }
-
-                    // Smooth scroll for anchor links
-                    const footerLinks = document.querySelectorAll(
-                      ".footer-link[href^='#'], .footer-legal-link[href^='#']"
-                    )
-
-                    footerLinks.forEach((link) => {
-                      link.addEventListener('click', function (e) {
-                        const href = this.getAttribute('href')
-
-                        // Only handle internal anchor links
-                        if (href && href.startsWith('#') && href.length > 1) {
-                          const target = document.querySelector(href)
-
-                          if (target) {
-                            e.preventDefault()
-                            target.scrollIntoView({
-                              behavior: 'smooth',
-                              block: 'start',
-                            })
-                          }
-                        }
-                      })
-                    })
-
-                    // Parallax effect for decorative notes on scroll (subtle enhancement)
-                    const decorativeNotes = document.querySelectorAll('.footer-note')
-
-                    if (
-                      decorativeNotes.length > 0 &&
-                      window.matchMedia('(prefers-reduced-motion: no-preference)').matches
-                    ) {
-                      let ticking = false
-
-                      function updateParallax() {
-                        const footer = document.getElementById('footer-duomelody')
-                        if (!footer) return
-
-                        const rect = footer.getBoundingClientRect()
-                        const scrollPercent = Math.max(
-                          0,
-                          Math.min(1, (window.innerHeight - rect.top) / window.innerHeight)
-                        )
-
-                        decorativeNotes.forEach((note, index) => {
-                          const speed = 0.3 + index * 0.1
-                          const translateY = scrollPercent * 30 * speed
-                          note.style.transform = `translateY(${translateY}px)`
-                        })
-
-                        ticking = false
-                      }
-
-                      window.addEventListener(
-                        'scroll',
-                        function () {
-                          if (!ticking) {
-                            window.requestAnimationFrame(updateParallax)
-                            ticking = true
-                          }
-                        },
-                        { passive: true }
-                      )
-
-                      // Initial update
-                      updateParallax()
-                    }
-
-                    // Social link analytics tracking (placeholder)
-                    const socialLinks = document.querySelectorAll('.footer-social-link')
-
-                    socialLinks.forEach((link) => {
-                      link.addEventListener('click', function () {
-                        const platform = this.getAttribute('aria-label')
-                        console.log('Social link clicked:', platform)
-                        // Here you would typically send analytics data
-                      })
-                    })
-                  })()
-                </script>
-              </div>
-            </div>
+          <div class="footer-container-1">
             <footer id="footer-duomelody" class="footer-container">
               <div aria-hidden="true" class="footer-wave-overlay"></div>
               <div aria-hidden="true" class="footer-wave-secondary"></div>

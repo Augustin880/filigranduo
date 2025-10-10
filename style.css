@@ -23,8 +23,8 @@
   --color-neutral: #9ca3af;
   --color-outline: color-mix(in srgb, var(--color-primary) 60%, white 40%);
   --color-overlay: color-mix(in srgb, black 60%, transparent 0%);
-  --color-primary: #8b5cf6;
-  --color-surface: #0b0b10;
+  --color-primary: #760dae;
+  --color-surface: #0f100b;
   --font-size-2xl: 2.75rem;
   --font-size-3xl: 3.75rem;
   --font-size-4xl: 5rem;
@@ -40,7 +40,7 @@
       var(--color-surface) 85%,
       var(--color-primary) 15%
     );
-  --color-secondary: #06b6d4;
+  --color-secondary: #d11c1c;
   --border-radius-lg: 24px;
   --border-radius-md: 16px;
   --border-radius-sm: 8px;
@@ -69,7 +69,7 @@
   --dl-layout-size-xlarge: 192px;
   --dl-layout-size-xsmall: 16px;
   --letter-spacing-normal: 0em;
-  --color-surface-elevated: color-mix(in srgb, #0b0b10 88%, #8b5cf6 12%);
+  --color-surface-elevated: color-mix(in srgb, #0b0b10 88%, #7431c7 12%);
   --dl-color-theme-accent1: #FFFFFF;
   --dl-color-theme-accent2: #F5D1B0;
   --dl-layout-radius-round: 50%;
@@ -2168,9 +2168,7 @@
 }
  
 .collage-image-1 {
-  animation: morphMask 8s var(--animation-curve-primary) infinite alternate;
-  clip-path: ellipse(48% 50% at 50% 50%);
-  aspect-ratio: 3 / 3.4;
+  aspect-ratio: 3 / 3;
 }
  
 .image-overlay {
@@ -2198,7 +2196,7 @@
   gap: var(--spacing-2xl) var(--spacing-xl);
   display: grid;
   margin-bottom: var(--spacing-2xl);
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
  
 .performance-note {
