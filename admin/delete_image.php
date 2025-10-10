@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
   exit;
 }
 
-$targetDir = __DIR__ . '/../img/';
+$targetDir = __DIR__ . '/img';
 
 // Expect JSON body or form field 'filename'
 $filename = null;

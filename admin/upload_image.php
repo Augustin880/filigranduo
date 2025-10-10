@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
   exit;
 }
 
-$targetDir = __DIR__ . '/../img/';
+$targetDir = __DIR__ . '/img';
 if (!is_dir($targetDir)) {
   mkdir($targetDir, 0755, true);
 }
