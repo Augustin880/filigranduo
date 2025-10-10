@@ -76,7 +76,7 @@ function renderPerformances() {
             date: inputs[2]?.value || '',
             link: inputs[3]?.value || '',
             image: imageBtn?.textContent !== 'None'
-            ? `/img/${imageBtn.textContent}`
+            ? `/admin/img/${imageBtn.textContent}`
             : ''
         };
         });
