@@ -2067,7 +2067,7 @@
   background: var(--color-surface-elevated);
   box-shadow: var(--shadow-level-2);
   border-radius: var(--border-radius-xl);
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: 7fr 5fr;
 }
  
 .bio-backplate {
@@ -2168,7 +2168,7 @@
 }
  
 .collage-image-1 {
-  aspect-ratio: 3 / 3;
+  aspect-ratio: 4 / 5;
 }
  
 .image-overlay {
