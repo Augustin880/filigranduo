@@ -12,15 +12,7 @@
   }
   h1 { text-align: center; margin-bottom: 2rem; }
   .performance {
-    display: grid;
-    grid-template-columns: 
-      2rem /* handle */
-      1fr  /* title */
-      1fr  /* description */
-      1fr  /* date */
-      1fr  /* link */
-      auto /* image button */
-      3rem /* delete button */;
+    display: contents;
     align-items: center;
     gap: 0.75rem;
     border: 1px solid #b18aff55;
@@ -153,8 +145,10 @@
 
   .performance.header span {
     text-align: center;
-    font-size: 0.95rem;
-    user-select: none;
+    font-weight: bold;
+    color: #d4c6ff;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #b18aff55;
   }
 
   .performance span.image-label {
@@ -222,23 +216,38 @@
     cursor: grabbing;
     color: #b18aff;
   }
+
+  .performances-grid {
+    display: grid;
+    grid-template-columns: 
+      2rem  /* handle */
+      1fr   /* title */
+      1fr   /* description */
+      1fr   /* date */
+      1fr   /* link */
+      auto  /* image */
+      3rem; /* delete */
+    row-gap: 0.5rem;
+  }
 </style>
 </head>
 <body>
 
 <h1>Edit Performances</h1>
 
-<div class="performance header">
-  <span></span>
-  <span>Title</span>
-  <span>Description</span>
-  <span>Date</span>
-  <span>Link</span>
-  <span>Image</span>
-  <span></span>
-</div>
+<div class="performances-grid">
+  <div class="performance header">
+    <span></span>
+    <span>Title</span>
+    <span>Description</span>
+    <span>Date</span>
+    <span>Link</span>
+    <span>Image</span>
+    <span></span>
+  </div>
 
-<div id="performances-container"></div>
+  <div id="performances-container"></div>
+</div>
 
 <button id="add-btn">Add Performance</button>
 <button id="update-btn">Save Changes</button>
