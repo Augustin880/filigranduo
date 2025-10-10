@@ -11,15 +11,25 @@
     padding: 2rem;
   }
   h1 { text-align: center; margin-bottom: 2rem; }
-  .performance { 
-    border: 1px solid #b18aff; 
-    border-radius: 8px; 
-    padding: 1rem; 
-    margin-bottom: 1rem; 
-    display: flex; 
-    gap: 1rem; 
+  .performance {
+    display: grid;
+    grid-template-columns: 
+      2rem /* handle */
+      1fr  /* title */
+      1fr  /* description */
+      1fr  /* date */
+      1fr  /* link */
+      auto /* image button */
+      3rem /* delete button */;
     align-items: center;
+    gap: 0.75rem;
+    border: 1px solid #b18aff55;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    background: #131319;
   }
+
   .performance input { flex: 1; padding: 0.5rem; border-radius: 4px; border: none; }
   .performance button { background: #b18aff; color: #0b0b0e; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 4px; }
   #add-btn, #update-btn { margin-top: 1rem; padding: 0.75rem 1.5rem; background: #b18aff; color: #0b0b0e; border: none; cursor: pointer; border-radius: 4px; }
@@ -137,12 +147,14 @@
   .performance.header {
     font-weight: bold;
     background: #1a1a22;
-    border-color: #b18aff55;
+    border: 1px solid #b18aff99;
+    color: #d4c6ff;
   }
 
   .performance.header span {
-    flex: 1;
     text-align: center;
+    font-size: 0.95rem;
+    user-select: none;
   }
 
   .performance span.image-label {
@@ -191,6 +203,25 @@
     background-color: #1a1a22;
     border-color: #b18aff99;
   }
+
+  .drag-handle {
+    cursor: grab;
+    font-size: 1.2rem;
+    color: #b18affcc;
+    user-select: none;
+    transition: color 0.2s, transform 0.2s;
+    padding: 0 0.5rem;
+  }
+
+  .drag-handle:hover {
+    color: #d8c1ff;
+    transform: scale(1.2);
+  }
+
+  .performance.dragging .drag-handle {
+    cursor: grabbing;
+    color: #b18aff;
+  }
 </style>
 </head>
 <body>
@@ -198,12 +229,13 @@
 <h1>Edit Performances</h1>
 
 <div class="performance header">
+  <span></span>
   <span>Title</span>
   <span>Description</span>
   <span>Date</span>
   <span>Link</span>
   <span>Image</span>
-  <span style="width: 6rem;"></span>
+  <span></span>
 </div>
 
 <div id="performances-container"></div>
@@ -321,6 +353,7 @@
       div.draggable = true;
       div.className = 'performance';
       div.innerHTML = `
+        <span class="drag-handle" title="Drag to reorder">↕</span>
         <input type="text" value="${p.title}" placeholder="Title">
         <input type="text" value="${p.description}" placeholder="Description">
         <input type="text" value="${p.date}" placeholder="Date">
