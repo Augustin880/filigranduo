@@ -184,6 +184,13 @@
     background: #1f1a29;
     color: #e8e8e8;
   }
+
+  .performance.dragging {
+    opacity: 0.6;
+    transform: scale(0.98);
+    background-color: #1a1a22;
+    border-color: #b18aff99;
+  }
 </style>
 </head>
 <body>
@@ -263,11 +270,55 @@
   }
 
   // ----- RENDER PERFORMANCES -----
+  function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.performance:not(.dragging)')];
+
+    return draggableElements.reduce((closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+  }
+
   function renderPerformances() {
     const container = document.getElementById('performances-container');
+
+    container.addEventListener('dragover', e => {
+      e.preventDefault();
+      const dragging = document.querySelector('.dragging');
+      const afterElement = getDragAfterElement(container, e.clientY);
+      if (afterElement == null) {
+        container.appendChild(dragging);
+      } else {
+        container.insertBefore(dragging, afterElement);
+      }
+    });
+
+    container.addEventListener('drop', () => {
+      const newOrder = Array.from(container.children).map(el => {
+        const inputs = el.querySelectorAll('input');
+        const imageBtn = el.querySelector('.select-image-btn');
+        return {
+          title: inputs[0]?.value || '',
+          description: inputs[1]?.value || '',
+          date: inputs[2]?.value || '',
+          link: inputs[3]?.value || '',
+          image: imageBtn?.textContent !== 'None'
+            ? `/img/${imageBtn.textContent}`
+            : ''
+        };
+      });
+      performances = newOrder;
+    });
+
     container.innerHTML = '';
     performances.forEach((p, index) => {
       const div = document.createElement('div');
+      div.draggable = true;
       div.className = 'performance';
       div.innerHTML = `
         <input type="text" value="${p.title}" placeholder="Title">
@@ -279,6 +330,16 @@
         </button>
         <button class="delete-btn">✖</button>
       `;
+
+      div.addEventListener('dragstart', e => {
+        div.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', index);
+      });
+
+      div.addEventListener('dragend', () => {
+        div.classList.remove('dragging');
+      });
 
       const inputs = div.querySelectorAll('input');
       inputs[0].addEventListener('input', e => performances[index].title = e.target.value);
