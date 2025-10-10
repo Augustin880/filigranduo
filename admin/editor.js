@@ -153,12 +153,12 @@ function openImageModal(index) {
         wrapper.style.position = 'relative';
 
         const thumb = document.createElement('img');
-        thumb.src = `/img/${img}`;
+        thumb.src = `/admin/img/${img}`;
         thumb.alt = img;
         thumb.style.display = 'block';
-        if (performances[index].image === `/img/${img}`) thumb.classList.add('selected');
+        if (performances[index].image === `/admin/img/${img}`) thumb.classList.add('selected');
         thumb.addEventListener('click', () => {
-        performances[currentSelectIndex].image = `/img/${img}`;
+        performances[currentSelectIndex].image = `/admin/img/${img}`;
         closeImageModal();
         renderPerformances();
         });
