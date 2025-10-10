@@ -24,7 +24,7 @@
   --color-outline: color-mix(in srgb, var(--color-primary) 60%, white 40%);
   --color-overlay: color-mix(in srgb, black 60%, transparent 0%);
   --color-primary: #760dae;
-  --color-surface: #0f100b;
+  --color-surface: #080708;
   --font-size-2xl: 2.75rem;
   --font-size-3xl: 3.75rem;
   --font-size-4xl: 5rem;
@@ -69,7 +69,7 @@
   --dl-layout-size-xlarge: 192px;
   --dl-layout-size-xsmall: 16px;
   --letter-spacing-normal: 0em;
-  --color-surface-elevated: color-mix(in srgb, #0b0b10 88%, #7431c7 12%);
+  --color-surface-elevated: color-mix(in srgb, #0b0b10 88%, #b54adf 12%);
   --dl-color-theme-accent1: #FFFFFF;
   --dl-color-theme-accent2: #F5D1B0;
   --dl-layout-radius-round: 50%;
