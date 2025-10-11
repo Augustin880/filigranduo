@@ -19,7 +19,7 @@
       1fr  /* description */
       1fr  /* date */
       1fr  /* link */
-      auto /* image button */
+      130px /* image button */
       3rem /* delete button */;
     align-items: center;
     gap: 0.75rem;
@@ -62,9 +62,10 @@
 
   /* Keep consistent height when replacing select image button with file name */
   .performance button.select-image-btn {
-    /* fixed width so long names don't resize the layout */
-    width: 130px;
-    max-width: 130px;
+    /* fill its grid cell and allow truncation without forcing the grid to grow */
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     background-color: #2b2b33;
     color: #ddd;
     border: 1px solid #3a3a46;
@@ -73,7 +74,8 @@
     cursor: pointer;
     transition: background-color 0.2s;
     /* truncate overflowing text, keep the beginning visible */
-    display: inline-block;
+    display: block;
+    box-sizing: border-box;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -171,8 +173,9 @@
   }
 
   .performance .select-image-btn {
-    min-width: 120px;
-    text-align: center;
+    /* allow the grid to control width; prevent implicit min-width from expanding the column */
+    min-width: 0;
+    width: 100%;
   }
 
   #upload-area {
