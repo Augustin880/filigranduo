@@ -86,8 +86,8 @@ function renderPerformances() {
     container.innerHTML = '';
     performances.forEach((p, index) => {
         const div = document.createElement('div');
-        div.draggable = true;
-        div.className = 'performance';
+            // the row itself is not draggable; only the handle should start a drag
+            div.className = 'performance';
         div.innerHTML = `
         <span class="drag-handle" title="Drag to reorder">↕</span>
         <input type="text" value="${p.title}" placeholder="Title">
@@ -100,15 +100,21 @@ function renderPerformances() {
         <button class="delete-btn">✖</button>
         `;
 
-        div.addEventListener('dragstart', e => {
-        div.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', index);
+        // make the handle draggable and wire drag events to it so dragging only works from the handle
+        const handle = div.querySelector('.drag-handle');
+        if (handle) {
+        handle.draggable = true;
+        handle.addEventListener('dragstart', e => {
+            // add dragging class on the row (parent) so the container logic can move it
+            div.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', index);
         });
 
-        div.addEventListener('dragend', () => {
-        div.classList.remove('dragging');
+        handle.addEventListener('dragend', () => {
+            div.classList.remove('dragging');
         });
+        }
 
         const inputs = div.querySelectorAll('input');
         inputs[0].addEventListener('input', e => performances[index].title = e.target.value);
