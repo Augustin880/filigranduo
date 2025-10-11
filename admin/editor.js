@@ -94,7 +94,7 @@ function renderPerformances() {
         <input type="text" value="${p.description}" placeholder="Description">
         <input type="text" value="${p.date}" placeholder="Date">
         <input type="text" value="${p.link}" placeholder="Link">
-        <button class="select-image-btn" title="${p.image ? p.image.split('/').pop() : 'None'}">
+        <button class="select-image-btn">
             ${p.image ? p.image.split('/').pop() : 'None'}
         </button>
         <button class="delete-btn">✖</button>
