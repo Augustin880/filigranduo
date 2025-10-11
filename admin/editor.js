@@ -72,7 +72,16 @@ function renderPerformances() {
         const newOrder = Array.from(container.children).map(el => {
             const inputs = el.querySelectorAll('input');
             const imageBtn = el.querySelector('.select-image-btn');
-            const filename = imageBtn ? imageBtn.textContent.trim() : '';
+            // when using an image preview, extract the filename from img.src, otherwise fall back to text
+            let filename = '';
+            if (imageBtn) {
+            const img = imageBtn.querySelector('img');
+            if (img && img.src) {
+                filename = img.src.split('/').pop();
+            } else {
+                filename = imageBtn.textContent.trim();
+            }
+            }
             return {
             title: inputs[0]?.value || '',
             description: inputs[1]?.value || '',
@@ -102,7 +111,9 @@ function renderPerformances() {
         <input type="text" value="${p.description}" placeholder="Description">
         <input type="text" value="${p.date}" placeholder="Date">
         <input type="text" value="${p.link}" placeholder="Link">
-        <button class="select-image-btn">${p.image ? p.image.split('/').pop() : 'None'}</button>
+        <button class="select-image-btn" title="${p.image ? p.image.split('/').pop() : 'None'}">
+            ${p.image ? `<img class="select-image-preview" src="${p.image}" alt="preview">` : 'None'}
+        </button>
         <button class="delete-btn">✖</button>
         `;
 
