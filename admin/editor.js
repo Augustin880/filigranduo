@@ -72,13 +72,14 @@ function renderPerformances() {
         const newOrder = Array.from(container.children).map(el => {
             const inputs = el.querySelectorAll('input');
             const imageBtn = el.querySelector('.select-image-btn');
+            const filename = imageBtn ? imageBtn.textContent.trim() : '';
             return {
             title: inputs[0]?.value || '',
             description: inputs[1]?.value || '',
             date: inputs[2]?.value || '',
             link: inputs[3]?.value || '',
-            image: imageBtn?.textContent !== 'None'
-                ? `/admin/img/${imageBtn.textContent}`
+            image: filename && filename !== 'None'
+                ? `/admin/img/${filename}`
                 : ''
             };
         });
@@ -101,9 +102,7 @@ function renderPerformances() {
         <input type="text" value="${p.description}" placeholder="Description">
         <input type="text" value="${p.date}" placeholder="Date">
         <input type="text" value="${p.link}" placeholder="Link">
-        <button class="select-image-btn">
-            ${p.image ? p.image.split('/').pop() : 'None'}
-        </button>
+        <button class="select-image-btn">${p.image ? p.image.split('/').pop() : 'None'}</button>
         <button class="delete-btn">✖</button>
         `;
 
