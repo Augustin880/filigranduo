@@ -21,6 +21,21 @@
   </div>
 
   <script>
+    // on load, check if already logged in and redirect to editor if so
+    (async function checkSession() {
+      try {
+        const resp = await fetch('/admin/check_session.php', { credentials: 'same-origin' });
+        if (resp.ok) {
+          const j = await resp.json();
+          if (j.logged_in) {
+            window.location.href = '/admin/editor.html';
+            return;
+          }
+        }
+      } catch (e) {
+        console.error('Session check failed', e);
+      }
+    })();
     async function doLogin() {
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value;
