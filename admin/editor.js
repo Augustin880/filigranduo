@@ -54,34 +54,41 @@ function getDragAfterElement(container, y) {
 
 function renderPerformances() {
     const container = document.getElementById('performances-container');
-
-    container.addEventListener('dragover', e => {
+    // Attach drag handlers once on the container. We re-render after drop so handlers/index bindings stay correct.
+    if (!container.dataset.dragHandlers) {
+        container.addEventListener('dragover', e => {
         e.preventDefault();
         const dragging = document.querySelector('.dragging');
         const afterElement = getDragAfterElement(container, e.clientY);
+        if (!dragging) return;
         if (afterElement == null) {
-        container.appendChild(dragging);
+            container.appendChild(dragging);
         } else {
-        container.insertBefore(dragging, afterElement);
+            container.insertBefore(dragging, afterElement);
         }
-    });
+        });
 
-    container.addEventListener('drop', () => {
+        container.addEventListener('drop', () => {
         const newOrder = Array.from(container.children).map(el => {
-        const inputs = el.querySelectorAll('input');
-        const imageBtn = el.querySelector('.select-image-btn');
-        return {
+            const inputs = el.querySelectorAll('input');
+            const imageBtn = el.querySelector('.select-image-btn');
+            return {
             title: inputs[0]?.value || '',
             description: inputs[1]?.value || '',
             date: inputs[2]?.value || '',
             link: inputs[3]?.value || '',
             image: imageBtn?.textContent !== 'None'
-            ? `/admin/img/${imageBtn.textContent}`
-            : ''
-        };
+                ? `/admin/img/${imageBtn.textContent}`
+                : ''
+            };
         });
         performances = newOrder;
-    });
+        // re-render to rebind handlers and update indices
+        renderPerformances();
+        });
+
+        container.dataset.dragHandlers = '1';
+    }
 
     container.innerHTML = '';
     performances.forEach((p, index) => {
