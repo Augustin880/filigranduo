@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Filigran Duo - Violin & Piano</title>
+    <meta charset="utf-8" />
+    <style src="../style.css"></style>
+  </head>
+  <body>
+      <div id="navigation-placeholder"></div>
+
+      <img src="/img/duo-about.jpg" style="width: 50rem; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 12px; margin-top: 10rem;">
+
+      <div id="footer-placeholder"></div>
+  </body>
+  <script>
+    fetch("../components/navigation.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navigation-placeholder").innerHTML = data;
+      })
+      .catch(err => console.error("Navigation load error:", err));
+
+    fetch("../components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(err => console.error("Navigation load error:", err));
+  </script>
+</html>
