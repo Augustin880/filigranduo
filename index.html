@@ -69,7 +69,10 @@
       <link href="./index.css" rel="stylesheet" />
 
       <div class="home-container10">
+
+        <!-- NAVIGATION -->
         <div id="navigation-placeholder"></div>
+
         <div class="home-container11">
           <div class="home-container12">
             <style>
@@ -84,161 +87,16 @@
             </style>
           </div>
         </div>
-        <div class="home-container13">
-          <div class="home-container14">
-            <style>
-              @media (prefers-reduced-motion: reduce) {
-              *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-              }
-              .media-card-1, .media-card-2, .media-card-3 {
-                transform: none;
-              }
-              .decorative-glyph {
-                animation: none;
-              }
-              .play-button {
-                animation: none;
-              }
-              }
-              *:focus-visible {
-                outline: 3px solid var(--color-outline);
-                outline-offset: 2px;
-                border-radius: var(--border-radius-sm);
-              }
-            </style>
-          </div>
-        </div>
-        <div class="home-container15">
-          <div class="home-container16">
-            <script defer="" data-name="duomelody-homepage">
-              (function(){
-                // Parallax effect for hero media on scroll
-                const heroSection = document.getElementById('hero-section')
-                const mediaCards = document.querySelectorAll('.media-card')
 
-                if (heroSection && mediaCards.length > 0) {
-                  window.addEventListener('scroll', () => {
-                    const scrolled = window.pageYOffset
-                    const heroRect = heroSection.getBoundingClientRect()
-
-                    if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
-                      mediaCards.forEach((card, index) => {
-                        const speed = 0.3 + index * 0.1
-                        const yPos = scrolled * speed
-                        card.style.transform = `translateY(${yPos}px)`
-                      })
-                    }
-                  })
-                }
-
-                // Featured video play functionality
-                const playButton = document.querySelector('.play-button')
-                const featuredVideo = document.getElementById('featured-video')
-
-                if (playButton && featuredVideo) {
-                  playButton.addEventListener('click', () => {
-                    if (featuredVideo.paused) {
-                      featuredVideo.play()
-                      playButton.style.opacity = '0'
-                      playButton.style.pointerEvents = 'none'
-                    }
-                  })
-
-                  featuredVideo.addEventListener('pause', () => {
-                    playButton.style.opacity = '1'
-                    playButton.style.pointerEvents = 'auto'
-                  })
-
-                  featuredVideo.addEventListener('ended', () => {
-                    playButton.style.opacity = '1'
-                    playButton.style.pointerEvents = 'auto'
-                  })
-                }
-
-                // Intersection Observer for staggered animations
-                const observerOptions = {
-                  threshold: 0.1,
-                  rootMargin: '0px 0px -100px 0px',
-                }
-
-                const fadeInObserver = new IntersectionObserver((entries) => {
-                  entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                      entry.target.style.animationPlayState = 'running'
-                      fadeInObserver.unobserve(entry.target)
-                    }
-                  })
-                }, observerOptions)
-
-                // Observe all elements with reveal animations
-                const revealElements = document.querySelectorAll(
-                  '.play-card, .gallery-item, .bio-card-primary'
-                )
-                revealElements.forEach((el) => {
-                  el.style.animationPlayState = 'paused'
-                  fadeInObserver.observe(el)
-                })
-
-                // Parallax effect for detail cards on pointer move
-                const bookingDetails = document.querySelector('.booking-details')
-                const detailCards = document.querySelectorAll('.detail-card')
-
-                if (bookingDetails && detailCards.length > 0) {
-                  bookingDetails.addEventListener('mousemove', (e) => {
-                    const rect = bookingDetails.getBoundingClientRect()
-                    const x = e.clientX - rect.left
-                    const y = e.clientY - rect.top
-
-                    const moveX = (x / rect.width - 0.5) * 20
-                    const moveY = (y / rect.height - 0.5) * 20
-
-                    detailCards.forEach((card, index) => {
-                      const multiplier = (index + 1) * 0.5
-                      card.style.transform = `translate(${moveX * multiplier}px, ${
-                        moveY * multiplier
-                      }px)`
-                    })
-                  })
-
-                  bookingDetails.addEventListener('mouseleave', () => {
-                    detailCards.forEach((card, index) => {
-                      if (index === 0) {
-                        card.style.transform = 'translateY(0)'
-                      } else {
-                        card.style.transform = 'translateY(var(--spacing-lg))'
-                      }
-                    })
-                  })
-                }
-
-                // Smooth gallery item reveal on scroll
-                const galleryItems = document.querySelectorAll('.gallery-item')
-                const galleryObserver = new IntersectionObserver((entries) => {
-                  entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                      entry.target.style.animationPlayState = 'running'
-                      galleryObserver.unobserve(entry.target)
-                    }
-                  })
-                }, observerOptions)
-
-                galleryItems.forEach((item) => {
-                  item.style.animationPlayState = 'paused'
-                  galleryObserver.observe(item)
-                })
-              })()
-            </script>
-          </div>
-        </div>
+        <!-- HERO SECTION -->
         <section id="hero-section" class="hero-section">
           <div class="hero-overlay">
             <h1 class="hero-title">Filigran Duo</h1>
             <p class="hero-desc">Violin & Piano</p>
           </div>
         </section>
+
+        <!-- UPCOMMING PERFORMANCES -->
         <section id="upcoming" class="upcoming-performances">
           <div class="upcoming-container">
             <h2 class="section-title">Upcoming Performances</h2>
@@ -249,27 +107,12 @@
             <!-- can use paragraph here with class performance-note for a note below performances -->
           </div>
         </section>
+
+        <!-- ABOUT -->
         <section id="about" class="bio-snapshot">
           <div class="bio-container">
             <div class="bio-card-primary">
               <div class="bio-content-left">
-                <div aria-hidden="true" class="award-badge">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.12 2.12 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.12 2.12 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.12 2.12 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.12 2.12 0 0 0 1.597-1.16z"
-                    ></path>
-                  </svg>
-                </div>
                 <h2 class="section-title">Filigran Duo</h2>
                 <h3 class="bio-subhead">Violin and piano</h3>
                 <div class="divider-dashed"></div>
@@ -302,13 +145,16 @@
             <div aria-hidden="true" class="bio-backplate"></div>
           </div>
         </section>
-      </br>
-      </br>
-      </br>
+      
+        <!-- FOOTER -->
+        </br>
+        </br>
+        </br>
         <section id="contact"></section>
         <div id="footer-placeholder"></div>
       </div>
     </div>
+    
     <script>
       fetch("components/navigation.html")
       .then(response => response.text())
