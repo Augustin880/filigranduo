@@ -695,7 +695,7 @@
   color: var(--color-on-surface);
   margin: 0 0 var(--spacing-md) 0;
   font-size: var(--font-size-2xl);
-  font-family: var(--font-family-heading);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-tight);
 }
