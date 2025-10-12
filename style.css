@@ -58,7 +58,7 @@
   --color-secondary-10: color-mix(in srgb, #06b6d4 10%, white);
   --color-secondary-90: color-mix(in srgb, #06b6d4 90%, black);
   --font-weight-medium: 500;
-  --font-family-heading: "Playfair Display", serif;
+  --font-family-heading: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   --font-weight-regular: 400;
   --letter-spacing-wide: 0.06em;
   --dl-layout-size-large: 144px;
@@ -695,7 +695,7 @@
   color: var(--color-on-surface);
   margin: 0 0 var(--spacing-md) 0;
   font-size: var(--font-size-2xl);
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family:var(--font-family-heading);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-tight);
 }
