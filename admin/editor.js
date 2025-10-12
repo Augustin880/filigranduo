@@ -94,8 +94,38 @@ window.addEventListener('click', e => { if (e.target.id === 'image-modal') close
 
 document.getElementById('add-btn').addEventListener('click', () => { performances.push({ title: "", description: "", date: "", link: "", image: "" }); renderPerformances(); });
 
-async function savePerformances() { try { const res = await fetch('save_performances.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin', body: JSON.stringify({ performances }) }); const data = await res.json(); if (res.ok && data.ok) alert('Performances saved successfully!'); else { console.error(data); alert('Failed to save performances. Check console.'); } } catch (err) { console.error(err); alert('Failed to save performances'); } }
-document.getElementById('update-btn').addEventListener('click', savePerformances);
+async function savePerformances() {
+    try {
+        const res = await fetch('save_performances.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin', body: JSON.stringify({ performances }) });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+            alert('Performances saved successfully!');
+            return true;
+        } else {
+            console.error(data);
+            alert('Failed to save performances. Check console.');
+            return false;
+        }
+    } catch (err) {
+        console.error(err);
+        alert('Failed to save performances');
+        return false;
+    }
+}
+
+// Wrap save call with confirmation and UI locking
+document.getElementById('update-btn').addEventListener('click', async (e) => {
+    const btn = e.currentTarget;
+    if (!confirm('Are you sure you want to save changes?')) return;
+    try {
+        btn.disabled = true;
+        btn.textContent = 'Saving...';
+        await savePerformances();
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Save Changes';
+    }
+});
 
 function parseDateString(dateStr) {
     if (!dateStr) return null;

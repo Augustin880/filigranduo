@@ -244,6 +244,18 @@
     cursor: grabbing;
     color: #b18aff;
   }
+  /* Controls container: keep save button to the right */
+  #controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  /* push the update/save button to the far right */
+  #update-btn {
+    margin-left: auto;
+  }
 </style>
 </head>
 <body>
@@ -262,9 +274,11 @@
 
 <div id="performances-container"></div>
 
-<button id="add-btn">Add Performance</button>
-<button id="sort-btn">Sort by Date</button>
-<button id="update-btn">Save Changes</button>
+<div id="controls">
+  <button id="add-btn">Add Performance</button>
+  <button id="sort-btn">Sort by Date</button>
+  <button id="update-btn">Save Changes</button>
+</div>
 
 <!-- Modal -->
 <div id="image-modal">
