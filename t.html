@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: url("your-background-image.jpg") center/cover no-repeat fixed;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;
+  }
+
+  .events-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 6rem 1rem 4rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .event-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    backdrop-filter: blur(8px);
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .event-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .event-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .event-date {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #ccc;
+  }
+
+  .btn-ticket {
+    padding: 0.6rem 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: transparent;
+    color: #fff;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-ticket:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 700px) {
+    .event-item {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      gap: 0.5rem 1rem;
+      text-align: left;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .event-title {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      font-size: 1.2rem;
+      text-align: left;
+    }
+
+    .event-date {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      text-align: left;
+      color: #aaa;
+    }
+
+    .btn-ticket {
+      grid-column: 2 / 3;
+      grid-row: 1 / span 2;
+      align-self: center;
+      justify-self: end;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="events-wrapper">
+    <h1>World Tour</h1>
+
+    <div class="event-list">
+      <div class="event-item">
+        <div class="event-title">Tokyo, Japan</div>
+        <div class="event-date">Nov 2, 2025</div>
+        <button class="btn-ticket">Get Tickets</button>
+      </div>
+
+      <div class="event-item">
+        <div class="event-title">Berlin, Germany</div>
+        <div class="event-date">Dec 12, 2025</div>
+        <button class="btn-ticket">Get Tickets</button>
+      </div>
+
+      <div class="event-item">
+        <div class="event-title">Sydney, Australia</div>
+        <div class="event-date">Jan 8, 2026</div>
+        <button class="btn-ticket">Get Tickets</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
