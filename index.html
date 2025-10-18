@@ -33,7 +33,7 @@
     />
   </head>
   <body>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <div>
       <div class="home-container10">
 
@@ -64,13 +64,13 @@
         </section>
 
         <!-- UPCOMMING PERFORMANCES -->
-        <section id="upcoming" class="events-wrapper-1">
+        <section id="upcoming" class="wrap">
           <div class="upcoming-container">
             <h2 class="section-title">Upcoming Performances</h2>
             <p class="section-subtitle">
               Checkout our upcoming performances and come see us on stage sharing music, feelings, and love.
             </p>
-            <div class="event-list-1" id="performances-grid"> <!-- JS populated --> </div>
+            <section class="events" id="performances-grid"> <!-- JS populated --> </section>
             <!-- can use paragraph here with class performance-note for a note below performances -->
           </div>
         </section>
@@ -106,11 +106,22 @@
           card.classList.add('play-card');
 
           card.innerHTML = `
-            <div class="event-item-1">
-              <div class="event-title-1">${perf.title}</div>
-              <div class="event-date-1">${perf.date}</div>
-              <a href="${perf.link}"><button class="btn-ticket-1">Get Tickets</button></a>
-            </div>
+            <article class="event" aria-labelledby="e1title">
+              <div class="event__date" aria-hidden="true">
+                <span class="month">NOV</span>
+                <span class="day">12</span>
+                <span class="weekday">Wed</span>
+              </div>
+              <div class="event__main">
+                <h3 id="e1title" class="event__title">${perf.title}</h3>
+                <div class="event__meta">
+                  <time datetime="2025-11-12">${perf.date}</time>
+                </div>
+              </div>
+              <div class="event__actions">
+                <a href="${perf.link} target="blank_""><button class="btn btn--primary">See More</button></a>
+              </div>
+            </article>
           `;
           grid.appendChild(card);
         });
