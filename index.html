@@ -65,14 +65,21 @@
 
         <!-- UPCOMMING PERFORMANCES -->
         <section id="upcoming" class="events-wrapper-1">
-          <div class="upcoming-container">
-            <h2 class="section-title">Upcoming Performances</h2>
-            <p class="section-subtitle">
-              Checkout our upcoming performances and come see us on stage sharing music, feelings, and love.
-            </p>
-            <div class="event-list-1" id="performances-grid"> <!-- JS populated --> </div>
-            <!-- can use paragraph here with class performance-note for a note below performances -->
+          <div class="inner-wrapper-1">
+            <div aria-hidden="true" class="footer-wave-overlay"></div>
+            <div aria-hidden="true" class="footer-wave-secondary"></div>
+
+            <div class="upcoming-container">
+              <h2 class="section-title">Upcoming Performances</h2>
+              <p class="section-subtitle">
+                Checkout our upcoming performances and come see us on stage sharing music, feelings, and love.
+              </p>
+              <div class="event-list-1" id="performances-grid"> <!-- JS populated --> </div>
+              <!-- can use paragraph here with class performance-note for a note below performances -->
+            </div>
           </div>
+        <br>
+        <br>
         </section>
       
         <!-- FOOTER -->
@@ -109,7 +116,7 @@
             <div class="event-item-1">
               <div class="event-title-1">${perf.title}</div>
               <div class="event-date-1">${perf.date}</div>
-              <a href="${perf.link}"><button class="btn-ticket-1">Get Tickets</button></a>
+              <a href="${perf.link}" target="_blank"><button class="btn-ticket-1">Get Tickets</button></a>
             </div>
           `;
           grid.appendChild(card);

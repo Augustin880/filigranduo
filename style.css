@@ -113,13 +113,14 @@
 
 .section-subtitle{
   color: var(--color-on-surface-secondary);
-  margin: var(--spacing-md) 0 var(--spacing-2xl) 0;
+  margin: var(--spacing-md) auto var(--spacing-2xl) auto;
   font-size: var(--font-size-md);
   max-width: 60ch;
   font-family: var(--font-family-body);
   font-weight: var(--font-weight-medium);
   line-height: 1.6;
   letter-spacing: var(--letter-spacing-normal);
+  text-align: center;
 }
 
 .hero-section{
@@ -174,6 +175,19 @@
 }
 
 .events-wrapper-1{
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4rem, 8vw, 8rem) 0 0;
+
+  background: linear-gradient(
+    135deg,
+    var(--color-surface) 0%,
+    color-mix(in srgb, var(--color-primary) 5%, var(--color-surface)) 50%,
+    color-mix(in srgb, var(--color-secondary) 8%, var(--color-surface)) 100%
+  );
+}
+
+.inner-wrapper-1 {
   max-width: 1000px;
   margin: 0 auto;
   padding: 6rem 1rem 4rem;
@@ -236,14 +250,14 @@
 .event-title-1{
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     text-align: left;
   }
 
 .event-date-1{
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    font-size: 0.75rem;
+    font-size: 1rem;
     text-align: left;
     color: #aaa;
   }
@@ -255,6 +269,31 @@
     justify-self: end;
     font-size: 0.8rem;
   }
+
+@media(max-width: 800px){
+  .event-title-1{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .event-date-1{
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      font-size: 0.75rem;
+      text-align: left;
+      color: #aaa;
+    }
+
+  .btn-ticket-1{
+      grid-column: 2 / 3;
+      grid-row: 1 / span 2;
+      align-self: center;
+      justify-self: end;
+      font-size: 0.8rem;
+    }
+}
 
 @media(max-width: 991px){
   .thq-grid-4 {
