@@ -1,2 +1,4 @@
-/data/
-/admin/img/
+/data
+/admin/img
+/tools
+Makefile
