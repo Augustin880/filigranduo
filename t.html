@@ -1,157 +1,316 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Events</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Events — Simple List</title>
 <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  :root{
+    --bg: #f7f8fb;
+    --card: #ffffff;
+    --muted: #6b6f76;
+    --accent: #0b76ff;
+    --accent-contrast: #fff;
+    --radius: 12px;
+    --gap: 12px;
+    --maxwidth: 640px; /* narrower since single column */
+    --shadow: 0 6px 18px rgba(18,24,40,0.06);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
 
-  body {
-    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-    background: url("your-background-image.jpg") center/cover no-repeat fixed;
-    color: #fff;
-    min-height: 100vh;
+  body{
+    margin:0;
+    background: linear-gradient(180deg, var(--bg), #eef2f7 120%);
+    color: #0b1220;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:24px;
+    display:flex;
+    justify-content:center;
   }
 
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: -1;
+  .wrap{
+    width:100%;
+    max-width: var(--maxwidth);
   }
 
-  .events-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 6rem 1rem 4rem;
-    text-align: center;
+  header{
+    margin-bottom:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:16px;
+  }
+  header h1{
+    margin:0;
+    font-size:1.25rem;
+    letter-spacing:-0.01em;
+  }
+  header p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.95rem;
   }
 
-  h1 {
-    font-size: 2.75rem;
-    letter-spacing: 2px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 3rem;
+  /* One-column event list */
+  .events{
+    display:flex;
+    flex-direction:column;
+    gap: var(--gap);
   }
 
-  .event-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  .event{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:14px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(11,15,20,0.03);
   }
 
-  .event-item {
-    display: grid;
-    grid-template-columns: 2fr 1fr auto;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    backdrop-filter: blur(8px);
-    transition: background 0.3s, transform 0.3s;
+  .event__date{
+    min-width:72px;
+    text-align:center;
+    padding:8px 10px;
+    border-radius:10px;
+    background:linear-gradient(180deg,#f3f7ff,#f9fbff);
+    border:1px solid rgba(11,118,255,0.07);
+    flex-shrink:0;
+  }
+  .event__date .month{
+    display:block;
+    font-size:0.75rem;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:0.06em;
+  }
+  .event__date .day{
+    font-size:1.25rem;
+    font-weight:700;
+    margin-top:4px;
+  }
+  .event__date .weekday{
+    display:block;
+    font-size:0.70rem;
+    color:var(--muted);
+    margin-top:6px;
   }
 
-  .event-item:hover {
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px);
+  .event__main{
+    flex:1;
+    min-width:0;
+  }
+  .event__title{
+    margin:0;
+    font-size:1rem;
+    font-weight:600;
+    line-height:1.2;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .event__meta{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:0.88rem;
   }
 
-  .event-title {
-    font-size: 1.25rem;
-    font-weight: 500;
-    text-align: left;
+  .event__actions{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-left:12px;
+  }
+  .btn{
+    appearance:none;
+    border:0;
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+    font-size:0.95rem;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn--primary{
+    background:var(--accent);
+    color:var(--accent-contrast);
+    box-shadow: 0 6px 14px rgba(11,118,255,0.16);
+  }
+  .btn--ghost{
+    background:transparent;
+    color:var(--muted);
+    border:1px solid rgba(11,15,20,0.04);
+  }
+  .price{
+    font-weight:700;
+    font-size:0.95rem;
+    color:#0b1220;
   }
 
-  .event-date {
-    font-size: 1.1rem;
-    text-align: center;
-    color: #ccc;
+  /* Removed multi-column grid media queries */
+  .btn:focus{
+    outline:3px solid rgba(11,118,255,0.18);
+    outline-offset:2px;
   }
 
-  .btn-ticket {
-    padding: 0.6rem 1.4rem;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    background: transparent;
-    color: #fff;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .btn-ticket:hover {
-    background: #fff;
-    color: #000;
-  }
-
-  /* --- Responsive --- */
-  @media (max-width: 700px) {
-    .event-item {
-      grid-template-columns: 1fr auto;
-      grid-template-rows: auto auto;
-      gap: 0.5rem 1rem;
-      text-align: left;
-      padding: 1.2rem 1.4rem;
+  /* Responsive layout */
+  @media (max-width:600px){
+    body{
+      padding:16px;
+    }
+    .event{
+      flex-direction:column;
+      align-items:flex-start;
+      text-align:left;
+      padding:16px;
     }
 
-    .event-title {
-      grid-column: 1 / 2;
-      grid-row: 1 / 2;
-      font-size: 1.2rem;
-      text-align: left;
+    /* Hide date box on mobile */
+    .event__date{
+      display:none;
     }
 
-    .event-date {
-      grid-column: 1 / 2;
-      grid-row: 2 / 3;
-      text-align: left;
-      color: #aaa;
+    .event__main{
+      width:100%;
     }
-
-    .btn-ticket {
-      grid-column: 2 / 3;
-      grid-row: 1 / span 2;
-      align-self: center;
-      justify-self: end;
+    .event__actions{
+      flex-direction:row;
+      justify-content:space-between;
+      width:100%;
+      margin-left:0;
+      margin-top:8px;
+    }
+    .btn{
+      flex:1;
+      justify-content:center;
     }
   }
 </style>
 </head>
 <body>
-
-  <div class="events-wrapper">
-    <h1>World Tour</h1>
-
-    <div class="event-list">
-      <div class="event-item">
-        <div class="event-title">Tokyo, Japan</div>
-        <div class="event-date">Nov 2, 2025</div>
-        <button class="btn-ticket">Get Tickets</button>
+  <div class="wrap" role="main">
+    <header>
+      <div>
+        <h1>Upcoming events</h1>
+        <p>Clear, accessible list of events — tap a ticket to purchase.</p>
       </div>
+      <p class="muted" aria-hidden="true">Showing next 6</p>
+    </header>
 
-      <div class="event-item">
-        <div class="event-title">Berlin, Germany</div>
-        <div class="event-date">Dec 12, 2025</div>
-        <button class="btn-ticket">Get Tickets</button>
-      </div>
+    <section class="events" aria-label="List of events">
+      <!-- Event items (unchanged) -->
+      <article class="event" aria-labelledby="e1title">
+        <div class="event__date" aria-hidden="true">
+          <span class="month">NOV</span>
+          <span class="day">12</span>
+          <span class="weekday">Wed</span>
+        </div>
+        <div class="event__main">
+          <h3 id="e1title" class="event__title">Acoustic Evening with The Larks</h3>
+          <div class="event__meta">
+            <time datetime="2025-11-12">Nov 12, 2025 · 7:30 PM</time> · Grand Hall, City Center
+          </div>
+        </div>
+        <div class="event__actions">
+          <div class="price">€24</div>
+          <button class="btn btn--primary">Buy ticket</button>
+        </div>
+      </article>
 
-      <div class="event-item">
-        <div class="event-title">Sydney, Australia</div>
-        <div class="event-date">Jan 8, 2026</div>
-        <button class="btn-ticket">Get Tickets</button>
-      </div>
-    </div>
+      <article class="event" aria-labelledby="e2title">
+        <div class="event__date" aria-hidden="true">
+          <span class="month">DEC</span>
+          <span class="day">05</span>
+          <span class="weekday">Fri</span>
+        </div>
+        <div class="event__main">
+          <h3 id="e2title" class="event__title">Winter Jazz Night</h3>
+          <div class="event__meta">
+            <time datetime="2025-12-05">Dec 5, 2025 · 9:00 PM</time> · Blue Note Club
+          </div>
+        </div>
+        <div class="event__actions">
+          <div class="price">€18</div>
+          <button class="btn btn--primary">Buy ticket</button>
+        </div>
+      </article>
+
+      <article class="event" aria-labelledby="e3title">
+        <div class="event__date" aria-hidden="true">
+          <span class="month">JAN</span>
+          <span class="day">08</span>
+          <span class="weekday">Thu</span>
+        </div>
+        <div class="event__main">
+          <h3 id="e3title" class="event__title">Open-Air Indie Pop Festival</h3>
+          <div class="event__meta">
+            <time datetime="2026-01-08">Jan 8, 2026 · 3:00 PM</time> · Riverside Park
+          </div>
+        </div>
+        <div class="event__actions">
+          <div class="price">Free</div>
+          <button class="btn btn--ghost">Details</button>
+        </div>
+      </article>
+
+      <article class="event" aria-labelledby="e4title">
+        <div class="event__date" aria-hidden="true">
+          <span class="month">NOV</span>
+          <span class="day">20</span>
+          <span class="weekday">Thu</span>
+        </div>
+        <div class="event__main">
+          <h3 id="e4title" class="event__title">Modern Dance Showcase</h3>
+          <div class="event__meta">
+            <time datetime="2025-11-20">Nov 20, 2025 · 8:00 PM</time> · Theatre Royale
+          </div>
+        </div>
+        <div class="event__actions">
+          <div class="price">€30</div>
+          <button class="btn btn--primary">Buy ticket</button>
+        </div>
+      </article>
+
+      <article class="event" aria-labelledby="e5title">
+        <div class="event__date" aria-hidden="true">
+          <span class="month">NOV</span>
+          <span class="day">28</span>
+          <span class="weekday">Fri</span>
+        </div>
+        <div class="event__main">
+          <h3 id="e5title" class="event__title">Stand-up Comedy Night</h3>
+          <div class="event__meta">
+            <time datetime="2025-11-28">Nov 28, 2025 · 10:00 PM</time> · Laugh Factory
+          </div>
+        </div>
+        <div class="event__actions">
+          <div class="price">€15</div>
+          <button class="btn btn--primary">Buy ticket</button>
+        </div>
+      </article>
+
+      <article class="event" aria-labelledby="e6title">
+        <div class="event__date" aria-hidden="true">
+          <span class="month">DEC</span>
+          <span class="day">12</span>
+          <span class="weekday">Fri</span>
+        </div>
+        <div class="event__main">
+          <h3 id="e6title" class="event__title">Classical: Beethoven & Friends</h3>
+          <div class="event__meta">
+            <time datetime="2025-12-12">Dec 12, 2025 · 7:00 PM</time> · Symphony Hall
+          </div>
+        </div>
+        <div class="event__actions">
+          <div class="price">€35</div>
+          <button class="btn btn--primary">Buy ticket</button>
+        </div>
+      </article>
+    </section>
   </div>
-
 </body>
 </html>
