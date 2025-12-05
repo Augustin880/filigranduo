@@ -1,31 +1,229 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Filigran Duo - Violin & Piano</title>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/img/duo-about.jpg" type="image/svg+xml">
-    <style src="/style.css"></style>
-  </head>
-  <body>
-      <div id="navigation-placeholder"></div>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media Gallery - Filigran Duo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1754cf",
+              "background-light": "#f6f6f8",
+              "background-dark": "#111318",
+            },
+            fontFamily: {
+              "display": ["Noto Serif", "serif"],
+              "sans": ["Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+    </head>
+    <body class="font-sans bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200" style="background-color:#0c0a09 !important;">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
 
-      <img src="/img/duo-about.jpg" style="width: 50rem; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 12px; margin-top: 10rem;">
+<div id="navigation-placeholder"></div>
 
-      <div id="footer-placeholder"></div>
-  </body>
-  <script>
-    fetch("../components/navigation.html")
+</br>
+</br>
+
+<main class="flex flex-1 flex-col">
+<div class="w-full bg-gray-100 dark:bg-gray-900/50 pt-16 pb-12">
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col gap-3">
+<h1 class="font-display text-gray-900 dark:text-white text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em]">Media Gallery</h1>
+<p class="text-gray-500 dark:text-[#9da6b8] text-base sm:text-lg font-normal leading-normal max-w-2xl">A curated collection of our performances and moments.</p>
+</div>
+</div>
+</div>
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-col gap-8">
+<div class="flex">
+<div class="flex h-10 w-full sm:w-auto items-center justify-center rounded-lg bg-gray-200 dark:bg-[#292e38] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-gray-900 dark:has-[:checked]:text-white text-gray-500 dark:text-[#9da6b8] text-sm font-medium leading-normal transition-colors">
+<span class="truncate">All</span>
+<input checked="" class="invisible w-0" name="media-filter" type="radio" value="All"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-gray-900 dark:has-[:checked]:text-white text-gray-500 dark:text-[#9da6b8] text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Photos</span>
+<input class="invisible w-0" name="media-filter" type="radio" value="Photos"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-gray-900 dark:has-[:checked]:text-white text-gray-500 dark:text-[#9da6b8] text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Videos</span>
+<input class="invisible w-0" name="media-filter" type="radio" value="Videos"/>
+</label>
+</div>
+</div>
+<div id="gallery-grid" class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6"></div>
+
+<!-- Lightbox / modal -->
+<div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70" aria-hidden="true">
+  <div id="lightbox-overlay" class="absolute inset-0"></div>
+  <div class="relative max-w-[95vw] max-h-[95vh] mx-auto">
+    <button id="lightbox-close" class="absolute -top-3 -right-3 bg-white rounded-full p-2 shadow z-50" aria-label="Close">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] rounded-lg shadow-lg" />
+    <div id="lightbox-caption" class="mt-2 text-center text-sm text-white/90"></div>
+    <button id="lightbox-prev" class="absolute left-0 top-1/2 -translate-y-1/2 text-white p-3" aria-label="Previous">
+      <span class="material-symbols-outlined text-4xl">chevron_left</span>
+    </button>
+    <button id="lightbox-next" class="absolute right-0 top-1/2 -translate-y-1/2 text-white p-3" aria-label="Next">
+      <span class="material-symbols-outlined text-4xl">chevron_right</span>
+    </button>
+  </div>
+</div>
+
+</div>
+<script>
+  (function(){
+    const grid = document.getElementById('gallery-grid');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+
+    let currentItems = [];
+    let currentIndex = 0;
+
+    function renderList(manifest, filter){
+      grid.innerHTML = '';
+      const photos = (manifest.photos || []).map(p => ({type: 'photo', src: p}));
+      const videos = (manifest.videos || []).map(v => ({type: 'video', src: v}));
+      const all = photos.concat(videos);
+      const items = all.filter(m => filter === 'All' || (filter === 'Photos' && m.type === 'photo') || (filter === 'Videos' && m.type === 'video'));
+      if(items.length === 0){
+        grid.innerHTML = '<p class="text-gray-500">No media to display.</p>';
+        return;
+      }
+      for(let i=0; i<items.length; i++){
+        const m = items[i];
+        const div = document.createElement('div');
+        div.className = 'group relative bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-[3/4] overflow-hidden cursor-pointer';
+        div.style.backgroundImage = `url("${m.src}")`;
+        div.setAttribute('data-alt', m.alt || '');
+
+        const overlay = document.createElement('div');
+        overlay.className = 'absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors';
+        div.appendChild(overlay);
+
+        const p = document.createElement('p');
+        p.className = 'relative text-white text-base font-bold leading-tight w-full line-clamp-3 z-10';
+        p.textContent = m.title || '';
+        div.appendChild(p);
+
+        // open lightbox on click
+        div.addEventListener('click', () => openLightbox(i));
+
+        grid.appendChild(div);
+      }
+    }
+
+    function openLightbox(index){
+      currentIndex = index;
+      const item = currentItems[currentIndex];
+      if(!item) return;
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.title || '';
+      lightboxCaption.textContent = item.title || '';
+      lightbox.classList.remove('hidden');
+      lightbox.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(){
+      lightbox.classList.add('hidden');
+      lightbox.setAttribute('aria-hidden','true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    function showIndex(i){
+      if(i < 0) i = currentItems.length - 1;
+      if(i >= currentItems.length) i = 0;
+      currentIndex = i;
+      const item = currentItems[currentIndex];
+      lightboxImg.src = item.src;
+      lightboxCaption.textContent = item.title || '';
+    }
+
+    function loadAndRender(filter){
+      fetch('/data/gallery.json')
+        .then(r => r.json())
+        .then(manifest => {
+          const photos = (manifest.photos || []).map(p => ({type: 'photo', src: p, title: ''}));
+          const videos = (manifest.videos || []).map(v => ({type: 'video', src: v, title: ''}));
+          const all = photos.concat(videos);
+          currentItems = all.filter(m => filter === 'All' || (filter === 'Photos' && m.type === 'photo') || (filter === 'Videos' && m.type === 'video'));
+          renderList(manifest, filter);
+        })
+        .catch(err => {
+          console.error('Failed to load gallery manifest:', err);
+          grid.innerHTML = '<p class="text-red-500">Failed to load gallery.</p>';
+        });
+    }
+
+    document.querySelectorAll('input[name="media-filter"]').forEach(r => {
+      r.addEventListener('change', e => loadAndRender(e.target.value));
+    });
+
+    // initial render
+    loadAndRender('All');
+
+    // lightbox controls
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => showIndex(currentIndex - 1));
+    lightboxNext.addEventListener('click', () => showIndex(currentIndex + 1));
+    document.getElementById('lightbox-overlay').addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if(lightbox.classList.contains('hidden')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') showIndex(currentIndex - 1);
+      if(e.key === 'ArrowRight') showIndex(currentIndex + 1);
+    });
+  })();
+</script>
+</div>
+</div>
+</main>
+
+<div id="footer-placeholder"></div>
+
+</div>
+
+<script>
+  fetch("/components/navigation.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("navigation-placeholder").innerHTML = data;
       })
       .catch(err => console.error("Navigation load error:", err));
 
-    fetch("../components/footer.html")
+  fetch("/components/footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
       })
-      .catch(err => console.error("Navigation load error:", err));
-  </script>
-</html>
+      .catch(err => console.error("Footer load error:", err));
+</script>
+
+</body></html>
