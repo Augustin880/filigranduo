@@ -106,12 +106,8 @@
   padding: clamp(4rem, 8vw, 8rem) 0 0;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(
-      135deg,
-      var(--color-surface) 0%,
-      color-mix(in srgb, var(--color-primary) 5%, var(--color-surface)) 50%,
-      color-mix(in srgb, var(--color-secondary) 8%, var(--color-surface)) 100%
-    );
+  background-color: inherit !important;
+  /* If you want a fixed color for all pages, use: background-color: #0c0a09 !important; */
 }
 
 .footer-wave-overlay{

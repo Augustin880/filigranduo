@@ -85,55 +85,52 @@
         </div>
         <div class="navigation-container6">
           <div class="navigation-container7">
-            <script defer="" data-name="navigation">
+            <script defer data-name="navigation">
               (function(){
-                const navigationToggle = document.getElementById('navigation-toggle-btn')
-                const navigationMobileMenu = document.getElementById('navigation-mobile-menu')
-                const navigationMobileLinks = navigationMobileMenu.querySelectorAll(
-                  '.navigation-mobile-link'
-                )
-                const navigationMobileBackdrop = navigationMobileMenu.querySelector(
-                  '.navigation-mobile-backdrop'
-                )
+                var navigationToggle = document.getElementById('navigation-toggle-btn');
+                var navigationMobileMenu = document.getElementById('navigation-mobile-menu');
+                var navigationMobileBackdrop = navigationMobileMenu.querySelector('.navigation-mobile-backdrop');
+                var navigationMobileLinks = navigationMobileMenu.querySelectorAll('.navigation-mobile-link');
 
                 function openMobileMenu() {
-                  navigationMobileMenu.classList.add('navigation-active')
-                  navigationToggle.setAttribute('aria-expanded', 'true')
-                  document.body.style.overflow = 'hidden'
+                  navigationMobileMenu.classList.add('navigation-active');
+                  navigationMobileMenu.style.opacity = '1';
+                  navigationMobileMenu.style.pointerEvents = 'auto';
+                  navigationToggle.setAttribute('aria-expanded', 'true');
+                  document.body.style.overflow = 'hidden';
                 }
 
                 function closeMobileMenu() {
-                  navigationMobileMenu.classList.remove('navigation-active')
-                  navigationToggle.setAttribute('aria-expanded', 'false')
-                  document.body.style.overflow = ''
+                  navigationMobileMenu.classList.remove('navigation-active');
+                  navigationMobileMenu.style.opacity = '0';
+                  navigationMobileMenu.style.pointerEvents = 'none';
+                  navigationToggle.setAttribute('aria-expanded', 'false');
+                  document.body.style.overflow = '';
                 }
 
-                navigationToggle.addEventListener('click', () => {
-                  const isExpanded = navigationToggle.getAttribute('aria-expanded') === 'true'
-                  if (isExpanded) {
-                    closeMobileMenu()
-                  } else {
-                    openMobileMenu()
+                navigationToggle.addEventListener('click', function(){
+                  var isExpanded = navigationToggle.getAttribute('aria-expanded') === 'true';
+                  if(isExpanded){
+                    closeMobileMenu();
+                  }else{
+                    openMobileMenu();
                   }
-                })
+                });
 
-                navigationMobileBackdrop.addEventListener('click', closeMobileMenu)
+                navigationMobileBackdrop.addEventListener('click', closeMobileMenu);
+                navigationMobileLinks.forEach(function(link){
+                  link.addEventListener('click', closeMobileMenu);
+                });
 
-                navigationMobileLinks.forEach((link) => {
-                  link.addEventListener('click', () => {
-                    closeMobileMenu()
-                  })
-                })
-
-                document.addEventListener('keydown', (e) => {
-                  if (
-                    e.key === 'Escape' &&
-                    navigationToggle.getAttribute('aria-expanded') === 'true'
-                  ) {
-                    closeMobileMenu()
+                document.addEventListener('keydown', function(e){
+                  if(e.key === 'Escape' && navigationToggle.getAttribute('aria-expanded') === 'true'){
+                    closeMobileMenu();
                   }
-                })
-              })()
+                });
+
+                // Ensure menu is hidden on load
+                closeMobileMenu();
+              })();
             </script>
           </div>
         </div>
@@ -169,33 +166,33 @@
             </a>
             <ul role="list" class="navigation-menu">
               <li class="navigation-menu-item">
-                <a href="/#upcoming">
+                <a href="/">
                   <div class="navigation-menu-link">
-                    <span class="navigation-link-text">Performances</span>
+                    <span class="navigation-link-text">Home</span>
                     <span class="navigation-link-underline"></span>
                   </div>
                 </a>
               </li>
               <li class="navigation-menu-item">
-                <a href="/gallery">
+                <a href="/about/">
+                  <div class="navigation-menu-link">
+                    <span class="navigation-link-text">About</span>
+                    <span class="navigation-link-underline"></span>
+                  </div>
+                </a>
+              </li>
+              <li class="navigation-menu-item">
+                <a href="/events/">
+                  <div class="navigation-menu-link">
+                    <span class="navigation-link-text">Events</span>
+                    <span class="navigation-link-underline"></span>
+                  </div>
+                </a>
+              </li>
+              <li class="navigation-menu-item">
+                <a href="/gallery/">
                   <div class="navigation-menu-link">
                     <span class="navigation-link-text">Gallery</span>
-                    <span class="navigation-link-underline"></span>
-                  </div>
-                </a>
-              </li>
-              <li class="navigation-menu-item">
-                <a href="/#about">
-                  <div class="navigation-menu-link">
-                    <span class="navigation-link-text">About Us</span>
-                    <span class="navigation-link-underline"></span>
-                  </div>
-                </a>
-              </li>
-              <li class="navigation-menu-item">
-                <a href="/#contact">
-                  <div class="navigation-menu-link">
-                    <span class="navigation-link-text">Contact</span>
                     <span class="navigation-link-underline"></span>
                   </div>
                 </a>
@@ -207,86 +204,59 @@
               aria-expanded="false"
               aria-controls="navigation-mobile-menu"
               class="navigation-toggle"
+              style="display: none;"
             >
-              <span
-                class="navigation-navigation-toggle-icon1 navigation-toggle-open"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 5h16M4 12h16M4 19h16"
-                  ></path>
+              <span class="navigation-toggle-open">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16"></path>
                 </svg>
               </span>
-              <span class="navigation-navigation-toggle-icon2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M14.5 9.5l-5 5m0-5l5 5"
-                  ></path>
+              <span class="navigation-toggle-close" style="opacity:0;position:absolute;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.5 9.5l-5 5m0-5l5 5"></path>
                 </svg>
               </span>
             </button>
+            <style>
+              @media (max-width: 991px) {
+                #navigation-toggle-btn { display: flex !important; }
+              }
+              @media (min-width: 992px) {
+                #navigation-toggle-btn { display: none !important; }
+              }
+            </style>
           </div>
           <div id="navigation-mobile-menu" class="navigation-mobile-overlay">
             <div class="navigation-mobile-backdrop"></div>
             <div class="navigation-mobile-content">
               <ul role="list" class="navigation-mobile-list">
-                <li
-                  class="navigation-navigation-mobile-item1 navigation-mobile-item"
-                >
-                  <a href="#performances">
+                <li class="navigation-navigation-mobile-item1 navigation-mobile-item">
+                  <a href="/events/">
                     <div class="navigation-mobile-link">
                       <span class="navigation-mobile-number">01</span>
-                      <span class="navigation-mobile-text">Performances</span>
+                      <span class="navigation-mobile-text">Events</span>
                     </div>
                   </a>
                 </li>
-                <li
-                  class="navigation-navigation-mobile-item2 navigation-mobile-item"
-                >
-                  <a href="#gallery">
+                <li class="navigation-navigation-mobile-item2 navigation-mobile-item">
+                  <a href="/gallery/">
                     <div class="navigation-mobile-link">
                       <span class="navigation-mobile-number">02</span>
                       <span class="navigation-mobile-text">Gallery</span>
                     </div>
                   </a>
                 </li>
-                <li
-                  class="navigation-navigation-mobile-item3 navigation-mobile-item"
-                >
-                  <a href="#about">
+                <li class="navigation-navigation-mobile-item3 navigation-mobile-item">
+                  <a href="/about/">
                     <div class="navigation-mobile-link">
                       <span class="navigation-mobile-number">03</span>
                       <span class="navigation-mobile-text">About Us</span>
                     </div>
                   </a>
                 </li>
-                <li
-                  class="navigation-navigation-mobile-item4 navigation-mobile-item"
-                >
-                  <a href="#contact">
-                    <div
-                      class="navigation-mobile-link navigation-mobile-link-accent"
-                    >
+                <li class="navigation-navigation-mobile-item4 navigation-mobile-item">
+                  <a href="/contact/">
+                    <div class="navigation-mobile-link navigation-mobile-link-accent">
                       <span class="navigation-mobile-number">04</span>
                       <span class="navigation-mobile-text">Contact</span>
                     </div>

@@ -1,128 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    
-    <meta charset="utf-8" />
-    <title>Filigran Duo - Violin & Piano</title>
-    <meta name="description" content="A captivating violin and piano duo offering performances of classical elegance and emotional depth.">
-    <link rel="icon" href="/img/duo-about.jpg" type="image/svg+xml">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-  </head>
-  <body>
-    <link rel="stylesheet" href="./style.css" />
-    <div>
-      <div class="home-container10">
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Filigran Duo - Home Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#c084fc",
+              "background-light": "#f6f6f8",
+              "background-dark": "#0c0a09",
+            },
+            fontFamily: {
+              "display": ["Noto Serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-neutral-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
 
-        <!-- NAVIGATION -->
-        <div id="navigation-placeholder"></div>
+<div id="navigation-placeholder"></div>
 
-        <div class="home-container11">
-          <div class="home-container12">
-            <style>
-                      @keyframes revealMedia {to {opacity: 1;
-              transform: translate(0, 0) rotate(0deg) scale(1);}}@keyframes floatGlyph {0%,100% {transform: translateY(0) rotate(0deg);}
-              50% {transform: translateY(-20px) rotate(5deg);}}@keyframes revealCard {to {opacity: 1;
-              transform: translateY(0);}}@keyframes rotateBadge {from {transform: rotate(0deg);}
-              to {transform: rotate(360deg);}}@keyframes morphMask {0%,100% {clip-path: ellipse(48% 50% at 50% 50%);}
-              50% {clip-path: ellipse(50% 48% at 50% 50%);}}@keyframes revealGalleryItem {to {opacity: 1;
-              transform: scale(1);}}@keyframes pulsePlay {0%,100% {transform: translate(-50%, -50%) scale(1);}
-              50% {transform: translate(-50%, -50%) scale(1.05);}}
-            </style>
-          </div>
-        </div>
+<main class="flex-grow">
+<!-- Full-bleed hero image -->
+<div class="w-full min-h-[520px] flex items-center justify-center bg-cover bg-center bg-no-repeat relative" style='background-image: linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%), url("/img/main.jpeg");'>
+  <div class="absolute inset-0 bg-black/30"></div>
+  <div class="relative z-10 w-full max-w-3xl mx-auto flex flex-col gap-2 text-center py-16">
+    <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl md:font-black md:leading-tight md:tracking-[-0.033em]">
+      Filigran Duo
+    </h1>
+  </div>
+</div>
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+<section class="py-10">
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About the Duo</h2>
+<p class="text-neutral-400 text-base font-normal leading-normal pb-3 pt-1 px-4">
+                                Filigran Duo brings together the rich, emotive voice of the violin and the profound, expressive power of the piano. Formed by two virtuosos with a shared passion for chamber music, their performances are celebrated for their technical brilliance and deep emotional connection. This section shares their story and passion for creating beautiful music together, connecting with the audience on a personal level.
+                            </p>
+</div>
+<div class="flex-1 w-full p-4">
+<div class="w-full gap-1 overflow-hidden bg-background-dark/50 @[480px]:gap-2 aspect-[4/3] rounded-lg flex">
+<div class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1" data-alt="A professional portrait of the two musicians, smiling warmly." style='background-image: url("/img/duo-about.jpg");'></div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-10">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-5 pt-5 text-center">Upcoming Performances</h2>
+<div id="performances-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+  <!-- Performances will be loaded from /data/performances.json -->
+</div>
+</section>
+<section class="py-10">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-5 pt-5 text-center">Listen</h2>
+<div class="px-4">
+<div class="bg-neutral-900 border border-neutral-800 rounded-lg p-6">
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="" frameborder="0" height="352" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1s9knjP51Oa?utm_source=generator&amp;theme=0" style="border-radius:12px" width="100%"></iframe>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
 
-        <!-- HERO SECTION -->
-        <section id="hero-section" class="hero-section">
-          <div class="hero-overlay">
-            <h1 class="hero-title">Filigran Duo</h1>
-            <p class="hero-desc">Violin & Piano</p>
-          </div>
-        </section>
+<div id="footer-placeholder"></div>
 
-        <!-- UPCOMMING PERFORMANCES -->
-        <section id="upcoming" class="events-wrapper-1">
-          <div class="inner-wrapper-1">
-            <div aria-hidden="true" class="footer-wave-overlay"></div>
-            <div aria-hidden="true" class="footer-wave-secondary"></div>
+</div>
 
-            <div class="upcoming-container">
-              <h2 class="section-title">Upcoming Performances</h2>
-              <p class="section-subtitle">
-                Checkout our upcoming performances and come see us on stage sharing music, feelings, and love.
-              </p>
-              <div class="event-list-1" id="performances-grid"> <!-- JS populated --> </div>
-              <!-- can use paragraph here with class performance-note for a note below performances -->
-            </div>
-          </div>
-        <br>
-        <br>
-        </section>
-      
-        <!-- FOOTER -->
-        <section id="contact"></section>
-        <div id="footer-placeholder"></div>
-      </div>
-    </div>
-    
-    <script>
-      fetch("components/navigation.html")
+<script>
+  fetch("/components/navigation.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("navigation-placeholder").innerHTML = data;
       })
       .catch(err => console.error("Navigation load error:", err));
 
-      fetch("../components/footer.html")
+  fetch("/components/footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
       })
       .catch(err => console.error("Footer load error:", err));
+</script>
 
-      fetch('/data/performances.json')
-      .then(response => response.json())
-      .then(data => {
-        const grid = document.getElementById('performances-grid');
+<script>
+// Load performances.json and render into #performances-list
+(function(){
+  function esc(s){ return String(s===undefined||s===null? '': s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
-        data.performances.forEach(perf => {
-          const card = document.createElement('article');
-          card.classList.add('play-card');
+  function parseDate(s){
+    if(!s) return null;
+    const m = String(s).match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
+    if(!m) return null;
+    const day = parseInt(m[1],10);
+    const monthName = m[2].toLowerCase();
+    const year = parseInt(m[3],10);
+    const months = {
+      jan:0, january:0, feb:1, february:1, mar:2, march:2, apr:3, april:3,
+      may:4, jun:5, june:5, jul:6, july:6, aug:7, august:7, sep:8, sept:8, september:8,
+      oct:9, october:9, nov:10, november:10, dec:11, december:11
+    };
+    const key = monthName.slice(0,3);
+    const mi = months[monthName]!==undefined ? months[monthName] : months[key];
+    if(mi===undefined) return null;
+    return new Date(year, mi, day);
+  }
 
-          card.innerHTML = `
-            <div class="event-item-1">
-              <div class="event-title-1">${perf.title}</div>
-              <div class="event-date-1">${perf.date}</div>
-              <a href="${perf.link}" target="_blank"><button class="btn-ticket-1">Get Tickets</button></a>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
-      })
-      .catch(err => console.error("Error loading performances:", err));
-    </script>
-  </body>
-</html>
+  async function loadPerformances(){
+    try{
+      const res = await fetch('/data/performances.json', {cache: 'no-cache'});
+      if(!res.ok) throw new Error('Network response not ok');
+      const json = await res.json();
+      let list = (json && json.performances) || [];
+      const container = document.getElementById('performances-list');
+      if(!container) return;
+      if(list.length === 0){
+        container.innerHTML = '<p class="text-center text-gray-400">No performances found.</p>';
+        return;
+      }
+
+      // parse and sort
+      const enhanced = list.map(p => ({...p, parsedDate: parseDate(p.date)})).sort((a,b)=>{
+        const ta = a.parsedDate ? a.parsedDate.getTime() : Infinity;
+        const tb = b.parsedDate ? b.parsedDate.getTime() : Infinity;
+        return ta - tb;
+      });
+
+      const today = new Date(); today.setHours(0,0,0,0);
+      // upcoming: parsedDate >= today OR unparseable (keep visible)
+      const upcoming = enhanced.filter(e => !e.parsedDate || e.parsedDate.getTime() >= today.getTime());
+
+      if(upcoming.length === 0){
+        container.innerHTML = '<p class="text-center text-gray-400">No upcoming performances.</p>';
+        return;
+      }
+
+      container.innerHTML = upcoming.map(p => {
+        const title = esc(p.title);
+        const date = esc(p.date || '');
+        const desc = esc(p.description || '');
+        const link = p.link ? esc(p.link) : '#';
+        return `\n<div class="bg-neutral-900 border border-neutral-800 rounded-lg overflow-hidden flex flex-col">\n  <div class="p-6 flex-grow">\n    <h3 class="text-lg font-bold text-white mb-1">${title}</h3>\n    <p class="text-primary text-sm font-semibold mb-3">${date}</p>\n    <p class="text-neutral-400 text-sm">${desc}</p>\n  </div>\n  <a href="${link}" target="_blank" rel="noopener" class="w-full bg-primary/20 text-white py-3 text-sm font-bold hover:bg-primary/40 transition-colors text-center">Details</a>\n</div>`;
+      }).join('\n');
+    }catch(err){
+      console.error('Error loading performances:', err);
+    }
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadPerformances);
+  else loadPerformances();
+})();
+</script>
+
+</body></html>
