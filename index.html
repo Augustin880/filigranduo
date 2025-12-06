@@ -8,171 +8,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
         .material-symbols-outlined {
-            font-variation-settings:
-            'FILL' 0,
+            font-variation-settings: 'FILL' 0,
             'wght' 400,
             'GRAD' 0,
             'opsz' 24
         }
+        /* Responsive hero background images */
+        #hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("/img/main2.jpeg");
+        }
+        @media (min-width: 768px) {
+            #hero-section {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("/img/main.jpeg");
+            }
+        }
     </style>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#c084fc",
-              "background-light": "#f6f6f8",
-              "background-dark": "#0c0a09",
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c084fc",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0c0a09",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
             },
-            fontFamily: {
-              "display": ["Noto Serif"]
-            },
-            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
-          },
-        },
-      }
+        }
     </script>
 </head>
 <body class="bg-background-dark font-display text-neutral-200">
-<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="relative flex h-screen w-full flex-col overflow-x-hidden">
 
-<div id="navigation-placeholder"></div>
-
-<main class="flex-grow">
-<!-- Full-bleed hero image -->
-<div class="w-full min-h-[520px] flex items-center justify-center bg-cover bg-center bg-no-repeat relative" style='background-image: linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%), url("/img/main.jpeg");'>
-  <div class="absolute inset-0 bg-black/30"></div>
-  <div class="relative z-10 w-full max-w-3xl mx-auto flex flex-col gap-2 text-center py-16">
-    <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl md:font-black md:leading-tight md:tracking-[-0.033em]">
-      Filigran Duo
-    </h1>
-  </div>
-</div>
-<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
-<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
-<section class="py-10">
-<div class="flex flex-col md:flex-row gap-8 items-center">
-<div class="flex-1">
-<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About the Duo</h2>
-<p class="text-neutral-400 text-base font-normal leading-normal pb-3 pt-1 px-4">
-                                Filigran Duo brings together the rich, emotive voice of the violin and the profound, expressive power of the piano. Formed by two virtuosos with a shared passion for chamber music, their performances are celebrated for their technical brilliance and deep emotional connection. This section shares their story and passion for creating beautiful music together, connecting with the audience on a personal level.
-                            </p>
-</div>
-<div class="flex-1 w-full p-4">
-<div class="w-full gap-1 overflow-hidden bg-background-dark/50 @[480px]:gap-2 aspect-[4/3] rounded-lg flex">
-<div class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1" data-alt="A professional portrait of the two musicians, smiling warmly." style='background-image: url("/img/duo-about.jpg");'></div>
-</div>
-</div>
-</div>
-</section>
-<section class="py-10">
-<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-5 pt-5 text-center">Upcoming Performances</h2>
-<div id="performances-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-  <!-- Performances will be loaded from /data/performances.json -->
-</div>
-</section>
-<section class="py-10">
-<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-5 pt-5 text-center">Listen</h2>
-<div class="px-4">
-<div class="bg-neutral-900 border border-neutral-800 rounded-lg p-6">
-<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="" frameborder="0" height="352" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1s9knjP51Oa?utm_source=generator&amp;theme=0" style="border-radius:12px" width="100%"></iframe>
-</div>
-</div>
-</section>
+<main class="flex-grow flex flex-col">
+<div id="hero-section" class="flex-grow w-full flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat" data-alt="A dramatic, high-quality black and white photo of the Filigran Duo performing on stage, one playing violin and the other playing piano.">
+<div class="text-center">
+<h1 class="text-white text-5xl md:text-7xl font-black tracking-tighter mb-8">Filigran Duo</h1>
+<nav class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="w-48 text-center text-lg font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-6 py-3 transition-colors duration-300 backdrop-blur-sm" href="/events">Performances</a>
+<a class="w-48 text-center text-lg font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-6 py-3 transition-colors duration-300 backdrop-blur-sm" href="/about">About Us</a>
+<a class="w-48 text-center text-lg font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-6 py-3 transition-colors duration-300 backdrop-blur-sm" href="/gallery">Media Gallery</a>
+</nav>
 </div>
 </div>
 </main>
 
-<div id="footer-placeholder"></div>
-
 </div>
 
-<script>
-  fetch("/components/navigation.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navigation-placeholder").innerHTML = data;
-      })
-      .catch(err => console.error("Navigation load error:", err));
 
-  fetch("/components/footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      })
-      .catch(err => console.error("Footer load error:", err));
-</script>
-
-<script>
-// Load performances.json and render into #performances-list
-(function(){
-  function esc(s){ return String(s===undefined||s===null? '': s)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-
-  function parseDate(s){
-    if(!s) return null;
-    const m = String(s).match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
-    if(!m) return null;
-    const day = parseInt(m[1],10);
-    const monthName = m[2].toLowerCase();
-    const year = parseInt(m[3],10);
-    const months = {
-      jan:0, january:0, feb:1, february:1, mar:2, march:2, apr:3, april:3,
-      may:4, jun:5, june:5, jul:6, july:6, aug:7, august:7, sep:8, sept:8, september:8,
-      oct:9, october:9, nov:10, november:10, dec:11, december:11
-    };
-    const key = monthName.slice(0,3);
-    const mi = months[monthName]!==undefined ? months[monthName] : months[key];
-    if(mi===undefined) return null;
-    return new Date(year, mi, day);
-  }
-
-  async function loadPerformances(){
-    try{
-      const res = await fetch('/data/performances.json', {cache: 'no-cache'});
-      if(!res.ok) throw new Error('Network response not ok');
-      const json = await res.json();
-      let list = (json && json.performances) || [];
-      const container = document.getElementById('performances-list');
-      if(!container) return;
-      if(list.length === 0){
-        container.innerHTML = '<p class="text-center text-gray-400">No performances found.</p>';
-        return;
-      }
-
-      // parse and sort
-      const enhanced = list.map(p => ({...p, parsedDate: parseDate(p.date)})).sort((a,b)=>{
-        const ta = a.parsedDate ? a.parsedDate.getTime() : Infinity;
-        const tb = b.parsedDate ? b.parsedDate.getTime() : Infinity;
-        return ta - tb;
-      });
-
-      const today = new Date(); today.setHours(0,0,0,0);
-      // upcoming: parsedDate >= today OR unparseable (keep visible)
-      const upcoming = enhanced.filter(e => !e.parsedDate || e.parsedDate.getTime() >= today.getTime());
-
-      if(upcoming.length === 0){
-        container.innerHTML = '<p class="text-center text-gray-400">No upcoming performances.</p>';
-        return;
-      }
-
-      container.innerHTML = upcoming.map(p => {
-        const title = esc(p.title);
-        const date = esc(p.date || '');
-        const desc = esc(p.description || '');
-        const link = p.link ? esc(p.link) : '#';
-        return `\n<div class="bg-neutral-900 border border-neutral-800 rounded-lg overflow-hidden flex flex-col">\n  <div class="p-6 flex-grow">\n    <h3 class="text-lg font-bold text-white mb-1">${title}</h3>\n    <p class="text-primary text-sm font-semibold mb-3">${date}</p>\n    <p class="text-neutral-400 text-sm">${desc}</p>\n  </div>\n  <a href="${link}" target="_blank" rel="noopener" class="w-full bg-primary/20 text-white py-3 text-sm font-bold hover:bg-primary/40 transition-colors text-center">Details</a>\n</div>`;
-      }).join('\n');
-    }catch(err){
-      console.error('Error loading performances:', err);
-    }
-  }
-
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadPerformances);
-  else loadPerformances();
-})();
-</script>
 
 </body></html>
