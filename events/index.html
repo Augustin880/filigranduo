@@ -1,239 +1,227 @@
 <!DOCTYPE html>
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Filigran Duo - Events</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "primary": "#1754cf",
-            "background-light": "#f6f6f8",
-            "background-dark": "#111318",
-          },
-          fontFamily: {
-            "display": ["Noto Serif", "serif"],
-            "sans": ["Noto Sans", "sans-serif"]
-          },
-          borderRadius: {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
-            "full": "9999px"
-          },
-        },
-      },
-    }
-  </script>
-    <style>
-        body {
-          font-family: 'Noto Sans', sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-          font-family: 'Noto Serif', serif;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Events</title>
 
-        /* Events hero: use mobile-friendly image on small screens */
-        #events-hero {
-          background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("/img/media3.png");
-          background-size: cover;
-          background-position: center;
-        }
-        @media (max-width: 767px) {
-          #events-hero {
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("/img/media3b.png");
-          }
-        }
-      </style>
-  </head>
-  <body class="bg-background-light dark:bg-background-dark" style="background-color:#0c0a09 !important;">
-<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#1754cf",
+        "background-light": "#f6f6f8",
+        "background-dark": "#111318",
+      },
+      fontFamily: {
+        display: ["Noto Serif", "serif"],
+        sans: ["Noto Sans", "sans-serif"],
+      },
+    },
+  },
+}
+</script>
+
+<style>
+body { font-family: 'Noto Sans', sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Noto Serif', serif; }
+
+#events-hero {
+  background-image:
+    linear-gradient(0deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 25%),
+    url("/img/media3.png");
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 767px) {
+  #events-hero {
+    background-image:
+      linear-gradient(0deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 25%),
+      url("/img/media3b.png");
+  }
+}
+</style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark">
+
+<div class="relative min-h-screen flex flex-col overflow-x-hidden">
 
 <div id="navigation-placeholder"></div>
 
-<main class="w-full">
-<div id="events-hero" class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-[#111318] min-h-[520px]" data-alt="An elegant, professional photograph of the Filigran Duo, a violinist and a pianist, on stage.">
-<div class="px-4 sm:px-8 md:px-20 lg:px-40 py-6">
-<p class="text-white tracking-light text-4xl sm:text-5xl md:text-6xl font-bold leading-tight font-display">Upcoming Performances</p>
-</div>
-</div>
-<div class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
-<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-<div class="flex px-4 py-3 mt-4">
-<div class="flex h-10 flex-1 items-center justify-center rounded-lg bg-[#e0e0e0] dark:bg-[#292e38] p-1">
-<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-background-light has-[:checked]:dark:bg-background-dark has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-black dark:has-[:checked]:text-white text-[#6b7280] dark:text-[#9da6b8] text-sm font-medium leading-normal">
-<span class="truncate">Upcoming Events</span>
-<input checked="" class="invisible w-0" name="event_toggle" type="radio" value="Upcoming Events"/>
-</label>
-<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-background-light has-[:checked]:dark:bg-background-dark has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-black dark:has-[:checked]:text-white text-[#6b7280] dark:text-[#9da6b8] text-sm font-medium leading-normal">
-<span class="truncate">Past Events</span>
-<input class="invisible w-0" name="event_toggle" type="radio" value="Past Events"/>
-</label>
-</div>
-</div>
-<div id="events-list">
-  <!-- Events will be populated from /data/performances.json -->
-</div>
-</div>
-</div>
+<main class="flex-1">
+
+  <!-- HERO -->
+  <div id="events-hero" class="flex justify-end flex-col min-h-[520px]">
+    <div class="px-4 sm:px-8 md:px-20 lg:px-40 py-6">
+      <p class="text-white text-4xl sm:text-5xl md:text-6xl font-bold font-display">
+        Performances
+      </p>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="px-4 sm:px-8 md:px-20 lg:px-40 py-10 flex justify-center">
+    <div class="max-w-[960px] w-full">
+
+      <!-- TOGGLE -->
+      <div class="flex px-4 py-3 mb-6">
+        <div class="flex h-10 w-full rounded-lg bg-[#e0e0e0] dark:bg-[#292e38] p-1">
+          <label class="flex-1 flex items-center justify-center cursor-pointer rounded-lg
+            has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark
+            has-[:checked]:shadow text-sm font-medium text-[#6b7280] dark:text-[#9da6b8]">
+            <span>Upcoming Events</span>
+            <input checked class="hidden" type="radio" name="event_toggle" value="upcoming">
+          </label>
+          <label class="flex-1 flex items-center justify-center cursor-pointer rounded-lg
+            has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark
+            has-[:checked]:shadow text-sm font-medium text-[#6b7280] dark:text-[#9da6b8]">
+            <span>Past Events</span>
+            <input class="hidden" type="radio" name="event_toggle" value="past">
+          </label>
+        </div>
+      </div>
+
+      <!-- EVENTS -->
+      <div id="events-list" class="flex flex-col gap-6"></div>
+
+    </div>
+  </div>
+
+</main>
 
 <div id="footer-placeholder"></div>
-
-</main></div>
 </div>
 
 <script>
-  fetch("/components/navigation.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navigation-placeholder").innerHTML = data;
-      })
-      .catch(err => console.error("Navigation load error:", err));
+fetch("/components/navigation.html")
+  .then(r => r.text())
+  .then(t => document.getElementById("navigation-placeholder").innerHTML = t);
 
-  fetch("/components/footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      })
-      .catch(err => console.error("Footer load error:", err));
+fetch("/components/footer.html")
+  .then(r => r.text())
+  .then(t => document.getElementById("footer-placeholder").innerHTML = t);
 </script>
 
 <script>
-// Load performances.json, sort by date, split into upcoming/past, and wire toggles
 (function(){
-  function esc(s){ return String(s===undefined||s===null? '': s)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+  const esc = s => String(s||"").replace(/[&<>'"]/g,c=>(
+    {"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]
+  ));
 
-  function parseDate(s){
-    if(!s) return null;
-    // Expect formats like: "Sun 12 October 2025" or "12 October 2025"
+  const parseDate = s => {
     const m = String(s).match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
-    if(!m) return null;
-    const day = parseInt(m[1],10);
-    const monthName = m[2].toLowerCase();
-    const year = parseInt(m[3],10);
-    const months = {
-      jan:0, january:0, feb:1, february:1, mar:2, march:2, apr:3, april:3,
-      may:4, jun:5, june:5, jul:6, july:6, aug:7, august:7, sep:8, sept:8, september:8,
-      oct:9, october:9, nov:10, november:10, dec:11, december:11
-    };
-    const key = monthName.slice(0,3);
-    const mi = months[monthName]!==undefined ? months[monthName] : months[key];
-    if(mi===undefined) return null;
-    // Create date at local midnight
-    return new Date(year, mi, day);
-  }
+    return m ? new Date(`${m[2]} ${m[1]} ${m[3]}`) : null;
+  };
 
-  async function loadEvents(){
-    try{
-      const res = await fetch('/data/performances.json', {cache: 'no-cache'});
-      if(!res.ok) throw new Error('Network response not ok');
-      const json = await res.json();
-      let list = (json && json.performances) || [];
-      const container = document.getElementById('events-list');
-      if(!container) return;
-      if(list.length === 0){
-        container.innerHTML = '<p class="text-center text-gray-400">No events found.</p>';
+  async function load(){
+    const res = await fetch("/data/performances.json",{cache:"no-cache"});
+    const data = await res.json();
+    const list = data.performances || [];
+
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    const enriched = list.map(e=>({...e, d:parseDate(e.date)}));
+    const upcoming = enriched.filter(e=>!e.d || e.d>=today);
+    const past = enriched.filter(e=>e.d && e.d<today).reverse();
+
+    const container = document.getElementById("events-list");
+
+    function render(items, isPast){
+      if(!items.length){
+        container.innerHTML =
+          `<p class="text-center text-gray-400">No events.</p>`;
         return;
       }
 
-      // Enhance items with parsed date and sort
-      const enhanced = list.map(p => {
-        const parsed = parseDate(p.date);
-        return Object.assign({}, p, { parsedDate: parsed });
-      }).sort((a,b) => {
-        const ta = a.parsedDate ? a.parsedDate.getTime() : Infinity;
-        const tb = b.parsedDate ? b.parsedDate.getTime() : Infinity;
-        return ta - tb;
-      });
+      container.innerHTML = items.map(p=>`
+<div class="bg-white dark:bg-[#1C1F26] rounded-xl shadow-md p-6 ${isPast?'opacity-60':''}">
+  <div class="flex flex-col md:flex-row gap-6">
 
-      const today = new Date(); today.setHours(0,0,0,0);
+    <!-- TEXT COLUMN -->
+    <div class="flex-1 flex flex-col justify-between gap-4">
 
-      const upcoming = enhanced.filter(e => !e.parsedDate || e.parsedDate.getTime() >= today.getTime());
-      const past = enhanced.filter(e => e.parsedDate && e.parsedDate.getTime() < today.getTime()).reverse();
+      <div class="flex flex-col gap-3">
 
-      function renderList(items){
-        if(items.length === 0){
-          container.innerHTML = '<p class="text-center text-gray-400">No events in this list.</p>';
-          return;
-        }
-        container.innerHTML = items.map(p => {
-          const title = esc(p.title);
-          const date = esc(p.date || '');
-          const desc = esc(p.description || '');
-          const link = p.link ? esc(p.link) : '#';
-          const image = p.image ? esc(p.image) : '';
-          const imageUrl = image ? `style="background-image: url('${image}')"` : '';
+        <!-- DATE + STATUS -->
+        <div class="flex items-center gap-3">
+          <p class="text-sm text-[#6b7280] dark:text-[#9da6b8]">${esc(p.date)}</p>
+          ${isPast ? `
+          <span class="text-xs uppercase tracking-wide px-2 py-1 rounded-full
+                       bg-[#e0e0e0] dark:bg-[#292e38]
+                       text-[#6b7280] dark:text-[#9da6b8]">
+            Past
+          </span>` : ``}
+        </div>
 
-          // Use a single-row layout so the Details button sits on the right edge of the box.
-          if(image){
-            // Keep image on the right for md+; on small screens image is hidden but button remains on the right
-            return `
-<div class="p-4 border-b border-[#e0e0e0] dark:border-[#292e38]">
-  <div class="flex flex-col md:flex-row gap-4 justify-between rounded-lg">
+        <!-- TITLE -->
+        <p class="text-lg font-bold font-display text-black dark:text-white">
+          ${esc(p.title)}
+        </p>
 
-    <!-- LEFT: text + button -->
-    <div class="flex-1 min-w-0 flex flex-col gap-4">
-      <div class="flex flex-col gap-1">
-        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm">${date}</p>
-        <p class="text-black dark:text-white text-base font-bold font-display">${title}</p>
-        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm">${desc}</p>
+        <!-- VENUE -->
+        ${p.venue ? `
+        <p class="text-sm font-medium text-black dark:text-white">
+          ${esc(p.venue)}
+        </p>` : ``}
+
+        <!-- DESCRIPTION -->
+        ${p.description ? `
+        <p class="text-sm text-[#6b7280] dark:text-[#9da6b8]">
+          ${esc(p.description)}
+        </p>` : ``}
+
       </div>
 
-      <a href="${link}" target="_blank" rel="noopener"
-         class="flex w-fit min-w-[84px] h-8 items-center justify-center rounded-lg px-4
+      <!-- ACTION -->
+      ${isPast ? `
+      <div class="w-fit h-8 px-4 flex items-center justify-center rounded-lg
+                  bg-[#e0e0e0] dark:bg-[#292e38]
+                  text-sm text-[#6b7280] dark:text-[#9da6b8]">
+        Past performance
+      </div>
+      ` : `
+      <a href="${esc(p.link||"#")}" target="_blank"
+         class="w-fit h-8 px-4 flex items-center justify-center rounded-lg
                 bg-[#e0e0e0] dark:bg-[#292e38]
                 hover:bg-[#d1d1d1] dark:hover:bg-[#3a404d]
-                text-sm font-medium transition-colors">
-        <span class="truncate">Details</span>
-      </a>
+                text-sm font-medium transition">
+        Details
+      </a>`}
+
     </div>
 
-    <!-- RIGHT: image -->
-    <div
-      class="hidden md:block w-[320px] aspect-video bg-cover bg-center rounded-lg flex-shrink-0"
-      data-alt="Event image"
-      ${imageUrl}>
-    </div>
+    <!-- IMAGE -->
+    ${p.image ? `
+    <div class="hidden md:block w-[320px] aspect-video rounded-lg bg-cover bg-center"
+         style="background-image:url('${esc(p.image)}')"></div>` : ``}
 
   </div>
-</div>`;
-          } else {
-            return `\n<div class="p-4 border-b border-[#e0e0e0] dark:border-[#292e38]">\n  <div class="flex flex-col md:flex-row items-stretch justify-between gap-4 rounded-lg">\n    <div class="flex-1 min-w-0 flex flex-col gap-4">\n      <div class="flex flex-col gap-1">\n        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm font-normal leading-normal">${date}</p>\n        <p class="text-black dark:text-white text-base font-bold leading-tight font-display">${title}</p>\n        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm font-normal leading-normal">${desc}</p>\n      </div>\n    </div>\n    <div class="flex-shrink-0 mt-2 md:mt-0 md:ml-4 md:self-center">\n      <a href="${link}" target="_blank" rel="noopener" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#e0e0e0] dark:bg-[#292e38] text-black dark:text-white text-sm font-medium leading-normal w-fit hover:bg-[#d1d1d1] dark:hover:bg-[#3a404d] transition-colors">\n        <span class="truncate">Details</span>\n      </a>\n    </div>\n  </div>\n</div>`;
-          }
-        }).join('\n');
-      }
-
-      // Wire up toggles
-      const radios = Array.from(document.querySelectorAll('input[name="event_toggle"]'));
-      function applySelection(){
-        const checked = document.querySelector('input[name="event_toggle"]:checked');
-        const val = checked ? checked.value : 'Upcoming Events';
-        if(/past/i.test(val)) renderList(past);
-        else renderList(upcoming);
-      }
-      radios.forEach(r => r.addEventListener('change', applySelection));
-
-      // initial render based on checked input
-      applySelection();
-
-    }catch(err){
-      console.error('Error loading events:', err);
+</div>`).join("");
     }
+
+    document.querySelectorAll('input[name="event_toggle"]')
+      .forEach(r => r.addEventListener("change", e => {
+        render(
+          e.target.value === "past" ? past : upcoming,
+          e.target.value === "past"
+        );
+      }));
+
+    render(upcoming,false);
   }
 
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadEvents);
-  else loadEvents();
+  load();
 })();
 </script>
 
-</body></html>
+</body>
+</html>

@@ -85,53 +85,50 @@
         </div>
         <div class="navigation-container6">
           <div class="navigation-container7">
-            <script defer data-name="navigation">
-              (function(){
-                var navigationToggle = document.getElementById('navigation-toggle-btn');
-                var navigationMobileMenu = document.getElementById('navigation-mobile-menu');
-                var navigationMobileBackdrop = navigationMobileMenu.querySelector('.navigation-mobile-backdrop');
-                var navigationMobileLinks = navigationMobileMenu.querySelectorAll('.navigation-mobile-link');
+            <script>
+(function () {
+  const toggle = document.getElementById('navigation-toggle-btn');
+  const menu = document.getElementById('navigation-mobile-menu');
 
-                function openMobileMenu() {
-                  navigationMobileMenu.classList.add('navigation-active');
-                  navigationMobileMenu.style.opacity = '1';
-                  navigationMobileMenu.style.pointerEvents = 'auto';
-                  navigationToggle.setAttribute('aria-expanded', 'true');
-                  document.body.style.overflow = 'hidden';
-                }
+  if (!toggle || !menu) {
+    console.error('Navigation elements not found');
+    return;
+  }
 
-                function closeMobileMenu() {
-                  navigationMobileMenu.classList.remove('navigation-active');
-                  navigationMobileMenu.style.opacity = '0';
-                  navigationMobileMenu.style.pointerEvents = 'none';
-                  navigationToggle.setAttribute('aria-expanded', 'false');
-                  document.body.style.overflow = '';
-                }
+  function openMenu() {
+    console.log('open');
+    menu.classList.add('navigation-active');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
 
-                navigationToggle.addEventListener('click', function(){
-                  var isExpanded = navigationToggle.getAttribute('aria-expanded') === 'true';
-                  if(isExpanded){
-                    closeMobileMenu();
-                  }else{
-                    openMobileMenu();
-                  }
-                });
+  function closeMenu() {
+    console.log('close');
+    menu.classList.remove('navigation-active');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
 
-                navigationMobileBackdrop.addEventListener('click', closeMobileMenu);
-                navigationMobileLinks.forEach(function(link){
-                  link.addEventListener('click', closeMobileMenu);
-                });
+  toggle.onclick = function (e) {
+    e.stopPropagation();
+    if (toggle.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
 
-                document.addEventListener('keydown', function(e){
-                  if(e.key === 'Escape' && navigationToggle.getAttribute('aria-expanded') === 'true'){
-                    closeMobileMenu();
-                  }
-                });
+  menu.addEventListener('click', function (e) {
+    if (e.target.classList.contains('navigation-mobile-backdrop')) {
+      closeMenu();
+    }
+  });
 
-                // Ensure menu is hidden on load
-                closeMobileMenu();
-              })();
-            </script>
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
           </div>
         </div>
         <nav id="navigation-main" class="navigation-container">

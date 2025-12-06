@@ -162,7 +162,6 @@
   border: none;
   cursor: pointer;
   height: 48px;
-  display: none;
   z-index: 1001;
   position: relative;
   background: transparent;
