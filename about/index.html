@@ -27,6 +27,17 @@
         },
       }
     </script>
+    <style>
+        /* Responsive about page hero background images */
+        #about-hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%), url("/img/media1b.png");
+        }
+        @media (min-width: 768px) {
+            #about-hero-section {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%), url("/img/media1.png");
+            }
+        }
+    </style>
     </head>
     <body class="bg-background-light dark:bg-background-dark font-sans text-text-light dark:text-text-dark" style="background-color:#0c0a09 !important;">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
@@ -36,7 +47,7 @@
 <div id="navigation-placeholder"></div>
 
 <main class="flex-grow">
-<div class="h-[520px] flex flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat p-8 text-center" data-alt="An artistic, black and white photograph of the Filigran Duo performing on stage." style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%), url("/img/media1.png");'>
+<div id="about-hero-section" class="h-[520px] flex flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat p-8 text-center" data-alt="An artistic, black and white photograph of the Filigran Duo performing on stage.">
 <div class="flex flex-col gap-4">
 <h1 class="font-display text-white text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">About Filigran Duo</h1>
 <p class="text-white/90 text-base font-normal leading-normal max-w-2xl mx-auto md:text-lg">Discover the story, passion, and artistry behind our music.</p>
