@@ -32,14 +32,26 @@
       },
     }
   </script>
-<style>
-    body {
-      font-family: 'Noto Sans', sans-serif;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Noto Serif', serif;
-    }
-  </style>
+    <style>
+        body {
+          font-family: 'Noto Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Noto Serif', serif;
+        }
+
+        /* Events hero: use mobile-friendly image on small screens */
+        #events-hero {
+          background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("/img/media3.png");
+          background-size: cover;
+          background-position: center;
+        }
+        @media (max-width: 767px) {
+          #events-hero {
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("/img/media3b.png");
+          }
+        }
+      </style>
   </head>
   <body class="bg-background-light dark:bg-background-dark" style="background-color:#0c0a09 !important;">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
@@ -48,7 +60,7 @@
 <div id="navigation-placeholder"></div>
 
 <main class="w-full">
-<div class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-[#111318] min-h-[520px]" data-alt="An elegant, professional photograph of the Filigran Duo, a violinist and a pianist, on stage." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("/img/media3.png");'>
+<div id="events-hero" class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-[#111318] min-h-[520px]" data-alt="An elegant, professional photograph of the Filigran Duo, a violinist and a pianist, on stage.">
 <div class="px-4 sm:px-8 md:px-20 lg:px-40 py-6">
 <p class="text-white tracking-light text-4xl sm:text-5xl md:text-6xl font-bold leading-tight font-display">Upcoming Performances</p>
 </div>
@@ -161,7 +173,43 @@
           const link = p.link ? esc(p.link) : '#';
           const image = p.image ? esc(p.image) : '';
           const imageUrl = image ? `style="background-image: url('${image}')"` : '';
-          return `\n<div class="p-4 border-b border-[#e0e0e0] dark:border-[#292e38]">\n  <div class="flex flex-col sm:flex-row items-stretch justify-between gap-4 rounded-lg">\n    <div class="flex flex-[2_2_0px] flex-col gap-4">\n      <div class="flex flex-col gap-1">\n        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm font-normal leading-normal">${date}</p>\n        <p class="text-black dark:text-white text-base font-bold leading-tight font-display">${title}</p>\n        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm font-normal leading-normal">${desc}</p>\n      </div>\n      <a href="${link}" target="_blank" rel="noopener" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#e0e0e0] dark:bg-[#292e38] text-black dark:text-white text-sm font-medium leading-normal w-fit hover:bg-[#d1d1d1] dark:hover:bg-[#3a404d] transition-colors">\n        <span class="truncate">Details</span>\n      </a>\n    </div>\n    <div class="w-full sm:w-auto bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-1" data-alt="Event image" ${imageUrl}></div>\n  </div>\n</div>`;
+
+          // Use a single-row layout so the Details button sits on the right edge of the box.
+          if(image){
+            // Keep image on the right for md+; on small screens image is hidden but button remains on the right
+            return `
+<div class="p-4 border-b border-[#e0e0e0] dark:border-[#292e38]">
+  <div class="flex flex-col md:flex-row gap-4 justify-between rounded-lg">
+
+    <!-- LEFT: text + button -->
+    <div class="flex-1 min-w-0 flex flex-col gap-4">
+      <div class="flex flex-col gap-1">
+        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm">${date}</p>
+        <p class="text-black dark:text-white text-base font-bold font-display">${title}</p>
+        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm">${desc}</p>
+      </div>
+
+      <a href="${link}" target="_blank" rel="noopener"
+         class="flex w-fit min-w-[84px] h-8 items-center justify-center rounded-lg px-4
+                bg-[#e0e0e0] dark:bg-[#292e38]
+                hover:bg-[#d1d1d1] dark:hover:bg-[#3a404d]
+                text-sm font-medium transition-colors">
+        <span class="truncate">Details</span>
+      </a>
+    </div>
+
+    <!-- RIGHT: image -->
+    <div
+      class="hidden md:block w-[320px] aspect-video bg-cover bg-center rounded-lg flex-shrink-0"
+      data-alt="Event image"
+      ${imageUrl}>
+    </div>
+
+  </div>
+</div>`;
+          } else {
+            return `\n<div class="p-4 border-b border-[#e0e0e0] dark:border-[#292e38]">\n  <div class="flex flex-col md:flex-row items-stretch justify-between gap-4 rounded-lg">\n    <div class="flex-1 min-w-0 flex flex-col gap-4">\n      <div class="flex flex-col gap-1">\n        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm font-normal leading-normal">${date}</p>\n        <p class="text-black dark:text-white text-base font-bold leading-tight font-display">${title}</p>\n        <p class="text-[#6b7280] dark:text-[#9da6b8] text-sm font-normal leading-normal">${desc}</p>\n      </div>\n    </div>\n    <div class="flex-shrink-0 mt-2 md:mt-0 md:ml-4 md:self-center">\n      <a href="${link}" target="_blank" rel="noopener" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#e0e0e0] dark:bg-[#292e38] text-black dark:text-white text-sm font-medium leading-normal w-fit hover:bg-[#d1d1d1] dark:hover:bg-[#3a404d] transition-colors">\n        <span class="truncate">Details</span>\n      </a>\n    </div>\n  </div>\n</div>`;
+          }
         }).join('\n');
       }
 

@@ -72,37 +72,10 @@
 </div>
 <div id="gallery-grid" class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6"></div>
 
-<!-- Lightbox / modal -->
-<div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70" aria-hidden="true">
-  <div id="lightbox-overlay" class="absolute inset-0"></div>
-  <div class="relative max-w-[95vw] max-h-[95vh] mx-auto">
-    <button id="lightbox-close" class="absolute -top-3 -right-3 bg-white rounded-full p-2 shadow z-50" aria-label="Close">
-      <span class="material-symbols-outlined">close</span>
-    </button>
-    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] rounded-lg shadow-lg" />
-    <div id="lightbox-caption" class="mt-2 text-center text-sm text-white/90"></div>
-    <button id="lightbox-prev" class="absolute left-0 top-1/2 -translate-y-1/2 text-white p-3" aria-label="Previous">
-      <span class="material-symbols-outlined text-4xl">chevron_left</span>
-    </button>
-    <button id="lightbox-next" class="absolute right-0 top-1/2 -translate-y-1/2 text-white p-3" aria-label="Next">
-      <span class="material-symbols-outlined text-4xl">chevron_right</span>
-    </button>
-  </div>
-</div>
-
 </div>
 <script>
   (function(){
     const grid = document.getElementById('gallery-grid');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    const lightboxClose = document.getElementById('lightbox-close');
-    const lightboxPrev = document.getElementById('lightbox-prev');
-    const lightboxNext = document.getElementById('lightbox-next');
-
-    let currentItems = [];
-    let currentIndex = 0;
 
     function renderList(manifest, filter){
       grid.innerHTML = '';
@@ -114,12 +87,11 @@
         grid.innerHTML = '<p class="text-gray-500">No media to display.</p>';
         return;
       }
-      for(let i=0; i<items.length; i++){
-        const m = items[i];
+      for(const m of items){
         const div = document.createElement('div');
         div.className = 'group relative bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-[3/4] overflow-hidden cursor-pointer';
         div.style.backgroundImage = `url("${m.src}")`;
-        div.setAttribute('data-alt', m.alt || '');
+        div.setAttribute('data-alt', '');
 
         const overlay = document.createElement('div');
         overlay.className = 'absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors';
@@ -127,54 +99,17 @@
 
         const p = document.createElement('p');
         p.className = 'relative text-white text-base font-bold leading-tight w-full line-clamp-3 z-10';
-        p.textContent = m.title || '';
+        p.textContent = '';
         div.appendChild(p);
-
-        // open lightbox on click
-        div.addEventListener('click', () => openLightbox(i));
 
         grid.appendChild(div);
       }
     }
 
-    function openLightbox(index){
-      currentIndex = index;
-      const item = currentItems[currentIndex];
-      if(!item) return;
-      lightboxImg.src = item.src;
-      lightboxImg.alt = item.title || '';
-      lightboxCaption.textContent = item.title || '';
-      lightbox.classList.remove('hidden');
-      lightbox.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox(){
-      lightbox.classList.add('hidden');
-      lightbox.setAttribute('aria-hidden','true');
-      lightboxImg.src = '';
-      document.body.style.overflow = '';
-    }
-
-    function showIndex(i){
-      if(i < 0) i = currentItems.length - 1;
-      if(i >= currentItems.length) i = 0;
-      currentIndex = i;
-      const item = currentItems[currentIndex];
-      lightboxImg.src = item.src;
-      lightboxCaption.textContent = item.title || '';
-    }
-
     function loadAndRender(filter){
       fetch('/data/gallery.json')
         .then(r => r.json())
-        .then(manifest => {
-          const photos = (manifest.photos || []).map(p => ({type: 'photo', src: p, title: ''}));
-          const videos = (manifest.videos || []).map(v => ({type: 'video', src: v, title: ''}));
-          const all = photos.concat(videos);
-          currentItems = all.filter(m => filter === 'All' || (filter === 'Photos' && m.type === 'photo') || (filter === 'Videos' && m.type === 'video'));
-          renderList(manifest, filter);
-        })
+        .then(manifest => renderList(manifest, filter))
         .catch(err => {
           console.error('Failed to load gallery manifest:', err);
           grid.innerHTML = '<p class="text-red-500">Failed to load gallery.</p>';
@@ -187,19 +122,6 @@
 
     // initial render
     loadAndRender('All');
-
-    // lightbox controls
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxPrev.addEventListener('click', () => showIndex(currentIndex - 1));
-    lightboxNext.addEventListener('click', () => showIndex(currentIndex + 1));
-    document.getElementById('lightbox-overlay').addEventListener('click', closeLightbox);
-
-    document.addEventListener('keydown', (e) => {
-      if(lightbox.classList.contains('hidden')) return;
-      if(e.key === 'Escape') closeLightbox();
-      if(e.key === 'ArrowLeft') showIndex(currentIndex - 1);
-      if(e.key === 'ArrowRight') showIndex(currentIndex + 1);
-    });
   })();
 </script>
 </div>
