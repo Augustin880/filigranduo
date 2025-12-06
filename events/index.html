@@ -34,6 +34,7 @@ tailwind.config = {
 body { font-family: 'Noto Sans', sans-serif; }
 h1,h2,h3,h4,h5,h6 { font-family: 'Noto Serif', serif; }
 
+/* HERO */
 #events-hero {
   background-image:
     linear-gradient(0deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 25%),
@@ -46,6 +47,100 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Noto Serif', serif; }
     background-image:
       linear-gradient(0deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 25%),
       url("/img/media3b.png");
+  }
+}
+
+/* ===== EVENT TEMPLATE STYLES ===== */
+
+.event-list-1{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.event-item-1{
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  align-items: center;
+  padding: 1.4rem 1.8rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.event-item-1:hover{
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+.event-title-1{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.event-date-1{
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+.btn-ticket-1{
+  grid-column: 3 / 4;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: transparent;
+  color: #fff;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.btn-ticket-1:hover{
+  background: #fff;
+  color: #000;
+}
+
+/* ===== PAST EVENT ===== */
+
+.event-item-1.event-past{
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.event-status{
+  display: inline-block;
+  margin-left: 0.6rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.15);
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.btn-disabled{
+  border-color: rgba(255,255,255,0.25);
+  color: #aaa;
+}
+
+@media(max-width:700px){
+  .event-item-1{
+    grid-template-columns: 1fr auto;
+    row-gap: 0.4rem;
+  }
+  .btn-ticket-1{
+    grid-column: 2 / 3;
+    grid-row: 1 / span 2;
   }
 }
 </style>
@@ -72,7 +167,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Noto Serif', serif; }
   <div class="px-4 sm:px-8 md:px-20 lg:px-40 py-10 flex justify-center">
     <div class="max-w-[960px] w-full">
 
-      <!-- TOGGLE -->
+      <!-- TOGGLE (UNCHANGED) -->
       <div class="flex px-4 py-3 mb-6">
         <div class="flex h-10 w-full rounded-lg bg-[#e0e0e0] dark:bg-[#292e38] p-1">
           <label class="flex-1 flex items-center justify-center cursor-pointer rounded-lg
@@ -91,7 +186,7 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Noto Serif', serif; }
       </div>
 
       <!-- EVENTS -->
-      <div id="events-list" class="flex flex-col gap-6"></div>
+      <div id="events-list" class="event-list-1"></div>
 
     </div>
   </div>
@@ -129,83 +224,40 @@ fetch("/components/footer.html")
 
     const today = new Date(); today.setHours(0,0,0,0);
 
-    const enriched = list.map(e=>({...e, d:parseDate(e.date)}));
-    const upcoming = enriched.filter(e=>!e.d || e.d>=today);
-    const past = enriched.filter(e=>e.d && e.d<today).reverse();
+    const enriched = list.map(p=>({...p, d:parseDate(p.date)}));
+    const upcoming = enriched.filter(p=>!p.d || p.d>=today);
+    const past = enriched.filter(p=>p.d && p.d<today).reverse();
 
     const container = document.getElementById("events-list");
 
     function render(items, isPast){
+      container.innerHTML = "";
       if(!items.length){
         container.innerHTML =
           `<p class="text-center text-gray-400">No events.</p>`;
         return;
       }
 
-      container.innerHTML = items.map(p=>`
-<div class="bg-white dark:bg-[#1C1F26] rounded-xl shadow-md p-6 ${isPast?'opacity-60':''}">
-  <div class="flex flex-col md:flex-row gap-6">
+      items.forEach(perf=>{
+        const el = document.createElement("div");
+        el.className = `event-item-1${isPast ? " event-past" : ""}`;
 
-    <!-- TEXT COLUMN -->
-    <div class="flex-1 flex flex-col justify-between gap-4">
-
-      <div class="flex flex-col gap-3">
-
-        <!-- DATE + STATUS -->
-        <div class="flex items-center gap-3">
-          <p class="text-sm text-[#6b7280] dark:text-[#9da6b8]">${esc(p.date)}</p>
-          ${isPast ? `
-          <span class="text-xs uppercase tracking-wide px-2 py-1 rounded-full
-                       bg-[#e0e0e0] dark:bg-[#292e38]
-                       text-[#6b7280] dark:text-[#9da6b8]">
-            Past
-          </span>` : ``}
-        </div>
-
-        <!-- TITLE -->
-        <p class="text-lg font-bold font-display text-black dark:text-white">
-          ${esc(p.title)}
-        </p>
-
-        <!-- VENUE -->
-        ${p.venue ? `
-        <p class="text-sm font-medium text-black dark:text-white">
-          ${esc(p.venue)}
-        </p>` : ``}
-
-        <!-- DESCRIPTION -->
-        ${p.description ? `
-        <p class="text-sm text-[#6b7280] dark:text-[#9da6b8]">
-          ${esc(p.description)}
-        </p>` : ``}
-
-      </div>
-
-      <!-- ACTION -->
-      ${isPast ? `
-      <div class="w-fit h-8 px-4 flex items-center justify-center rounded-lg
-                  bg-[#e0e0e0] dark:bg-[#292e38]
-                  text-sm text-[#6b7280] dark:text-[#9da6b8]">
-        Past performance
-      </div>
-      ` : `
-      <a href="${esc(p.link||"#")}" target="_blank"
-         class="w-fit h-8 px-4 flex items-center justify-center rounded-lg
-                bg-[#e0e0e0] dark:bg-[#292e38]
-                hover:bg-[#d1d1d1] dark:hover:bg-[#3a404d]
-                text-sm font-medium transition">
-        Details
-      </a>`}
-
-    </div>
-
-    <!-- IMAGE -->
-    ${p.image ? `
-    <div class="hidden md:block w-[320px] aspect-video rounded-lg bg-cover bg-center"
-         style="background-image:url('${esc(p.image)}')"></div>` : ``}
-
-  </div>
-</div>`).join("");
+        el.innerHTML = `
+          <div class="event-title-1">${esc(perf.title)}</div>
+          <div class="event-date-1">
+            ${esc(perf.date)}
+            ${isPast ? `<span class="event-status">Past</span>` : ``}
+          </div>
+          ${
+            isPast
+              ? `<button class="btn-ticket-1 btn-disabled">Past performance</button>`
+              : `<a href="${esc(perf.link||"#")}" target="_blank">
+                   <button class="btn-ticket-1">Get Tickets</button>
+                 </a>`
+          }
+        `;
+        container.appendChild(el);
+      });
     }
 
     document.querySelectorAll('input[name="event_toggle"]')
