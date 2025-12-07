@@ -231,6 +231,24 @@ function appendGalleryThumbnail(src) {
   container.appendChild(div);
 }
 
+function appendGalleryVideoRow(url = '') {
+  const container = document.getElementById('gallery-videos');
+
+  const row = document.createElement('div');
+  row.className = 'gallery-video-row';
+
+  row.innerHTML = `
+    <input type="text" placeholder="YouTube link" value="${url}">
+    <button>✖</button>
+  `;
+
+  row.querySelector('button').addEventListener('click', () => {
+    row.remove();
+  });
+
+  container.appendChild(row);
+}
+
 // ================== SAVE GALLERY ==================
 
 document
@@ -278,5 +296,38 @@ async function saveGallery() {
   }
 }
 
+// ================== LOAD GALLERY FROM JSON ==================
 
- (async function init() { await checkSession(); await loadImages(); setupUploadArea(); await loadPerformances(); })();
+async function loadGallery() {
+  try {
+    const res = await fetch('get_gallery.php', { credentials: 'same-origin' });
+    if (!res.ok) throw new Error('Failed to load gallery');
+
+    const data = await res.json();
+
+    gallery.photos = Array.isArray(data.photos) ? data.photos : [];
+    gallery.videos = Array.isArray(data.videos) ? data.videos : [];
+
+    renderGalleryFromData();
+  } catch (err) {
+    console.error('Failed to load gallery:', err);
+  }
+}
+
+function renderGalleryFromData() {
+  // Clear containers
+  document.getElementById('gallery-photos').innerHTML = '';
+  document.getElementById('gallery-videos').innerHTML = '';
+
+  // Render photos
+  gallery.photos.forEach(src => {
+    appendGalleryThumbnail(src);
+  });
+
+  // Render videos
+  gallery.videos.forEach(url => {
+    appendGalleryVideoRow(url);
+  });
+}
+
+ (async function init() { await checkSession(); await loadImages(); setupUploadArea(); await loadPerformances(); await loadGallery(); })();
