@@ -231,5 +231,52 @@ function appendGalleryThumbnail(src) {
   container.appendChild(div);
 }
 
+// ================== SAVE GALLERY ==================
+
+document
+  .getElementById('save-gallery-btn')
+  .addEventListener('click', saveGallery);
+
+async function saveGallery() {
+  try {
+    const btn = document.getElementById('save-gallery-btn');
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+
+    // Collect current photo paths from DOM
+    const photos = Array.from(
+      document.querySelectorAll('#gallery-photos img')
+    ).map(img => img.getAttribute('src'));
+
+    // Collect video URLs from inputs
+    const videos = Array.from(
+      document.querySelectorAll('#gallery-videos input')
+    ).map(input => input.value.trim())
+     .filter(v => v !== '');
+
+    const res = await fetch('save_gallery.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify({ photos, videos })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+      throw new Error('Save failed');
+    }
+
+    alert('Gallery saved successfully!');
+  } catch (err) {
+    console.error(err);
+    alert('Failed to save gallery.');
+  } finally {
+    const btn = document.getElementById('save-gallery-btn');
+    btn.disabled = false;
+    btn.textContent = 'Save Gallery';
+  }
+}
+
 
  (async function init() { await checkSession(); await loadImages(); setupUploadArea(); await loadPerformances(); })();
