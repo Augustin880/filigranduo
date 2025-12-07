@@ -256,6 +256,186 @@
   #update-btn {
     margin-left: auto;
   }
+
+  /* ================== GALLERY EDITOR ================== */
+
+  #gallery-editor {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #b18aff44;
+  }
+
+  #gallery-editor h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #d4c6ff;
+  }
+
+  .gallery-block {
+    margin-bottom: 2.5rem;
+  }
+
+  .gallery-block h3 {
+    margin-bottom: 1rem;
+    color: #e8dbff;
+  }
+
+  /* Photo grid */
+  #gallery-photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .gallery-photo {
+    position: relative;
+  }
+
+  .gallery-photo img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #333;
+  }
+
+  /* delete button */
+  .gallery-photo button,
+  .gallery-video-row button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 6px;
+  }
+
+  /* Big drop zone */
+  #gallery-drop-zone {
+    border: 2px dashed #b18aff66;
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    color: #aaa;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  #gallery-drop-zone.dragover {
+    border-color: #b18aff;
+    background: #1f1a29;
+    color: #e8e8e8;
+  }
+
+  /* Videos */
+  #gallery-videos {
+    margin-top: 1rem;
+  }
+
+  .gallery-video-row {
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-video-row input {
+    flex: 1;
+    background-color: #1a1a1f;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+  }
+
+  /* Gallery save button */
+  #save-gallery-btn {
+    display: block;
+    margin-left: auto;
+    padding: 0.75rem 1.5rem;
+    background: #b18aff;
+    color: #0b0b0e;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .gallery-video-row {
+    position: relative;
+    align-items: center;
+  }
+
+  .gallery-video-row .delete-video-btn {
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 4px 6px;
+  }
+
+  .gallery-video-row .delete-video-btn:hover {
+    background: #b18aff;
+    color: #0b0b0e;
+  }
+
+  /* ================== VIDEO GRID ================== */
+
+  #gallery-videos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .gallery-video {
+    position: relative;
+    width: 140px;
+  }
+
+  .gallery-video img {
+    width: 140px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #333;
+    display: block;
+  }
+
+  .gallery-video input {
+    width: 100%;
+    margin-top: 0.4rem;
+    background-color: #1a1a1f;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+  }
+
+  .gallery-video button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 6px;
+  }
+
+  .gallery-video button:hover {
+    background: #b18aff;
+    color: #0b0b0e;
+  }
+
 </style>
 </head>
 <body>
@@ -296,6 +476,41 @@
     <button id="close-modal">Cancel</button>
   </div>
 </div>
+
+<section id="gallery-editor">
+
+  <h2>Gallery Editor</h2>
+
+  <!-- ================== PHOTOS ================== -->
+  <div class="gallery-block">
+    <h3>Photos</h3>
+
+    <input type="file" id="gallery-image-upload" accept="image/*" hidden>
+
+    <div id="gallery-drop-zone">
+      Drop photos here or click to upload
+    </div>
+
+    <div id="gallery-photos">
+      <!-- thumbnails injected by JS -->
+    </div>
+  </div>
+
+  <!-- ================== VIDEOS ================== -->
+  <div class="gallery-block">
+    <h3>Videos (YouTube)</h3>
+
+    <div id="gallery-videos">
+      <!-- video inputs injected by JS -->
+    </div>
+
+    <button id="add-gallery-video-btn">➕ Add YouTube Video</button>
+  </div>
+
+  <!-- ================== SAVE ================== -->
+  <button id="save-gallery-btn">Save Gallery</button>
+
+</section>
 
 <script src="editor.js"></script>
 </body>
