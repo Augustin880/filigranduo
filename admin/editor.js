@@ -146,4 +146,90 @@ function setupUploadArea() { const dropZone = document.getElementById('drop-zone
 
 async function uploadImage(file) { if (!file || !file.type.startsWith('image/')) { alert('Please upload a valid image file.'); return; } const formData = new FormData(); formData.append('image', file); try { const res = await fetch('upload_image.php', { method: 'POST', body: formData, credentials: 'same-origin' }); const data = await res.json(); if (res.ok && data.ok) { alert('Image uploaded successfully!'); await loadImages(); openImageModal(currentSelectIndex); } else { console.error(data); alert('Failed to upload image.'); } } catch (err) { console.error(err); alert('Upload failed.'); } }
 
+// ================== GALLERY IMAGE UPLOAD ==================
+
+const galleryDropZone = document.getElementById('gallery-drop-zone');
+const galleryFileInput = document.getElementById('gallery-image-upload');
+
+// Click to open file picker
+galleryDropZone.addEventListener('click', () => {
+  galleryFileInput.click();
+});
+
+// File input change
+galleryFileInput.addEventListener('change', () => {
+  if (galleryFileInput.files.length > 0) {
+    uploadGalleryImage(galleryFileInput.files[0]);
+  }
+  galleryFileInput.value = '';
+});
+
+// Drag over
+galleryDropZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  galleryDropZone.classList.add('dragover');
+});
+
+// Drag leave
+galleryDropZone.addEventListener('dragleave', () => {
+  galleryDropZone.classList.remove('dragover');
+});
+
+// Drop
+galleryDropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  galleryDropZone.classList.remove('dragover');
+
+  if (e.dataTransfer.files.length > 0) {
+    uploadGalleryImage(e.dataTransfer.files[0]);
+  }
+});
+
+// Upload logic
+async function uploadGalleryImage(file) {
+  if (!file || !file.type.startsWith('image/')) {
+    alert('Please upload a valid image file.');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('image', file);
+
+  try {
+    galleryDropZone.textContent = 'Uploading...';
+
+    const res = await fetch('gallery_upload_image.php', {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.ok && data.path) {
+      // TEMP: just append image visually for now
+      appendGalleryThumbnail(data.path);
+    } else {
+      console.error(data);
+      alert('Failed to upload image.');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Image upload failed.');
+  } finally {
+    galleryDropZone.textContent = 'Drop photos here or click to upload';
+  }
+}
+
+// Temporary visual feedback only (no JSON storage yet)
+function appendGalleryThumbnail(src) {
+  const container = document.getElementById('gallery-photos');
+  const div = document.createElement('div');
+  div.className = 'gallery-photo';
+
+  div.innerHTML = `<img src="${src}" alt="">`;
+  container.appendChild(div);
+}
+
+
  (async function init() { await checkSession(); await loadImages(); setupUploadArea(); await loadPerformances(); })();
