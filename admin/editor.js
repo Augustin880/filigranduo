@@ -285,7 +285,16 @@ async function saveGallery() {
       body: JSON.stringify({ photos, videos })
     });
 
-    const data = await res.json();
+    const text = await res.text();
+    console.log('save_gallery.php response:', text);
+
+    let data;
+    try {
+    data = JSON.parse(text);
+    } catch (e) {
+    throw new Error('Invalid JSON from server');
+    }
+
 
     if (!res.ok || !data.ok) {
       throw new Error('Save failed');
