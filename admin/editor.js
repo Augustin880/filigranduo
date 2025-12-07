@@ -348,4 +348,61 @@ function renderGalleryFromData() {
   });
 }
 
+// ================== YOUTUBE VIDEOS ==================
+
+function extractYouTubeId(url) {
+  if (!url) return null;
+
+  const match = url.match(
+    /(?:youtube\.com\/.*[?&]v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/
+  );
+
+  return match ? match[1] : null;
+}
+
+
+document
+  .getElementById('add-gallery-video-btn')
+  .addEventListener('click', () => {
+    appendGalleryVideoRow('');
+  });
+
+function appendGalleryVideoRow(url = '') {
+  const container = document.getElementById('gallery-videos');
+
+  const row = document.createElement('div');
+  row.className = 'gallery-video-row';
+
+  row.innerHTML = `
+    <input type="text" placeholder="YouTube link" value="${url}">
+    <img class="yt-thumb" style="display:none">
+    <button title="Remove video">✖</button>
+  `;
+
+  const input = row.querySelector('input');
+  const thumb = row.querySelector('.yt-thumb');
+
+  // Update preview on change
+  input.addEventListener('input', () => {
+    const id = extractYouTubeId(input.value);
+    if (id) {
+      thumb.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+      thumb.style.display = 'block';
+    } else {
+      thumb.style.display = 'none';
+    }
+  });
+
+  // Initial preview if URL already exists
+  if (url) input.dispatchEvent(new Event('input'));
+
+  // Remove row
+  row.querySelector('button').addEventListener('click', () => {
+    if (!confirm('Remove this video?')) return;
+    row.remove();
+  });
+
+  container.appendChild(row);
+}
+
  (async function init() { await checkSession(); await loadImages(); setupUploadArea(); await loadPerformances(); await loadGallery(); })();
