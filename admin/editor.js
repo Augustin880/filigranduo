@@ -249,22 +249,43 @@ function appendGalleryThumbnail(src) {
 }
 
 
-function appendGalleryVideoRow(url = '') {
+function appendGalleryVideoTile(url = '') {
   const container = document.getElementById('gallery-videos');
 
-  const row = document.createElement('div');
-  row.className = 'gallery-video-row';
+  const tile = document.createElement('div');
+  tile.className = 'gallery-video';
 
-  row.innerHTML = `
+  tile.innerHTML = `
+    <img style="display:none">
     <input type="text" placeholder="YouTube link" value="${url}">
-    <button>✖</button>
+    <button title="Delete video">✖</button>
   `;
 
-  row.querySelector('button').addEventListener('click', () => {
-    row.remove();
+  const img = tile.querySelector('img');
+  const input = tile.querySelector('input');
+  const delBtn = tile.querySelector('button');
+
+  function updateThumb() {
+    const id = extractYouTubeId(input.value);
+    if (id) {
+      img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+      img.style.display = 'block';
+    } else {
+      img.style.display = 'none';
+    }
+  }
+
+  input.addEventListener('input', updateThumb);
+
+  // Populate thumbnail immediately for loaded videos
+  if (url) updateThumb();
+
+  delBtn.addEventListener('click', () => {
+    if (!confirm('Remove this video from the gallery?')) return;
+    tile.remove();
   });
 
-  container.appendChild(row);
+  container.appendChild(tile);
 }
 
 // ================== SAVE GALLERY ==================
@@ -344,7 +365,7 @@ function renderGalleryFromData() {
 
   // Render videos
   gallery.videos.forEach(url => {
-    appendGalleryVideoRow(url);
+    appendGalleryVideoTile(url);
   });
 }
 
@@ -364,7 +385,7 @@ function extractYouTubeId(url) {
 document
   .getElementById('add-gallery-video-btn')
   .addEventListener('click', () => {
-    appendGalleryVideoRow('');
+    appendGalleryVideoTile('');
   });
 
 function appendGalleryVideoRow(url = '') {

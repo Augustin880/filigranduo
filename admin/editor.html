@@ -383,6 +383,59 @@
     background: #b18aff;
     color: #0b0b0e;
   }
+
+  /* ================== VIDEO GRID ================== */
+
+  #gallery-videos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .gallery-video {
+    position: relative;
+    width: 140px;
+  }
+
+  .gallery-video img {
+    width: 140px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #333;
+    display: block;
+  }
+
+  .gallery-video input {
+    width: 100%;
+    margin-top: 0.4rem;
+    background-color: #1a1a1f;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+  }
+
+  .gallery-video button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 6px;
+  }
+
+  .gallery-video button:hover {
+    background: #b18aff;
+    color: #0b0b0e;
+  }
+
 </style>
 </head>
 <body>
