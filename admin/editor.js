@@ -4,6 +4,12 @@ let performances = [];
 let imageOptions = [];
 let currentSelectIndex = null;
 
+let gallery = {
+  photos: [],
+  videos: []
+};
+
+
 async function checkSession() {
     const res = await fetch('check_session.php', { credentials: 'same-origin' });
     const data = await res.json();
