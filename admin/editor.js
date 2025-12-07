@@ -230,12 +230,24 @@ async function uploadGalleryImage(file) {
 // Temporary visual feedback only (no JSON storage yet)
 function appendGalleryThumbnail(src) {
   const container = document.getElementById('gallery-photos');
+
   const div = document.createElement('div');
   div.className = 'gallery-photo';
 
-  div.innerHTML = `<img src="${src}" alt="">`;
+  div.innerHTML = `
+    <img src="${src}" alt="">
+    <button title="Remove image">✖</button>
+  `;
+
+  // Remove from UI (and from future save)
+  div.querySelector('button').addEventListener('click', () => {
+    if (!confirm('Remove this image from the gallery?')) return;
+    div.remove();
+  });
+
   container.appendChild(div);
 }
+
 
 function appendGalleryVideoRow(url = '') {
   const container = document.getElementById('gallery-videos');
