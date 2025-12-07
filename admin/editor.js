@@ -376,14 +376,15 @@ function appendGalleryVideoRow(url = '') {
   row.innerHTML = `
     <input type="text" placeholder="YouTube link" value="${url}">
     <img class="yt-thumb" style="display:none">
-    <button title="Remove video">✖</button>
+    <button class="delete-video-btn" title="Delete video">✖</button>
   `;
 
   const input = row.querySelector('input');
   const thumb = row.querySelector('.yt-thumb');
+  const delBtn = row.querySelector('.delete-video-btn');
 
-  // Update preview on change
-  input.addEventListener('input', () => {
+  // Update thumbnail preview
+  function updatePreview() {
     const id = extractYouTubeId(input.value);
     if (id) {
       thumb.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
@@ -391,14 +392,16 @@ function appendGalleryVideoRow(url = '') {
     } else {
       thumb.style.display = 'none';
     }
-  });
+  }
 
-  // Initial preview if URL already exists
-  if (url) input.dispatchEvent(new Event('input'));
+  input.addEventListener('input', updatePreview);
 
-  // Remove row
-  row.querySelector('button').addEventListener('click', () => {
-    if (!confirm('Remove this video?')) return;
+  // Initial preview (for loaded data)
+  if (url) updatePreview();
+
+  // ✅ Delete button
+  delBtn.addEventListener('click', () => {
+    if (!confirm('Remove this video from the gallery?')) return;
     row.remove();
   });
 
