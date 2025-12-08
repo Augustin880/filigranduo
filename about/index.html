@@ -37,6 +37,12 @@
                 background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%), url("/img/media1.png");
             }
         }
+      /* Elevate timeline dots slightly on small screens so they're not too close to text */
+      @media (max-width: 767px) {
+        .timeline-dot {
+          transform: translateX(-50%) translateY(-8px) !important;
+        }
+      }
     </style>
     </head>
     <body class="bg-background-light dark:bg-background-dark font-sans text-text-light dark:text-text-dark" style="background-color:#0c0a09 !important;">
@@ -56,22 +62,67 @@
 <div class="px-6 md:px-10 lg:px-20">
 <div class="mx-auto max-w-4xl">
 <div class="py-16 md:py-24">
-<p class="text-center font-display text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">Filigran Duo is the culmination of a shared musical vision between two dedicated artists. Our partnership is built on a foundation of mutual respect, a deep love for the chamber music repertoire, and a relentless pursuit of expressive, authentic performances that connect with audiences on a profound level.</p>
+<p class="text-center font-display text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+  Theodore Kim and Seulbi Cho are
+  two students from the
+  Conservatorium of Maastricht
+  who formed a violin and piano
+  duo in May 2024. The duo takes its
+  name from the German word
+  ‘Filigran’, which means very
+  delicate. A term that reflects their
+  musical pursuit.
+</p>
 </div>
 <div class="border-t border-primary/20 pt-16 md:pt-24">
 <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">The Musicians</h2>
 <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-start">
 <div class="flex flex-col items-center text-center">
-<img class="h-64 w-64 rounded-full object-cover shadow-lg mb-6" data-alt="Professional headshot of Elara Vance, the violinist." src="/img/duo-about.jpg"/>
+<img class="h-64 w-64 rounded-full object-cover shadow-lg mb-6" data-alt="Professional headshot of Elara Vance, the violinist." src="/img/theodore_kim.png"/>
 <h3 class="font-display text-2xl font-bold text-primary">Theodore Kim</h3>
-<p class="font-sans text-sm font-medium uppercase tracking-widest text-text-light/70 dark:text-text-dark/70 mt-1">The Violinist</p>
-<p class="mt-4 text-base leading-relaxed">A graduate of the Juilliard School, Elara has captivated audiences worldwide with her virtuosic playing and profound musicality. Her performances are celebrated for their emotional depth and technical brilliance, earning her accolades in numerous international competitions.</p>
+<p class="font-sans text-sm font-medium uppercase tracking-widest text-text-light/70 dark:text-text-dark/70 mt-1">Violinist</p>
+<p class="mt-4 text-base leading-relaxed">
+  Theodore Kim is a dedicated 4th-year
+  Bachelor of Music student at the
+  Conservatorium Maastricht, where he
+  studies under the guidance of Professor
+  Piotr Jasiurkowski.
+</p>
+<p class="mt-4 text-base leading-relaxed">
+  With an innate musical sensitivity but
+  virtuosic personality, Belgian violinist
+  Theodore is a passionate violinist who
+  has won many awards in international
+  competitions as a soloist. Not only a great
+  soloist, he also excels in playing with
+  others such as chamber music or
+  orchestra.
+</p>
 </div>
 <div class="flex flex-col items-center text-center">
-<img class="h-64 w-64 rounded-full object-cover shadow-lg mb-6" data-alt="Professional headshot of Liam Sterling, the pianist." src="/img/duo-about.jpg"/>
+<img class="h-64 w-64 rounded-full object-cover shadow-lg mb-6" data-alt="Professional headshot of Liam Sterling, the pianist." src="/img/seulbi_cho.png"/>
 <h3 class="font-display text-2xl font-bold text-primary">Seulbi Cho</h3>
-<p class="font-sans text-sm font-medium uppercase tracking-widest text-text-light/70 dark:text-text-dark/70 mt-1">The Pianist</p>
-<p class="mt-4 text-base leading-relaxed">Liam is an alumnus of the Curtis Institute of Music, renowned for his sensitive and collaborative approach to chamber music. His nuanced interpretations and powerful command of the piano make him a sought-after partner for many of today's leading instrumentalists.</p>
+<p class="font-sans text-sm font-medium uppercase tracking-widest text-text-light/70 dark:text-text-dark/70 mt-1">Pianist</p>
+<p class="mt-4 text-base leading-relaxed">
+  Seulbi Cho is a pianist from the Republic
+  of Korea. She completed her bachelor's
+  degree in 2024 in Conservatorium
+  Maastricht and is currently studying in
+  piano accompaniment under the
+  guidance of Thomas Hoppe at the
+  Folkwang Universität der Künste in Essen,
+  Germany.
+</p>
+<p class="mt-4 text-base leading-relaxed"></p>
+  Seulbi has a strong passion for chamber
+  music and has gained diverse experience
+  and repertoire through working
+  with different instrumentalists as a
+  collaborative pianist at the
+  Conservatorium. Her collaborations span
+  a wide range of instruments, including
+  strings, winds, and vocal music.
+</p>
 </div>
 </div>
 </div>
@@ -84,35 +135,35 @@
 <div class="space-y-16">
 <div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
 <div class="flex justify-center md:justify-end md:pr-8">
-<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 timeline-dot">
 <div class="h-3 w-3 rounded-full bg-background-light dark:bg-background-dark"></div>
 </div>
 </div>
 <div class="mt-4 md:mt-0 text-center md:text-left">
-<h4 class="font-bold text-lg">2018: A Fateful Meeting</h4>
-<p class="mt-1 text-base leading-relaxed">Elara and Liam first crossed paths at a summer music festival in Aspen, where a last-minute pairing for a Brahms sonata revealed an instant and undeniable musical chemistry.</p>
+<h4 class="font-bold text-lg">2022: Lorem ipsum</h4>
+<p class="mt-1 text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
 </div>
 <div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
 <div class="flex justify-center md:justify-end md:pr-8 order-none md:order-2 md:pl-8 md:justify-start">
-<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 timeline-dot">
 <div class="h-3 w-3 rounded-full bg-background-light dark:bg-background-dark"></div>
 </div>
 </div>
 <div class="mt-4 md:mt-0 text-center md:text-right order-none md:order-1">
-<h4 class="font-bold text-lg">2019: Debut Concert</h4>
-<p class="mt-1 text-base leading-relaxed">Filigran Duo was officially formed, making their critically acclaimed debut at Carnegie's Weill Recital Hall with a program celebrating the works of French composers.</p>
+<h4 class="font-bold text-lg">2023: dolor sit amet</h4>
+<p class="mt-1 text-base leading-relaxed">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 </div>
 <div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
 <div class="flex justify-center md:justify-end md:pr-8">
-<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 timeline-dot">
 <div class="h-3 w-3 rounded-full bg-background-light dark:bg-background-dark"></div>
 </div>
 </div>
 <div class="mt-4 md:mt-0 text-center md:text-left">
-<h4 class="font-bold text-lg">2022: First Album Release</h4>
-<p class="mt-1 text-base leading-relaxed">The duo released their debut album, "Echoes &amp; Reflections," which was praised by critics for its "impassioned dialogue" and "exquisite craftsmanship."</p>
+<h4 class="font-bold text-lg">2025: consectetur adipiscing</h4>
+<p class="mt-1 text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
 </div>
 </div>
@@ -123,7 +174,7 @@
 <blockquote class="mt-8 max-w-3xl mx-auto">
 <p class="font-display text-2xl md:text-3xl italic text-primary leading-snug">"Music, for us, is a conversation—between the two of us, with the composer, and ultimately, with our audience."</p>
 </blockquote>
-<p class="mt-6 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">We believe that every performance is a unique, living moment. Our approach is rooted in a deep respect for the composer's intent, combined with a commitment to bringing our own contemporary voice to the score. We strive to create experiences that are not only heard but felt, inviting listeners into the intricate emotional landscapes of the music.</p>
+<p class="mt-6 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">They enjoy performing diverse styles of music, with a particular love for classical traditions. Their performances aim to create an emotional connection with audiences through sincere and expressive interpretations. As emerging musicians, Theodore and Seulbi are committed to growing both individually and as a duo, sharing their passion for music with every performance.</p>
 <div class="mt-12">
 <a href="/events">
 <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity mx-auto">
