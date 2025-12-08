@@ -147,6 +147,7 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById("navigation-placeholder").innerHTML = data;
+        initNavigation();
       })
       .catch(err => console.error("Navigation load error:", err));
 
@@ -157,5 +158,7 @@
       })
       .catch(err => console.error("Footer load error:", err));
 </script>
+
+<script src="/components/navigation.js"></script>
 
 </body></html>

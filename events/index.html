@@ -236,14 +236,23 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Noto Serif', serif; }
 </div>
 
 <script>
-fetch("/components/navigation.html")
-  .then(r => r.text())
-  .then(t => document.getElementById("navigation-placeholder").innerHTML = t);
+  fetch("/components/navigation.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navigation-placeholder").innerHTML = data;
+        initNavigation();
+      })
+      .catch(err => console.error("Navigation load error:", err));
 
-fetch("/components/footer.html")
-  .then(r => r.text())
-  .then(t => document.getElementById("footer-placeholder").innerHTML = t);
+  fetch("/components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(err => console.error("Footer load error:", err));
 </script>
+
+<script src="/components/navigation.js"></script>
 
 <script>
 (function(){

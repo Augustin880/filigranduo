@@ -129,12 +129,13 @@
 }
 
 .navigation-mobile-overlay{
-  top: 0;
+  top: 72px;
   left: 0;
   right: 0;
   bottom: 0;
   opacity: 0;
-  z-index: 999;
+  height: calc(100vh - 72px);
+  z-index: 900;
   position: fixed;
   transition: opacity var(--animation-duration-standard)
       var(--animation-curve-primary);
@@ -176,18 +177,18 @@
   position: absolute;
   background: color-mix(in srgb, var(--color-scrim) 90%, transparent);
   backdrop-filter: blur(10px);
+  z-index: 0;
 }
 
 .navigation-mobile-content{
+  z-index: 1;
   top: 0;
   right: 0;
   width: 85%;
   bottom: 0;
-  overflow: hidden;
   position: absolute;
   max-width: 400px;
   transform: translateX(100%);
-  background: var(--color-surface);
   box-shadow: var(--shadow-level-3);
   transition: transform var(--animation-duration-standard)
       var(--animation-curve-primary);
@@ -389,6 +390,13 @@
   color: var(--color-accent);
 }
 
+.navigation-toggle-close {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
 .navigation-toggle[aria-expanded="true"] .navigation-toggle-open{
   opacity: 0;
   transform: rotate(-90deg) scale(0);
@@ -486,6 +494,7 @@
 
 .navigation-mobile-content{
     width: 90%;
+    background: #000;
   }
 
 .navigation-logo-icon{
