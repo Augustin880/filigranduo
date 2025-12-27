@@ -21,7 +21,143 @@
             #hero-section {
                 background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("/img/main.jpeg");
             }
+        }      /* Elevate timeline dots slightly on small screens so they're not too close to text */
+      @media (max-width: 767px) {
+        .timeline-dot {
+          transform: translateX(-50%) translateY(-8px) !important;
         }
+      }
+      /* ===== EVENT LIST ===== */
+
+.event-list-1{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* FIXED STRUCTURE CARD */
+.event-item-1{
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  grid-template-rows: auto auto;
+  align-items: center;
+
+  padding: 1.4rem 1.8rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+
+  transition: background 0.3s, transform 0.3s;
+}
+
+.event-item-1:hover{
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+/* TITLE — FULL TEXT VISIBLE */
+.event-title-1{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+
+  font-size: 1.15rem;
+  line-height: 1.35;
+  color: #fff;
+
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* DATE */
+.event-date-1{
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+
+  font-size: 0.9rem;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+/* BUTTON — FIXED SIZE */
+.btn-ticket-1{
+  grid-column: 2 / 3;
+  grid-row: 1 / span 2;
+  justify-self: end;
+
+  width: 160px;
+  height: 40px;
+
+  border: 1px solid rgba(255,255,255,0.6);
+  background: transparent;
+  color: #fff;
+
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ticket-1:hover{
+  background: #fff;
+  color: #000;
+}
+
+/* ===== PAST EVENT ===== */
+
+.event-item-1.event-past{
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.event-status{
+  margin-left: 0.6rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.15);
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.btn-disabled{
+  border-color: rgba(255,255,255,0.25);
+  color: #aaa;
+}
+
+/* MOBILE — SAME FOR UPCOMING & PAST */
+@media(max-width:700px){
+  .event-item-1{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: start;
+  }
+
+  .event-title-1{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .event-date-1{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .btn-ticket-1{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    justify-self: start;
+    margin-top: 0.75rem;
+  }
+}
     </style>
 <script id="tailwind-config">
         tailwind.config = {
@@ -29,7 +165,7 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#c084fc",
+                        "primary": "#b89f5d",
                         "background-light": "#f6f6f8",
                         "background-dark": "#0c0a09",
                     },
@@ -48,44 +184,401 @@
     </script>
 </head>
 <body class="bg-background-dark font-display text-neutral-200">
-<div class="relative flex h-screen w-full flex-col overflow-x-hidden">
+<div id="navigation-placeholder"></div>
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 
 <main class="flex-grow flex flex-col">
-<div id="hero-section" class="flex-grow w-full flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat" data-alt="A dramatic, high-quality black and white photo of the Filigran Duo performing on stage, one playing violin and the other playing piano.">
+<div id="hero-section" class="w-full flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat min-h-[700px]" data-alt="A dramatic, high-quality black and white photo of the Filigran Duo performing on stage, one playing violin and the other playing piano.">
 <div class="text-center">
 <h1 class="text-white text-5xl md:text-7xl font-black tracking-tighter mb-8">Filigran Duo</h1>
-<nav class="flex flex-col sm:flex-row items-center justify-center gap-4">
-<a class="w-48 text-center text-lg font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-6 py-3 transition-colors duration-300 backdrop-blur-sm" href="/events">Performances</a>
-<a class="w-48 text-center text-lg font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-6 py-3 transition-colors duration-300 backdrop-blur-sm" href="/about">About Us</a>
-<a class="w-48 text-center text-lg font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-6 py-3 transition-colors duration-300 backdrop-blur-sm" href="/gallery">Media Gallery</a>
-</nav>
 </div>
 </div>
+
+<!-- About Section -->
+<div id="about" class="px-6 md:px-10 lg:px-20">
+<div class="mx-auto max-w-4xl">
+<div class="py-16 md:py-24">
+<p class="text-center font-display text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+  Theodore Kim and Seulbi Cho are
+  two students from the
+  Conservatorium of Maastricht
+  who formed a violin and piano
+  duo in May 2024. The duo takes its
+  name from the German word
+  'Filigran', which means very
+  delicate. A term that reflects their
+  musical pursuit.
+</p>
+</div>
+<div class="border-t border-primary/20 pt-16 md:pt-24">
+<h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">The Musicians</h2>
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-start">
+<div class="flex flex-col items-center text-center">
+<img class="h-64 w-64 rounded-full object-cover shadow-lg mb-6" data-alt="Professional headshot of Elara Vance, the violinist." src="/img/theodore_kim.png"/>
+<h3 class="font-display text-2xl font-bold text-primary">Theodore Kim</h3>
+<p class="font-sans text-sm font-medium uppercase tracking-widest text-text-light/70 dark:text-text-dark/70 mt-1">Violinist</p>
+<p class="mt-4 text-base leading-relaxed">
+  Theodore Kim is a dedicated 4th-year
+  Bachelor of Music student at the
+  Conservatorium Maastricht, where he
+  studies under the guidance of Professor
+  Piotr Jasiurkowski.
+</p>
+<p class="mt-4 text-base leading-relaxed">
+  With an innate musical sensitivity but
+  virtuosic personality, Belgian violinist
+  Theodore is a passionate violinist who
+  has won many awards in international
+  competitions as a soloist. Not only a great
+  soloist, he also excels in playing with
+  others such as chamber music or
+  orchestra.
+</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<img class="h-64 w-64 rounded-full object-cover shadow-lg mb-6" data-alt="Professional headshot of Liam Sterling, the pianist." src="/img/seulbi_cho.jpg"/>
+<h3 class="font-display text-2xl font-bold text-primary">Seulbi Cho</h3>
+<p class="font-sans text-sm font-medium uppercase tracking-widest text-text-light/70 dark:text-text-dark/70 mt-1">Pianist</p>
+<p class="mt-4 text-base leading-relaxed">
+  Seulbi Cho is a pianist from the Republic
+  of Korea. She completed her bachelor's
+  degree in 2024 in Conservatorium
+  Maastricht and is currently studying in
+  piano accompaniment under the
+  guidance of Thomas Hoppe at the
+  Folkwang Universität der Künste in Essen,
+  Germany.
+</p>
+<p class="mt-4 text-base leading-relaxed">
+  Seulbi has a strong passion for chamber
+  music and has gained diverse experience
+  and repertoire through working
+  with different instrumentalists as a
+  collaborative pianist at the
+  Conservatorium. Her collaborations span
+  a wide range of instruments, including
+  strings, winds, and vocal music.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Performances Section -->
+<div id="performances" class="px-4 sm:px-8 md:px-20 lg:px-40 py-10 flex justify-center">
+<div class="max-w-[960px] w-full">
+<div class="flex px-4 py-3 mb-6">
+<div class="flex h-10 w-full rounded-lg bg-[#e0e0e0] dark:bg-[#292e38] p-1">
+<label class="flex-1 flex items-center justify-center cursor-pointer rounded-lg
+            has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark
+            has-[:checked]:shadow text-sm font-medium text-[#6b7280] dark:text-[#9da6b8]">
+            <span>Upcoming Events</span>
+            <input checked class="hidden" type="radio" name="event_toggle" value="upcoming">
+          </label>
+          <label class="flex-1 flex items-center justify-center cursor-pointer rounded-lg
+            has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark
+            has-[:checked]:shadow text-sm font-medium text-[#6b7280] dark:text-[#9da6b8]">
+            <span>Past Events</span>
+            <input class="hidden" type="radio" name="event_toggle" value="past">
+          </label>
+        </div>
+      </div>
+<div id="events-list" class="event-list-1"></div>
+</div>
+</div>
+
+<div id="about" class="px-6 md:px-10 lg:px-20">
+<div class="mx-auto max-w-4xl">
+<div class="border-t border-primary/20 pt-16 md:pt-24">
+<div class="py-16 md:py-24">
+<div class="text-center">
+<h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight">Our Journey Together</h2>
+</div>
+<div class="mt-12 relative">
+<div aria-hidden="true" class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/20 hidden md:block"></div>
+<div class="space-y-16">
+<div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
+<div class="flex justify-center md:justify-end md:pr-8">
+<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 timeline-dot">
+<div class="h-3 w-3 rounded-full bg-background-light dark:bg-background-dark"></div>
+</div>
+</div>
+<div class="mt-4 md:mt-0 text-center md:text-left">
+<h4 class="font-bold text-lg">2022: Lorem ipsum</h4>
+<p class="mt-1 text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+</div>
+<div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
+<div class="flex justify-center md:justify-end md:pr-8 order-none md:order-2 md:pl-8 md:justify-start">
+<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 timeline-dot">
+<div class="h-3 w-3 rounded-full bg-background-light dark:bg-background-dark"></div>
+</div>
+</div>
+<div class="mt-4 md:mt-0 text-center md:text-right order-none md:order-1">
+<h4 class="font-bold text-lg">2023: dolor sit amet</h4>
+<p class="mt-1 text-base leading-relaxed">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+<div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
+<div class="flex justify-center md:justify-end md:pr-8">
+<div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 timeline-dot">
+<div class="h-3 w-3 rounded-full bg-background-light dark:bg-background-dark"></div>
+</div>
+</div>
+<div class="mt-4 md:mt-0 text-center md:text-left">
+<h4 class="font-bold text-lg">2025: consectetur adipiscing</h4>
+<p class="mt-1 text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-primary/20 pt-16 md:pt-24 text-center">
+<h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight">Our Musical Philosophy</h2>
+<blockquote class="mt-8 max-w-3xl mx-auto">
+<p class="font-display text-2xl md:text-3xl italic text-primary leading-snug">"Music, for us, is a conversation—between the two of us, with the composer, and ultimately, with our audience."</p>
+</blockquote>
+<p class="mt-6 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">They enjoy performing diverse styles of music, with a particular love for classical traditions. Their performances aim to create an emotional connection with audiences through sincere and expressive interpretations. As emerging musicians, Theodore and Seulbi are committed to growing both individually and as a duo, sharing their passion for music with every performance.</p>
+<div class="mt-12">
+<a href="#performances">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity mx-auto">
+<span class="truncate">See Our Concerts</span>
+</button>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Gallery Section -->
+<div id="gallery" class="px-6 md:px-10 lg:px-20">
+<div class="mx-auto max-w-4xl">
+<div class="py-16 md:py-24">
+<h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">Media Gallery</h2>
+<p class="text-center text-gray-500 dark:text-[#9da6b8] text-base sm:text-lg font-normal leading-normal max-w-2xl mx-auto mt-4">A curated collection of our performances and moments.</p>
+</div>
+<div class="flex flex-col gap-8">
+<div class="flex justify-center">
+<div class="flex h-10 w-full sm:w-auto items-center justify-center rounded-lg bg-gray-200 dark:bg-[#292e38] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-gray-900 dark:has-[:checked]:text-white text-gray-500 dark:text-[#9da6b8] text-sm font-medium leading-normal transition-colors">
+<span class="truncate">All</span>
+<input checked="" class="invisible w-0" name="media-filter" type="radio" value="All"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-gray-900 dark:has-[:checked]:text-white text-gray-500 dark:text-[#9da6b8] text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Photos</span>
+<input class="invisible w-0" name="media-filter" type="radio" value="Photos"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-[0_0_4px_rgba(0,0,0,0.1)] has-[:checked]:text-gray-900 dark:has-[:checked]:text-white text-gray-500 dark:text-[#9da6b8] text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Videos</span>
+<input class="invisible w-0" name="media-filter" type="radio" value="Videos"/>
+</label>
+</div>
+</div>
+<div id="gallery-grid" class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6"></div>
+</div>
+</div>
+</div>
+
 </main>
 
-<footer class="border-t border-solid border-white/10 bg-background-dark/80">
-<div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-<div class="flex flex-col sm:flex-row justify-between items-center gap-6">
-<p class="text-neutral-500 text-sm text-center sm:text-left">© 2025 Filigran Duo. All Rights Reserved.</p>
-<div class="flex gap-4">
-<a aria-label="Instagram" class="text-neutral-400 hover:text-primary transition-colors" href="https://www.instagram.com/filigranduo_/" target="_blank">
-<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.116 0-3.483.01-4.702.062-2.73.123-3.951 1.342-4.074 4.074-.052 1.218-.062 1.585-.062 4.701s.01 3.483.062 4.702c.123 2.73 1.344 3.951 4.074 4.074 1.218.052 1.586.062 4.702.062 3.116 0 3.482-.01 4.701-.062 2.73-.123 3.951-1.344 4.074-4.074.052-1.218.062-1.585.062-4.701s-.01-3.483-.062-4.702c-.123-2.73-1.344-3.951-4.074-4.074C15.482 3.614 15.116 3.604 12 3.604zm0 4.238a4.158 4.158 0 100 8.316 4.158 4.158 0 000-8.316zm0 6.877a2.719 2.719 0 110-5.438 2.719 2.719 0 010 5.438zm4.808-7.857a.96.96 0 100-1.92.96.96 0 000 1.92z"></path>
-</svg>
-</a>
-<a aria-label="Mail" class="text-neutral-400 hover:text-primary transition-colors" href="mailto:filigranduo@gmail.com" target="_blank">
-<span class="material-symbols-outlined">mail</span>
-</a>
-<a aria-label="YouTube" class="text-neutral-400 hover:text-primary transition-colors" href="https://youtube.com/@filigranduo" target="_blank">
-<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23-1.54.91-1.77 1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM9.5 15.5V8.5l6 3.5-6 3.5z"></path>
-</svg>
-</a>
-</div>
-</div>
-</div>
-</footer>
+<div id="footer-placeholder"></div>
 
 </div>
+
+<script>
+(function(){
+  const esc = s => String(s||"").replace(/[&<>'"]/g,c=>(
+    {"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]
+  ));
+
+  const parseDate = s => {
+    const m = String(s).match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
+    return m ? new Date(`${m[2]} ${m[1]} ${m[3]}`) : null;
+  };
+
+  async function load(){
+    const res = await fetch("/data/performances.json",{cache:"no-cache"});
+    const data = await res.json();
+    const list = data.performances || [];
+
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    const enriched = list.map(p=>({...p, d:parseDate(p.date)}));
+    const upcoming = enriched.filter(p=>!p.d || p.d>=today);
+    const past = enriched.filter(p=>p.d && p.d<today).reverse();
+
+    const container = document.getElementById("events-list");
+
+    function render(items, isPast){
+      container.innerHTML = "";
+      if(!items.length){
+        container.innerHTML =
+          `<p class="text-center text-gray-400">No events.</p>`;
+        return;
+      }
+
+      items.forEach(perf=>{
+        const el = document.createElement("div");
+        el.className = `event-item-1${isPast ? " event-past" : ""}`;
+
+        el.innerHTML = `
+          <div class="event-title-1">${esc(perf.title)}</div>
+          <div class="event-date-1">
+            ${esc(perf.date)}
+            ${isPast ? `<span class="event-status">Past</span>` : ``}
+          </div>
+          ${
+            isPast
+              ? `<button class="btn-ticket-1 btn-disabled">Past performance</button>`
+              : `<a href="${esc(perf.link||"#")}"
+                  target="_blank"
+                  class="btn-ticket-1">
+                  Get Tickets
+                </a>`
+          }
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    document.querySelectorAll('input[name="event_toggle"]')
+      .forEach(r => r.addEventListener("change", e => {
+        render(
+          e.target.value === "past" ? past : upcoming,
+          e.target.value === "past"
+        );
+      }));
+
+    render(upcoming,false);
+  }
+
+  load();
+})();
+</script>
+
+<script>
+(function(){
+    const grid = document.getElementById('gallery-grid');
+
+    function extractYouTubeId(url) {
+      if (!url) return null;
+      const match = url.match(
+        /(?:youtube\.com\/.*[?&]v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/
+      );
+      return match ? match[1] : null;
+    }
+
+    function youtubeThumb(url) {
+      const id = extractYouTubeId(url);
+      return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null;
+    }
+
+    function renderList(manifest, filter){
+      grid.innerHTML = '';
+
+      const photos = (manifest.photos || []).map(p => ({
+        type: 'photo',
+        src: p,
+        bg: p
+      }));
+
+      const videos = (manifest.videos || []).map(v => {
+        const thumb = youtubeThumb(v);
+        return thumb ? {
+          type: 'video',
+          src: v,
+          bg: thumb
+        } : null;
+      }).filter(Boolean);
+
+      const all = photos.concat(videos);
+
+      const items = all.filter(m =>
+        filter === 'All' ||
+        (filter === 'Photos' && m.type === 'photo') ||
+        (filter === 'Videos' && m.type === 'video')
+      );
+
+      if(items.length === 0){
+        grid.innerHTML = '<p class="text-gray-500">No media to display.</p>';
+        return;
+      }
+
+      for(const m of items){
+        const div = document.createElement('div');
+        div.className = `
+          group relative bg-cover bg-center flex flex-col
+          gap-3 rounded-lg justify-end p-4
+          aspect-[3/4] overflow-hidden cursor-pointer
+        `;
+        div.style.backgroundImage = `url("${m.bg}")`;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors';
+        div.appendChild(overlay);
+
+        // Play icon for videos
+        if (m.type === 'video') {
+          const icon = document.createElement('div');
+          icon.className = `
+            absolute inset-0 flex items-center justify-center
+            text-white text-6xl opacity-80 group-hover:opacity-100
+            transition-opacity z-10
+          `;
+          icon.innerHTML = '▶';
+          div.appendChild(icon);
+        }
+
+        div.addEventListener('click', () => {
+          if (m.type === 'photo') {
+            window.open(m.src, '_blank');
+          } else {
+            window.open(m.src, '_blank');
+          }
+        });
+
+        grid.appendChild(div);
+      }
+    }
+
+    function loadAndRender(filter){
+      fetch('/data/gallery.json')
+        .then(r => r.json())
+        .then(manifest => renderList(manifest, filter))
+        .catch(err => {
+          console.error('Failed to load gallery manifest:', err);
+          grid.innerHTML = '<p class="text-red-500">Failed to load gallery.</p>';
+        });
+    }
+
+    document.querySelectorAll('input[name="media-filter"]').forEach(r => {
+      r.addEventListener('change', e => loadAndRender(e.target.value));
+    });
+
+    // initial render
+    loadAndRender('All');
+  })();
+</script>
+
+<script>
+  fetch("/components/navigation.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navigation-placeholder").innerHTML = data;
+        initNavigation();
+      })
+      .catch(err => console.error("Navigation load error:", err));
+
+  fetch("/components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(err => console.error("Footer load error:", err));
+</script>
+
+<script src="/components/navigation.js"></script>
 
 </body></html>
