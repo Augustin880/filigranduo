@@ -27,135 +27,250 @@
           transform: translateX(-50%) translateY(-8px) !important;
         }
       }
-      /* ===== EVENT LIST ===== */
+      /* ===== PERFORMANCE CARDS ===== */
 
 .event-list-1{
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-/* FIXED STRUCTURE CARD */
 .event-item-1{
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 180px;
-  grid-template-rows: auto auto;
-  align-items: center;
-
-  padding: 1.4rem 1.8rem;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-
-  transition: background 0.3s, transform 0.3s;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 1.1rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .event-item-1:hover{
-  background: rgba(255,255,255,0.12);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  border-color: rgba(184,159,93,0.38);
+  background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.05));
 }
 
-/* TITLE — FULL TEXT VISIBLE */
-.event-title-1{
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+.event-media-1{
+  position: relative;
+  min-height: 220px;
+  background: linear-gradient(135deg, rgba(184,159,93,0.32), rgba(255,255,255,0.06));
+  overflow: hidden;
+}
 
-  font-size: 1.15rem;
-  line-height: 1.35;
+.event-media-1 img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.event-media-fallback{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at top right, rgba(184,159,93,0.55), transparent 38%),
+    linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.52));
+  color: rgba(255,255,255,0.95);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.event-date-badge{
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 2;
+  min-width: 4.5rem;
+  padding: 0.65rem 0.7rem;
+  border-radius: 1rem;
+  background: rgba(12,10,9,0.82);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+}
+
+.event-date-day{
+  display: block;
   color: #fff;
+  font-size: 1.45rem;
+  line-height: 1;
+  font-weight: 700;
+}
 
+.event-date-month{
+  display: block;
+  margin-top: 0.22rem;
+  color: rgba(255,255,255,0.74);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.event-content-1{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.15rem 1.15rem 0;
+}
+
+.event-topline{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.event-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.72rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #ddd6c7;
+  font-size: 0.76rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.event-title-1{
+  margin-top: 0.15rem;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: #fff;
   white-space: normal;
   word-break: break-word;
 }
 
-/* DATE */
-.event-date-1{
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-
-  font-size: 0.9rem;
-  color: #aaa;
-  white-space: nowrap;
+.event-meta-1{
+  display: grid;
+  gap: 0.6rem;
 }
 
-/* BUTTON — FIXED SIZE */
-.btn-ticket-1{
-  grid-column: 2 / 3;
-  grid-row: 1 / span 2;
-  justify-self: end;
-
-  width: 160px;
-  height: 40px;
-
-  border: 1px solid rgba(255,255,255,0.6);
-  background: transparent;
-  color: #fff;
-
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s;
-
+.event-meta-line{
   display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  color: rgba(255,255,255,0.78);
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.event-meta-line .material-symbols-outlined{
+  font-size: 1rem;
+  margin-top: 0.15rem;
+  color: #b89f5d;
+}
+
+.event-description{
+  color: rgba(255,255,255,0.72);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.event-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-ticket-1{
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 150px;
+  min-height: 44px;
+  padding: 0.85rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(184,159,93,0.45);
+  background: rgba(184,159,93,0.12);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
 }
 
 .btn-ticket-1:hover{
-  background: #fff;
-  color: #000;
+  background: #b89f5d;
+  color: #0c0a09;
 }
 
-/* ===== PAST EVENT ===== */
-
-.event-item-1.event-past{
-  opacity: 0.55;
-  pointer-events: none;
+.event-past .btn-ticket-1,
+.btn-disabled{
+  border-color: rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.58);
 }
 
 .event-status{
-  margin-left: 0.6rem;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.72rem;
   border-radius: 999px;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
   color: #bbb;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.btn-disabled{
-  border-color: rgba(255,255,255,0.25);
-  color: #aaa;
+.event-empty-state{
+  padding: 2rem 1rem;
+  text-align: center;
+  color: rgba(255,255,255,0.62);
+  border: 1px dashed rgba(255,255,255,0.16);
+  border-radius: 1rem;
 }
 
-/* MOBILE — SAME FOR UPCOMING & PAST */
+@media(max-width:900px){
+  .event-item-1{
+    grid-template-columns: minmax(0, 180px) minmax(0, 1fr);
+  }
+
+  .event-media-1{
+    min-height: 200px;
+  }
+}
+
 @media(max-width:700px){
   .event-item-1{
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    align-items: start;
+    gap: 0;
+  }
+
+  .event-media-1{
+    min-height: 210px;
+  }
+
+  .event-content-1{
+    padding: 1rem;
   }
 
   .event-title-1{
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    font-size: 1.18rem;
   }
 
-  .event-date-1{
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
+  .event-meta-line{
+    font-size: 0.92rem;
   }
 
   .btn-ticket-1{
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-    justify-self: start;
-    margin-top: 0.75rem;
+    width: 100%;
   }
 }
     </style>
@@ -267,25 +382,30 @@
 </div>
 
 <!-- Performances Section -->
-<div id="performances" class="px-4 sm:px-8 md:px-20 lg:px-40 py-10 flex justify-center">
-<div class="max-w-[960px] w-full">
-<div class="flex px-4 py-3 mb-6">
-<div class="flex h-10 w-full rounded-lg bg-[#e0e0e0] dark:bg-[#292e38] p-1">
-<label class="flex-1 flex items-center justify-center cursor-pointer rounded-lg
+<div id="performances" class="px-4 sm:px-8 md:px-20 lg:px-40 py-14 md:py-20 flex justify-center">
+<div class="max-w-[1100px] w-full">
+<div class="text-center mb-8 md:mb-10">
+<h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight">Performances</h2>
+<p class="mt-4 text-base md:text-lg leading-relaxed text-neutral-300 max-w-2xl mx-auto">A cleaner overview of our concerts, with room for imagery, location details, and ticket access while staying comfortable to browse on a phone.</p>
+</div>
+<div class="flex px-0 py-0 mb-6 justify-center">
+<div class="flex h-11 w-full max-w-md rounded-full bg-[#e0e0e0] dark:bg-[#1c1f26] p-1 border border-white/5">
+<label class="flex-1 flex items-center justify-center cursor-pointer rounded-full transition-colors
             has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark
             has-[:checked]:shadow text-sm font-medium text-[#6b7280] dark:text-[#9da6b8]">
-            <span>Upcoming Events</span>
+            <span>Upcoming</span>
             <input checked class="hidden" type="radio" name="event_toggle" value="upcoming">
           </label>
-          <label class="flex-1 flex items-center justify-center cursor-pointer rounded-lg
+          <label class="flex-1 flex items-center justify-center cursor-pointer rounded-full transition-colors
             has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark
             has-[:checked]:shadow text-sm font-medium text-[#6b7280] dark:text-[#9da6b8]">
-            <span>Past Events</span>
+            <span>Past</span>
             <input class="hidden" type="radio" name="event_toggle" value="past">
           </label>
         </div>
       </div>
 <div id="events-list" class="event-list-1"></div>
+</div>
 </div>
 </div>
 
@@ -398,63 +518,148 @@
     return m ? new Date(`${m[2]} ${m[1]} ${m[3]}`) : null;
   };
 
+  const formatDateBits = date => {
+    if(!(date instanceof Date) || Number.isNaN(date.getTime())){
+      return { day: "TBA", month: "Date" };
+    }
+    return {
+      day: String(date.getDate()).padStart(2, '0'),
+      month: date.toLocaleDateString('en-US', { month: 'short' })
+    };
+  };
+
+  const readFirst = (obj, keys, fallback='') => {
+    for (const key of keys) {
+      const value = obj?.[key];
+      if (typeof value === 'string' && value.trim()) return value.trim();
+    }
+    return fallback;
+  };
+
+  const getLocation = perf => {
+    const primary = readFirst(perf, ['location', 'venue', 'place', 'address']);
+    const city = readFirst(perf, ['city', 'town']);
+    const country = readFirst(perf, ['country']);
+    const parts = [primary, city, country].filter(Boolean);
+    return [...new Set(parts)].join(', ');
+  };
+
+  const getImage = perf => readFirst(perf, ['image', 'imageUrl', 'photo', 'cover', 'thumbnail', 'poster']);
+  const getDescription = perf => readFirst(perf, ['description', 'subtitle', 'program', 'excerpt']);
+
   async function load(){
-    const res = await fetch("/data/performances.json",{cache:"no-cache"});
+    const res = await fetch('/data/performances.json',{cache:'no-cache'});
     const data = await res.json();
     const list = data.performances || [];
 
-    const today = new Date(); today.setHours(0,0,0,0);
+    const today = new Date();
+    today.setHours(0,0,0,0);
 
-    const enriched = list.map(p=>({...p, d:parseDate(p.date)}));
-    const upcoming = enriched.filter(p=>!p.d || p.d>=today);
-    const past = enriched.filter(p=>p.d && p.d<today).reverse();
+    const enriched = list.map(p => {
+      const d = parseDate(p.date);
+      return {
+        ...p,
+        d,
+        dateBits: formatDateBits(d),
+        locationLabel: getLocation(p),
+        imageSrc: getImage(p),
+        descriptionLabel: getDescription(p),
+      };
+    });
 
-    const container = document.getElementById("events-list");
+    const upcoming = enriched.filter(p => !p.d || p.d >= today);
+    const past = enriched.filter(p => p.d && p.d < today).reverse();
+
+    const container = document.getElementById('events-list');
 
     function render(items, isPast){
-      container.innerHTML = "";
+      container.innerHTML = '';
       if(!items.length){
-        container.innerHTML =
-          `<p class="text-center text-gray-400">No events.</p>`;
+        container.innerHTML = `
+          <div class="event-empty-state">
+            No performances to display in this section yet.
+          </div>`;
         return;
       }
 
-      items.forEach(perf=>{
-        const el = document.createElement("div");
-        el.className = `event-item-1${isPast ? " event-past" : ""}`;
+      items.forEach(perf => {
+        const el = document.createElement('article');
+        el.className = `event-item-1${isPast ? ' event-past' : ''}`;
+
+        const hasLink = Boolean(perf.link && perf.link !== '#');
+        const imageMarkup = perf.imageSrc
+          ? `<img src="${esc(perf.imageSrc)}" alt="${esc(perf.title || 'Performance image')}">`
+          : `<div class="event-media-fallback">Live performance</div>`;
+
+        const locationMarkup = perf.locationLabel
+          ? `<div class="event-meta-line"><span class="material-symbols-outlined">location_on</span><span>${esc(perf.locationLabel)}</span></div>`
+          : '';
+
+        const descriptionMarkup = perf.descriptionLabel
+          ? `<p class="event-description">${esc(perf.descriptionLabel)}</p>`
+          : '';
+
+        const programMarkup = perf.program
+          ? `<div class="event-meta-line"><span class="material-symbols-outlined">music_note</span><span>${esc(perf.program)}</span></div>`
+          : '';
+
+        const ticketMarkup = isPast
+          ? `<span class="event-status">Past performance</span>`
+          : hasLink
+            ? `<a href="${esc(perf.link)}" target="_blank" rel="noopener noreferrer" class="btn-ticket-1">Get tickets</a>`
+            : `<button class="btn-ticket-1 btn-disabled" type="button">More info soon</button>`;
 
         el.innerHTML = `
-          <div class="event-title-1">${esc(perf.title)}</div>
-          <div class="event-date-1">
-            ${esc(perf.date)}
-            ${isPast ? `<span class="event-status">Past</span>` : ``}
+          <div class="event-media-1">
+            <div class="event-date-badge">
+              <span class="event-date-day">${esc(perf.dateBits.day)}</span>
+              <span class="event-date-month">${esc(perf.dateBits.month)}</span>
+            </div>
+            ${imageMarkup}
           </div>
-          ${
-            isPast
-              ? `<button class="btn-ticket-1 btn-disabled">Past performance</button>`
-              : `<a href="${esc(perf.link||"#")}"
-                  target="_blank"
-                  class="btn-ticket-1">
-                  Get Tickets
-                </a>`
-          }
+          <div class="event-content-1">
+            <div>
+              <div class="event-topline">
+                <span class="event-chip">${isPast ? 'Archive' : 'Upcoming concert'}</span>
+                ${perf.date ? `<span class="event-chip"><span class="material-symbols-outlined">calendar_month</span>${esc(perf.date)}</span>` : ''}
+              </div>
+              <h3 class="event-title-1">${esc(perf.title || 'Untitled performance')}</h3>
+              <div class="event-meta-1 mt-4">
+                ${locationMarkup}
+                ${programMarkup}
+              </div>
+              ${descriptionMarkup}
+            </div>
+            <div class="event-actions">
+              ${ticketMarkup}
+            </div>
+          </div>
         `;
         container.appendChild(el);
       });
     }
 
     document.querySelectorAll('input[name="event_toggle"]')
-      .forEach(r => r.addEventListener("change", e => {
+      .forEach(r => r.addEventListener('change', e => {
         render(
-          e.target.value === "past" ? past : upcoming,
-          e.target.value === "past"
+          e.target.value === 'past' ? past : upcoming,
+          e.target.value === 'past'
         );
       }));
 
     render(upcoming,false);
   }
 
-  load();
+  load().catch(err => {
+    console.error('Failed to load performances:', err);
+    const container = document.getElementById('events-list');
+    if (container) {
+      container.innerHTML = `
+        <div class="event-empty-state">
+          Failed to load performances.
+        </div>`;
+    }
+  });
 })();
 </script>
 
